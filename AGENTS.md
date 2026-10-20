@@ -7,3 +7,7 @@
 - Icons: `<Icon name="…" />` from `src/icons/icons.ts` (Hugeicons Stroke Rounded).
 - Never use Leica (competitor) anywhere — products, images, copy.
 - Before committing run `npm run build` (includes the typecheck).
+
+## Порядок работы
+
+Сначала правки вносятся в дизайн-канвас (https://claude.ai/artifact/4es59MkxHbhWbpqh1fAouJ), потом переносятся в код и пушатся в git. После этого пересобирается превью (`npm run build:artifact`).

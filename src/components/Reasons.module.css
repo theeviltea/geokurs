@@ -1,0 +1,18 @@
+.wrap { padding-bottom: 96px; display: flex; flex-wrap: wrap; gap: 40px 64px; }
+.title { flex: 1 1 360px; font-family: var(--font-display); font-size: 40px; line-height: 1.08; font-weight: 600; letter-spacing: -0.025em; text-wrap: balance; }
+.list { flex: 2 1 640px; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 12px; }
+.item { background: var(--c-white); border-radius: 20px; padding: 24px; display: flex; gap: 16px; align-items: flex-start; }
+.num { flex: none; width: 40px; height: 40px; border-radius: 20px; background: var(--c-green-100); color: var(--c-green-700); font-family: var(--font-display); font-size: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.copy { display: flex; flex-direction: column; gap: 6px; }
+.itemTitle { font-weight: 600; font-size: 16px; }
+.text { color: var(--c-gray-600); font-size: 14px; }
+
+@media (max-width: 767px) {
+  .wrap { padding-top: 40px; padding-bottom: 16px; gap: 16px; display: block; }
+  .title { font-size: 28px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 16px; }
+  .list { display: flex; flex-direction: column; gap: 8px; }
+  .item { border-radius: 18px; padding: 16px; gap: 14px; }
+  .num { width: 32px; height: 32px; border-radius: 16px; font-weight: 700; }
+  .copy { gap: 4px; }
+  .itemTitle { font-size: 15px; }
+}

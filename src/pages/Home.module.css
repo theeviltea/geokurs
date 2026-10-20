@@ -1,0 +1,2 @@
+.sheet { background: var(--c-surface-sunken); border-radius: 40px 40px 0 0; }
+@media (max-width: 767px) { .sheet { border-radius: 28px 28px 0 0; } }

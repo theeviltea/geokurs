@@ -1,0 +1,53 @@
+.card { background: var(--c-white); border-radius: 24px; padding: 12px 12px 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.media { position: relative; height: 230px; border-radius: 16px; background: var(--c-bg); display: flex; align-items: center; justify-content: center; }
+.media img { max-height: 180px; max-width: 75%; object-fit: contain; transition: transform 0.25s ease; }
+.card:hover .media img { transform: scale(1.04); }
+.badge { position: absolute; left: 12px; top: 12px; height: 26px; padding: 0 10px; border-radius: 13px; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; }
+.hit { background: var(--c-red-600); color: var(--c-white); }
+.new { background: var(--c-green-100); color: var(--c-green-700); }
+.round { position: absolute; right: 8px; width: 44px; height: 44px; border-radius: 22px; border: 0; background: var(--c-white); color: var(--c-ink); display: flex; align-items: center; justify-content: center; }
+.round:hover { color: var(--c-green-600); }
+.fav { top: 8px; }
+.compare { top: 58px; }
+.body { padding: 0 8px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.meta { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--c-gray-600); }
+.dot { width: 6px; height: 6px; border-radius: 3px; background: var(--c-gold-500); flex: none; }
+.name { font-size: 16px; line-height: 1.3; font-weight: 500; min-height: 62px; }
+.name a { color: var(--c-ink); }
+.name a:hover { color: var(--c-green-600); }
+.foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; }
+.price { font-size: 20px; font-weight: 700; white-space: nowrap; }
+.buy { height: 44px; padding: 0 18px; border-radius: 22px; border: 0; background: var(--c-green-600); color: var(--c-white); font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.buy:hover { background: var(--c-green-700); }
+.buyIcon { display: none; }
+
+@media (max-width: 767px) {
+  .card { border-radius: 18px; padding: 8px 8px 12px; gap: 10px; }
+  .media { height: 150px; border-radius: 12px; }
+  .media img { max-height: 118px; max-width: 72%; }
+  .badge { left: 8px; top: 8px; height: 22px; padding: 0 8px; border-radius: 11px; font-size: 11px; }
+  .round { right: 0; top: 0; background: transparent; }
+  .compare { display: none; }
+  .body { padding: 0 4px; gap: 6px; }
+  .meta { font-size: 11px; }
+  .dot { display: none; }
+  .name { font-size: 13px; min-height: 51px; }
+  .foot { gap: 4px; }
+  .price { font-size: 15px; }
+  .buy { width: 40px; height: 40px; padding: 0; border-radius: 20px; }
+  .buyLabel { display: none; }
+  .buyIcon { display: block; }
+}
+
+/* Home «Популярное» strip on phones: wider cards in a horizontal scroller. */
+@media (max-width: 767px) {
+  .carousel { flex: none; width: 240px; border-radius: 20px; padding: 10px 10px 16px; gap: 12px; }
+  .carousel .media { height: 180px; border-radius: 14px; }
+  .carousel .media img { max-height: 150px; max-width: 75%; }
+  .carousel .round { right: 4px; top: 4px; }
+  .carousel .body { padding: 0 6px; gap: 8px; }
+  .carousel .meta { font-size: 12px; }
+  .carousel .name { font-size: 14px; min-height: 54px; }
+  .carousel .price { font-size: 17px; }
+  .carousel .buy { width: 44px; height: 44px; border-radius: 22px; }
+}

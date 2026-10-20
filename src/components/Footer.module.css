@@ -1,0 +1,18 @@
+.footer { background: var(--c-ink); color: var(--c-on-dark-2); font-size: 14px; }
+.footer a { color: var(--c-on-dark-2); }
+.footer a:hover { color: var(--c-white); }
+.top { display: flex; flex-wrap: wrap; gap: 28px 40px; padding-top: 56px; padding-bottom: 32px; }
+.contacts { flex: 2 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.logo { height: 30px; width: auto; align-self: flex-start; }
+.contactList { display: flex; flex-direction: column; gap: 6px; }
+.footer .phone { font-family: var(--font-display); font-size: 30px; font-weight: 700; color: var(--c-white); letter-spacing: -0.01em; }
+.col { flex: 1 1 140px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.colTitle { color: var(--c-white); font-weight: 600; }
+.bar { padding-top: 20px; padding-bottom: 28px; border-top: 1px solid #1F2722; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; font-size: 13px; }
+.socials { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+@media (max-width: 767px) {
+  .top { padding-top: 36px; padding-bottom: 24px; }
+  .logo { height: 24px; }
+  .footer .phone { font-size: 26px; }
+  .bar { padding-top: 16px; padding-bottom: 24px; }
+}

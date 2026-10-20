@@ -1,0 +1,36 @@
+.section { padding-bottom: 56px; }
+.title { margin-bottom: 28px; }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.tile { height: 240px; border-radius: 24px; background: var(--c-white); color: var(--c-ink); padding: 22px 20px 16px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; min-width: 0; transition: box-shadow 0.2s ease; }
+.tile:hover { color: var(--c-ink); box-shadow: 0 12px 28px rgba(11,15,12,0.08); }
+.tile:hover img { transform: scale(1.04); }
+.name { font-family: var(--font-display); font-size: 18px; line-height: 1.2; font-weight: 600; text-wrap: balance; }
+.pic { flex: 1; min-height: 0; width: 100%; display: flex; align-items: center; justify-content: center; }
+.pic img { max-width: 200px; max-height: 150px; object-fit: contain; transition: transform 0.25s ease; }
+.pic img.wide { max-width: 240px; max-height: 140px; }
+
+.all { position: relative; overflow: hidden; height: 240px; border-radius: 24px; background: var(--c-green-600); color: var(--c-white); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 0; }
+.all:hover { color: var(--c-white); background: var(--c-green-700); }
+.allRings { position: absolute; right: -90px; bottom: -90px; width: 260px; height: 260px; }
+.allText { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.allTitle { font-family: var(--font-display); font-size: 22px; line-height: 1.15; font-weight: 700; }
+.allSub { font-size: 14px; color: var(--c-green-100); }
+.allArrow { position: relative; width: 52px; height: 52px; border-radius: 26px; background: var(--c-white); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+
+@media (max-width: 1100px) and (min-width: 768px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .section { padding-bottom: 40px; }
+  .title { margin-bottom: 16px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .tile { height: 168px; border-radius: 18px; padding: 14px 10px 10px; gap: 6px; }
+  .name { min-height: 34px; font-size: 14px; }
+  .pic img { max-width: 130px; max-height: 100px; }
+  .pic img.wide { max-width: 150px; max-height: 90px; }
+  .all { height: 168px; border-radius: 18px; padding: 16px; }
+  .allRings { right: -70px; bottom: -70px; width: 190px; height: 190px; }
+  .allText { gap: 4px; }
+  .allTitle { font-size: 17px; }
+  .allSub { font-size: 12px; }
+  .allArrow { width: 40px; height: 40px; border-radius: 20px; }
+  .allArrow svg { width: 18px; height: 18px; }
+}

@@ -1,0 +1,39 @@
+.wrap { padding-bottom: 72px; }
+.head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 28px; }
+.sub { font-size: 14px; color: var(--c-gray-600); }
+.card { background: var(--c-white); border-radius: 28px; padding: 24px; display: flex; flex-wrap: wrap; gap: 28px; }
+.side { flex: 2 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.mapCol { flex: 3 1 560px; min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { flex: none; height: 40px; padding: 0 14px; border-radius: 20px; border: 0; background: var(--c-bg); color: var(--c-ink); font-size: 14px; font-weight: 600; white-space: nowrap; }
+.chip:hover { background: var(--c-surface-sunken); }
+.chipOn, .chipOn:hover { background: var(--c-green-600); color: var(--c-white); }
+.info { border-radius: 18px; background: var(--c-bg); padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.cityRow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.city { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+.tag { height: 24px; padding: 0 10px; border-radius: 12px; background: var(--c-green-100); color: var(--c-green-700); font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; }
+.line { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--c-ink); }
+.line svg { flex: none; margin-top: 1px; }
+a.line:hover { color: var(--c-green-600); }
+.route { align-self: flex-start; margin-top: 4px; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 22px; background: var(--c-green-600); color: var(--c-white); font-size: 14px; font-weight: 600; }
+.route:hover { color: var(--c-white); background: var(--c-green-700); }
+
+.map { position: relative; width: 100%; border-radius: 18px; background: var(--c-bg); overflow: hidden; }
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pin { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0; border: 0; background: transparent; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.pinOn { z-index: 2; }
+.pinDot { width: 14px; height: 14px; border-radius: 50%; background: var(--c-green-700); border: 3px solid var(--c-white); box-shadow: 0 2px 6px rgba(11,15,12,0.25); transition: width 0.15s ease, height 0.15s ease; }
+.pin:hover .pinDot { width: 18px; height: 18px; }
+.pinOn .pinDot, .pinOn:hover .pinDot { width: 22px; height: 22px; background: var(--c-green-600); }
+.pinLabel { position: absolute; bottom: 38px; left: 50%; transform: translateX(-50%); padding: 5px 10px; border-radius: 10px; background: var(--c-ink); color: var(--c-white); font-size: 12px; font-weight: 600; white-space: nowrap; }
+
+@media (max-width: 767px) {
+  .wrap { padding-top: 32px; padding-bottom: 16px; }
+  .head { margin-bottom: 16px; }
+  .card { border-radius: 20px; padding: 12px; gap: 14px; }
+  .side, .mapCol { flex-basis: 100%; }
+  .mapCol { order: -1; }
+  .chips { flex-wrap: nowrap; overflow-x: auto; }
+  .info { padding: 16px; }
+  .city { font-size: 18px; }
+}

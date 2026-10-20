@@ -1,4 +1,4 @@
-.header { background: var(--c-white); border-bottom: 1px solid var(--c-line); position: relative; z-index: 20; }
+.header { background: var(--c-white); border-bottom: 1px solid var(--c-line); position: sticky; top: 0; z-index: 40; }
 
 .desktop { display: flex; flex-wrap: nowrap; align-items: center; gap: 40px; padding-top: 12px; padding-bottom: 12px; }
 .left { display: flex; flex: none; align-items: center; gap: 28px; }

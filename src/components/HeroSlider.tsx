@@ -25,7 +25,7 @@ export function HeroSlider() {
   }, [active, paused, go]);
 
   const slide = slides[active];
-  const isScan = slide.id === 'scan';
+  const isScan = slide.id.startsWith('scan');
 
   return (
     <section

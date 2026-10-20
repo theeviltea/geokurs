@@ -14,8 +14,7 @@ export type Slide = {
   photo?: { src: string; alt: string; pos: string; mobilePos: string; flip?: boolean };
 };
 
-export const slides: Slide[] = [
-  {
+const scanSlide: Slide = {
     id: 'scan',
     mark: '3D',
     tab: 'Лазерное сканирование',
@@ -24,7 +23,13 @@ export const slides: Slide[] = [
     mobileText: 'Сканирующий тахеометр SX12 — точная 3D‑модель объекта за один выезд.',
     cta: { label: 'Смотреть сканеры', href: '#' },
     cta2: { label: 'Получить консультацию', href: '#' },
-  },
+};
+
+// Пока везде один зелёный баннер; слайдер оставлен рабочим для наглядности.
+export const slides: Slide[] = [1, 2, 3, 4].map((n) => ({ ...scanSlide, id: `scan-${n}` }));
+
+// Прежние баннеры, временно не показываются.
+export const archivedSlides: Slide[] = [
   {
     id: 'rtk',
     mark: 'RTK',

@@ -14,7 +14,7 @@
 .subCount { font-size: 13px; opacity: 0.7; }
 
 .body { padding-bottom: 64px; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px; }
-.aside { flex: 1 1 280px; max-width: 300px; background: var(--c-white); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 24px; position: sticky; top: 16px; }
+.aside { flex: 1 1 280px; max-width: 300px; background: var(--c-white); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 24px; position: sticky; top: 84px; }
 .asideHead { display: flex; align-items: center; justify-content: space-between; }
 .asideTitle { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
 .reset { height: 32px; padding: 0 4px; border: 0; background: transparent; color: var(--c-green-600); font-size: 14px; font-weight: 500; }

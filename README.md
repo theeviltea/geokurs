@@ -44,3 +44,7 @@ public/images/            картинки, выгруженные с канва
 
 Push в `main` → GitHub Actions собирает сайт и публикует `dist` в ветку `gh-pages`
 (Settings → Pages → Source: «Deploy from a branch», `gh-pages` / root).
+
+## Превью в артефакте
+
+`npm run build:artifact` собирает один HTML-файл со всеми стилями, скриптами и картинками внутри: `preview/geokurs-preview.html`.

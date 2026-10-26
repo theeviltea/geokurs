@@ -1,4 +1,6 @@
+import { productHref } from '../data/catalog';
 import { formatPrice, type Product } from '../data/products';
+import { SmartLink } from './SmartLink';
 import { Icon } from './Icon';
 import s from './ProductCard.module.css';
 
@@ -17,7 +19,7 @@ export function ProductCard({ product: p, meta, badges = false, variant = 'grid'
       </div>
       <div className={s.body}>
         <span className={s.meta}><span className={s.dot} />{meta ?? `Под заказ · ${p.brand}`}</span>
-        <h3 className={s.name}><a href="#">{p.name}</a></h3>
+        <h3 className={s.name}><SmartLink href={productHref[p.id] ?? '#'}>{p.name}</SmartLink></h3>
         <div className={s.foot}>
           <span className={s.price}>{formatPrice(p)}</span>
           <button type="button" className={s.buy} aria-label="В корзину">

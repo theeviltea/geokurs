@@ -14,7 +14,7 @@ export function Home() {
       <HeroSlider />
       <Services />
       <CatalogGrid />
-      <section className={s.sheet} aria-label="Популярное, акции, новости и филиалы">
+      <section className={s.sheet} aria-label="Рекомендации, акции, новости и филиалы">
         <Popular />
         <Promos />
         <News />

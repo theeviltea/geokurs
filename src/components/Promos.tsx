@@ -1,18 +1,19 @@
 import { img } from '../data/images';
+import { SmartLink } from './SmartLink';
 import s from './Promos.module.css';
 
 export function Promos() {
   return (
     <div className={`container ${s.wrap}`}>
       <div className={s.grid}>
-        <a href="#" className={`${s.card} ${s.dark}`}>
+        <SmartLink href="/promo/baza-rover" className={`${s.card} ${s.dark}`}>
           <span className={s.eyebrow}>Акция · с 17 сентября 2026</span>
           <div className={s.copy}>
             <h3 className={s.h3}>Комплект<br />база + ровер</h3>
             <div className={s.price}>4 100 000 ₸</div>
           </div>
           <img src={img('promo-i73.webp')} alt="" className={s.receiver} loading="lazy" />
-        </a>
+        </SmartLink>
         <a href="#" className={`${s.card} ${s.light}`}>
           <span className={s.eyebrow}>Рассрочка</span>
           <div className={s.copy}>

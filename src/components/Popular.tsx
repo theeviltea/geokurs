@@ -14,7 +14,7 @@ export function Popular() {
   return (
     <div className={`container ${s.wrap}`}>
       <div className={s.head}>
-        <h2 className="h2">Популярное</h2>
+        <h2 className="h2">Рекомендации</h2>
         <SmartLink href="/catalog/gnss-oborudovanie" className={`${s.allLink} mobile-only`}>Все</SmartLink>
         <div role="tablist" aria-label="Подборки" className={s.tabs}>
           {TABS.map((t, i) => (

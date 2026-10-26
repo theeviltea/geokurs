@@ -1,5 +1,6 @@
 import { news } from '../data/home';
 import { Icon } from './Icon';
+import { SmartLink } from './SmartLink';
 import s from './News.module.css';
 
 export function News() {
@@ -14,11 +15,11 @@ export function News() {
       </div>
       <div className={`${s.grid} no-scrollbar`}>
         {news.map((n) => (
-          <a key={n.href} href={n.href} className={s.card}>
+          <SmartLink key={n.href} href={n.href} className={s.card}>
             <span className={s.top}><span className={s.tag}>{n.tag}</span><span className={s.date}>{n.date}</span></span>
             <span className={s.title}>{n.title}</span>
             <span className={s.read}>Читать <Icon name="arrowRight" size={16} stroke={2} /></span>
-          </a>
+          </SmartLink>
         ))}
       </div>
     </div>

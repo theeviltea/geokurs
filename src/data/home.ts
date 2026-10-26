@@ -73,20 +73,20 @@ export const services: { name: string; text: string; href: string; icon: IconNam
   { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: 'https://geokurs.kz/services/trade-in', icon: 'tradeIn' },
 ];
 
-export type CategoryTile = { name: string; image: string; href: string; wide?: boolean };
+export type CategoryTile = { name: string; short?: string; image: string; href: string; wide?: boolean };
 
 export const categoryTiles: CategoryTile[] = [
-  { name: 'GNSS‑оборудование', image: img('cat-gnss.webp'), href: '/catalog/gnss-oborudovanie' },
+  { name: 'GNSS‑оборудование', short: 'GNSS-оборудование', image: img('cat-gnss.webp'), href: '/catalog/gnss-oborudovanie' },
   { name: 'Тахеометры', image: img('cat-total-stations.webp'), href: '#' },
   { name: 'Лазерное сканирование', image: img('cat-scanning.webp'), href: '#' },
   { name: 'Нивелиры и теодолиты', image: img('cat-levels.webp'), href: '#' },
   { name: 'БПЛА', image: img('cat-uav.webp'), href: '#', wide: true },
-  { name: 'САУ для спецтехники', image: img('cat-machine-control.webp'), href: '#' },
-  { name: 'Эхолоты и батиметрия', image: img('cat-echosounders.webp'), href: '#' },
+  { name: 'САУ для спецтехники', short: 'САУ для техники', image: img('cat-machine-control.webp'), href: '#' },
+  { name: 'Эхолоты и батиметрия', short: 'Эхолоты', image: img('cat-echosounders.webp'), href: '#' },
 ];
 
 export const news = [
-  { date: '10.11.2025', tag: 'Базовые станции', title: 'Новая базовая станция в Жезказгане', href: 'https://geokurs.kz/news/2025/novaya-bazovaya-stancziya-v-zhezkazgane' },
+  { date: '10.11.2025', tag: 'Базовые станции', title: 'Новая базовая станция в Жезказгане', href: '/news/novaya-bazovaya-stanciya-v-zhezkazgane' },
   { date: '29.10.2025', tag: 'Trade-in', title: 'Обменяйте старый прибор на GEOKURS CHCNAV i73+', href: 'https://geokurs.kz/news/2025/obmen-geokurs-chcnav-i73plus' },
   { date: '22.09.2025', tag: 'Новинки', title: 'Новый контроллер от Trimble', href: 'https://geokurs.kz/news/2025/novyi-kontroller-trimble-tsc510' },
   { date: '21.08.2025', tag: 'Новинки', title: 'Новый GNSS-приёмник с лазерным дальномером', href: 'https://geokurs.kz/news/2025/novyi-gnss-priemnik-s-lazernyim-dalnomerom' },

@@ -77,12 +77,12 @@ export type CategoryTile = { name: string; short?: string; image: string; href: 
 
 export const categoryTiles: CategoryTile[] = [
   { name: 'GNSS‑оборудование', short: 'GNSS-оборудование', image: img('cat-gnss.webp'), href: '/catalog/gnss-oborudovanie' },
-  { name: 'Тахеометры', image: img('cat-total-stations.webp'), href: '#' },
-  { name: 'Лазерное сканирование', image: img('cat-scanning.webp'), href: '#' },
-  { name: 'Нивелиры и теодолиты', image: img('cat-levels.webp'), href: '#' },
-  { name: 'БПЛА', image: img('cat-uav.webp'), href: '#', wide: true },
-  { name: 'САУ для спецтехники', short: 'САУ для техники', image: img('cat-machine-control.webp'), href: '#' },
-  { name: 'Эхолоты и батиметрия', short: 'Эхолоты', image: img('cat-echosounders.webp'), href: '#' },
+  { name: 'Тахеометры', image: img('cat-total-stations.webp'), href: '/product/trimble-s5' },
+  { name: 'Лазерное сканирование', image: img('cat-scanning.webp'), href: '/product/trimble-x9-core' },
+  { name: 'Нивелиры и теодолиты', image: img('cat-levels.webp'), href: '/product/geokurs-gtx-24-set' },
+  { name: 'БПЛА', image: img('cat-uav.webp'), href: '/product/chcnav-x500', wide: true },
+  { name: 'САУ для спецтехники', short: 'САУ для техники', image: img('cat-machine-control.webp'), href: '/product/chcnav-tx73' },
+  { name: 'Эхолоты и батиметрия', short: 'Эхолоты', image: img('cat-echosounders.webp'), href: '/product/chcnav-apache-6' },
 ];
 
 export const news = [

@@ -27,7 +27,7 @@ export function SimilarStrip({ title, allLabel, allHref = '#', items }: { title:
                 <span className={s.meta}>Под заказ · {p.brand}</span>
                 <h3 className={s.name}><SmartLink href={p.href ?? '#'}>{p.name}</SmartLink></h3>
                 <div className={s.foot}>
-                  <span className={s.price}>{p.price ?? 'Цена по запросу'}</span>
+                  <span className={s.price}>{p.price ?? 'По запросу'}</span>
                   <button type="button" className={s.buy} aria-label={p.price ? 'В корзину' : 'Узнать цену'}>
                     <span className={s.buyLabel}>{p.price ? 'В корзину' : 'Узнать цену'}</span>
                     <Icon name="cart" size={18} stroke={1.8} className={s.buyIcon} />

@@ -125,9 +125,11 @@ export function HeroSlider() {
     >
       <div key={slide.id} className={s.slide} role="group" aria-roledescription="слайд" aria-label={`${active + 1} из ${slides.length}`}>
         <div className={s.stage}>
-          <div className={s.glow} />
-          <Fx kind={slide.fx} />
-          {devices.map((d) => <Device key={d.src} d={d} />)}
+          <div className={s.frame}>
+            <div className={s.glow} />
+            <Fx kind={slide.fx} />
+            {devices.map((d) => <Device key={d.src} d={d} />)}
+          </div>
         </div>
         <span className={s.mark} aria-hidden="true">{slide.mark}</span>
 

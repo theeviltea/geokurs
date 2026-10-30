@@ -1,6 +1,8 @@
 .hero { position: relative; height: 540px; overflow: hidden; background: var(--c-green-900); color: var(--c-white); }
 .slide { position: absolute; inset: 0; }
 .stage { position: absolute; inset: 0; background: var(--c-green-800); }
+/* Visuals follow the site grid: on wide screens they stay within a centred 1440px frame instead of sticking to the right edge. */
+.frame { position: absolute; top: 0; bottom: 0; left: 0; right: 0; max-width: 1440px; margin: 0 auto; }
 
 /* Entrance: background fades in, devices rise from below, copy slides up a little */
 .bgIn { animation: bgIn 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) backwards; }

@@ -15,5 +15,5 @@
   .head { padding: 0 16px; gap: 12px; margin-bottom: 14px; }
   .tabs { width: 100%; order: 3; }
   .tab { height: 40px; padding: 0 18px; border-radius: 20px; }
-  .grid { display: flex; gap: 10px; overflow-x: auto; padding: 0 16px; }
+  .grid { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px; }
 }

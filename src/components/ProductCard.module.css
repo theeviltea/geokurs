@@ -39,15 +39,19 @@
   .buyIcon { display: block; }
 }
 
-/* Home «Популярное» strip on phones: wider cards in a horizontal scroller. */
+/* Home «Рекомендации» strip on phones: compact cards, 2.5 per screen, full-width cart button. */
 @media (max-width: 767px) {
-  .carousel { flex: none; width: 240px; border-radius: 20px; padding: 10px 10px 16px; gap: 12px; }
-  .carousel .media { height: 180px; border-radius: 14px; }
-  .carousel .media img { max-height: 150px; max-width: 75%; }
-  .carousel .round { right: 4px; top: 4px; }
-  .carousel .body { padding: 0 6px; gap: 8px; }
-  .carousel .meta { font-size: 12px; }
-  .carousel .name { font-size: 14px; min-height: 54px; }
-  .carousel .price { font-size: 17px; }
-  .carousel .buy { width: 44px; height: 44px; border-radius: 22px; }
+  .carousel { flex: none; width: 156px; border-radius: 18px; padding: 8px 8px 10px; gap: 8px; }
+  .carousel .media { height: 112px; border-radius: 12px; }
+  .carousel .media img { max-height: 92px; max-width: 76%; }
+  .carousel .round { right: 0; top: 0; width: 36px; height: 36px; }
+  .carousel .round svg { width: 18px; height: 18px; }
+  .carousel .body { padding: 0 2px; gap: 8px; }
+  .carousel .meta { display: none; }
+  .carousel .name { font-size: 13px; min-height: 34px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .carousel .foot { flex-direction: column; align-items: stretch; gap: 8px; }
+  .carousel .price { font-size: 14px; }
+  .carousel .buy { width: auto; height: 36px; border-radius: 18px; padding: 0; gap: 6px; font-size: 13px; }
+  .carousel .buyLabel { display: inline; }
+  .carousel .buyIcon { display: block; width: 16px; height: 16px; order: -1; }
 }

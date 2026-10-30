@@ -100,3 +100,34 @@ export const reasons = [
   { title: 'Защита прав потребителей', text: 'Работаем по законам Республики Казахстан.' },
   { title: 'Быстрая доставка', text: 'В любую точку Казахстана.' },
 ];
+
+export type PickItem = { name: string; brand: string; price: string | null; image: string | null; href: string };
+export type PickGroup = { title: string; href: string; items: PickItem[] };
+
+/** «Подбор по категориям» на главной: реальные товары и цены с geokurs-online.kz. */
+export const picks: PickGroup[] = [
+  { title: 'GNSS-оборудование', href: '/catalog/gnss-oborudovanie', items: [
+    { name: 'GNSS-приёмник Trimble R780 c конфигурацией база/ровер', brand: 'Trimble', price: '6 492 500 ₸', image: img('p-r780.webp'), href: '#' },
+    { name: 'GNSS-приёмник GEOKURS CHCNAV i73+', brand: 'CHCNAV', price: '1 914 500 ₸', image: img('p-i73.webp'), href: '/product/geokurs-chcnav-i73' },
+    { name: 'GNSS-приёмник GEOKURS CHCNAV i93', brand: 'CHCNAV', price: '4 384 500 ₸', image: img('p-i93.webp'), href: '#' },
+    { name: 'GNSS-приёмник GEOKURS CHCNAV i89', brand: 'CHCNAV', price: '3 330 000 ₸', image: img('p-i89.webp'), href: '#' },
+  ] },
+  { title: 'Тахеометры', href: '#', items: [
+    { name: 'Электронный тахеометр Trimble S5 Autolock, DR Plus', brand: 'Trimble', price: 'от 10 417 000 ₸', image: img('p-s5.webp'), href: '/product/trimble-s5' },
+    { name: 'Электронный тахеометр Trimble C5', brand: 'Trimble', price: null, image: img('cat-total-stations.webp'), href: '#' },
+    { name: 'Электронный тахеометр Nikon XS', brand: 'Nikon', price: null, image: img('p-nikon-xs.webp'), href: '#' },
+    { name: 'Тахеометр сканирующий Trimble SX12 (1″) Robotic', brand: 'Trimble', price: null, image: img('hero-sx12.webp'), href: '#' },
+  ] },
+  { title: 'Лазерное сканирование', href: '#', items: [
+    { name: 'Наземный 3D-сканер Trimble X9 CORE', brand: 'Trimble', price: '22 299 500 ₸', image: img('cat-scanning.webp'), href: '/product/trimble-x9-core' },
+    { name: 'Наземный 3D-сканер Trimble X9 PREMIUM', brand: 'Trimble', price: '28 404 500 ₸', image: img('cat-scanning.webp'), href: '#' },
+    { name: 'Лазерный сканер Trimble X9 с контроллером Trimble T10X', brand: 'Trimble', price: '36 075 000 ₸', image: img('p-x9-t10x.webp'), href: '#' },
+    { name: 'Ручной 3D LiDAR SLAM-сканер GEOKURS CHCNAV RS7 (40 м)', brand: 'CHCNAV', price: '5 000 000 ₸', image: null, href: '#' },
+  ] },
+  { title: 'Нивелиры и теодолиты', href: '#', items: [
+    { name: 'Нивелир GEOKURS GTX 24 SET', brand: 'GEOKURS', price: '131 000 ₸', image: img('p-gtx24.webp'), href: '/product/geokurs-gtx-24-set' },
+    { name: 'Нивелир Геокурс GTX 132А', brand: 'GEOKURS', price: '166 500 ₸', image: img('p-gtx132a.webp'), href: '#' },
+    { name: 'Оптический нивелир Геокурс GTX 132 + штатив + рейка 4 м', brand: 'GEOKURS', price: '162 500 ₸', image: null, href: '#' },
+    { name: 'Нивелир Геокурс GTX 24', brand: 'GEOKURS', price: '99 500 ₸', image: null, href: '#' },
+  ] },
+];

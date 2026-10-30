@@ -1,5 +1,6 @@
 import { Branches } from '../components/Branches';
 import { CatalogGrid } from '../components/CatalogGrid';
+import { CategoryPicks } from '../components/CategoryPicks';
 import { HeroSlider } from '../components/HeroSlider';
 import { News } from '../components/News';
 import { Popular } from '../components/Popular';
@@ -14,8 +15,9 @@ export function Home() {
       <HeroSlider />
       <Services />
       <CatalogGrid />
-      <section className={s.sheet} aria-label="Рекомендации, акции, новости и филиалы">
+      <section className={s.sheet} aria-label="Рекомендации, подбор по категориям, акции, новости и филиалы">
         <Popular />
+        <CategoryPicks />
         <Promos />
         <News />
         <Branches />

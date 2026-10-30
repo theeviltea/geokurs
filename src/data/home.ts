@@ -1,67 +1,73 @@
 import type { IconName } from '../icons/icons';
 import { img } from './images';
 
+export type HeroDevice = {
+  src: string; alt: string;
+  /** CSS offsets and box size; the box keeps the picture's aspect ratio. */
+  right: string; bottom: string; h: string; w: string;
+  /** float period, glint delay and entrance delay, ms */
+  dur: number; glint: number; enter: number;
+};
+export type HeroFx = 'scan' | 'orbit' | 'cloud';
 export type Slide = {
   id: string;
-  mark: string;
   tab: string;
-  eyebrow?: string;
+  brand: string;
+  logo: string;
+  logoH: number;
+  logoHm: number;
+  mark: string;
   title: string;
-  text: string;
-  mobileText?: string;
-  cta: { label: string; mobileLabel?: string; href: string };
-  cta2?: { label: string; mobileLabel?: string; href: string };
-  photo?: { src: string; alt: string; pos: string; mobilePos: string; flip?: boolean };
+  fx: HeroFx;
+  badges?: string[];
+  cta: { label: string; href: string };
+  devices: HeroDevice[];
+  devicesMobile: HeroDevice[];
 };
 
-const scanSlide: Slide = {
-    id: 'scan',
-    mark: '3D',
-    tab: 'Лазерное сканирование',
-    title: 'Будущее за лазерным сканированием',
-    text: 'Сканирующий тахеометр Trimble SX12 и сканер Trimble X9 превращают объект в точную 3D‑модель за один выезд.',
-    mobileText: 'Сканирующий тахеометр SX12 — точная 3D‑модель объекта за один выезд.',
-    cta: { label: 'Смотреть сканеры', href: '#' },
-    cta2: { label: 'Получить консультацию', href: '#' },
-};
+const d = (src: string, alt: string, right: string, bottom: string, h: number, w: number, dur: number, glint: number, enter: number): HeroDevice =>
+  ({ src: img(src), alt, right, bottom, h: `${h}px`, w: `${w}px`, dur, glint, enter });
 
-// Пока везде один зелёный баннер; слайдер оставлен рабочим для наглядности.
-export const slides: Slide[] = [1, 2, 3, 4].map((n) => ({ ...scanSlide, id: `scan-${n}` }));
-
-// Прежние баннеры, временно не показываются.
-export const archivedSlides: Slide[] = [
+/** Три баннера: Trimble (сканирование), E‑Survey и CHCNAV (GNSS). */
+export const slides: Slide[] = [
   {
-    id: 'rtk',
-    mark: 'RTK',
-    tab: 'База + ровер',
-    eyebrow: 'GNSS‑оборудование · Акция',
-    title: 'Комплект база + ровер за 4 100 000 ₸',
-    text: 'Базовая станция и ровер — готовый комплект для RTK‑съёмки.',
-    cta: { label: 'Подробнее об акции', mobileLabel: 'Подробнее', href: '/catalog/gnss-oborudovanie' },
-    cta2: { label: 'Все GNSS‑приёмники', mobileLabel: 'Все приёмники', href: '/catalog/gnss-oborudovanie' },
-    photo: { src: img('hero-gnss.webp'), alt: 'Геодезист с GNSS-ровером у горного озера', pos: '70% 40%', mobilePos: '68% 50%' },
+    id: 'trimble', tab: 'Trimble · сканирование', brand: 'Trimble', logo: img('logo-trimble.webp'), logoH: 34, logoHm: 22,
+    mark: '3D', title: 'Будущее за лазерным сканированием', fx: 'scan',
+    cta: { label: 'Смотреть сканеры', href: '/product/trimble-x9-core' },
+    devices: [
+      d('hero-sx12.webp', 'Сканирующий тахеометр Trimble SX12 на штативе', 'calc(2% + 230px)', '0px', 490, 298, 6000, 0, 150),
+      d('hero-x9.webp', 'Наземный 3D-сканер Trimble X9', 'calc(2% + 90px)', '50px', 320, 191, 7000, 700, 310),
+    ],
+    devicesMobile: [
+      d('hero-sx12.webp', 'Сканирующий тахеометр Trimble SX12 на штативе', '-18px', '0px', 270, 164, 6000, 0, 150),
+    ],
   },
   {
-    id: 'installment',
-    mark: '0%',
-    tab: 'Рассрочка 0‑0‑24',
-    eyebrow: 'Рассрочка',
-    title: 'Прибор сейчас, оплата — 24 месяца',
-    text: 'Рассрочка 0‑0‑24: без первого взноса и без переплаты.',
-    cta: { label: 'Условия рассрочки', mobileLabel: 'Условия', href: '#' },
-    cta2: { label: 'Покупка в кредит', href: '#' },
-    photo: { src: img('hero-installment.webp'), alt: 'Тахеометр на штативе в маковом поле', pos: '50% 45%', mobilePos: '40% 50%', flip: true },
+    id: 'esurvey', tab: 'E-Survey · GNSS', brand: 'E-Survey', logo: img('logo-esurvey.webp'), logoH: 30, logoHm: 20,
+    mark: 'RTK', title: 'Надёжное решение для точных измерений', fx: 'orbit',
+    cta: { label: 'Смотреть приёмники', href: '/catalog/gnss-oborudovanie' },
+    devices: [
+      d('hero-es-cam.webp', 'GNSS-приёмник GEOKURS E-Survey с камерой на вехе', 'calc(2% + 190px)', '0px', 500, 312, 6500, 0, 150),
+      d('hero-es-dome.webp', 'GNSS-приёмник GEOKURS E-Survey на вехе', 'calc(2% + 420px)', '-60px', 400, 254, 7200, 600, 310),
+      d('hero-es-grey.webp', 'GNSS-приёмник GEOKURS E-Survey с адаптером', 'calc(2% + 0px)', '-70px', 330, 326, 5800, 1200, 470),
+    ],
+    devicesMobile: [
+      d('hero-es-cam.webp', 'GNSS-приёмник GEOKURS E-Survey с камерой', '50px', '0px', 230, 144, 6500, 0, 150),
+      d('hero-es-grey.webp', 'GNSS-приёмник GEOKURS E-Survey', '-34px', '-40px', 150, 148, 5800, 900, 310),
+    ],
   },
   {
-    id: 'service',
-    mark: '24/7',
-    tab: 'Сервис и поддержка',
-    eyebrow: 'Сервис GEOKURS',
-    title: 'С вами и после покупки',
-    text: 'Сервисный центр, метрология, техподдержка 24/7 и обучение работе с прибором.',
-    cta: { label: 'О сервисе', href: 'https://geokurs.kz/services/' },
-    cta2: { label: 'Обмен по Trade‑in', mobileLabel: 'Trade‑in', href: 'https://geokurs.kz/services/trade-in' },
-    photo: { src: img('hero-service.webp'), alt: 'Геодезист с GNSS-приёмником на причале горного озера', pos: '50% 35%', mobilePos: '35% 50%', flip: true },
+    id: 'chcnav', tab: 'CHCNAV · GNSS', brand: 'CHCNAV', logo: img('logo-chcnav.webp'), logoH: 26, logoHm: 17,
+    mark: 'GNSS', title: 'Новое поколение GNSS‑решений', fx: 'cloud', badges: ['i85', 'ViLi i100'],
+    cta: { label: 'Смотреть приёмники', href: '/catalog/gnss-oborudovanie' },
+    devices: [
+      d('hero-ch-vili.webp', 'GNSS-приёмник GEOKURS CHCNAV ViLi i100 на вехе', 'calc(2% + 40px)', '0px', 500, 321, 6800, 500, 150),
+      d('hero-ch-i85.webp', 'GNSS-приёмник GEOKURS CHCNAV i85 на вехе', 'calc(2% + 300px)', '-40px', 420, 273, 6000, 0, 310),
+    ],
+    devicesMobile: [
+      d('hero-ch-vili.webp', 'GNSS-приёмник GEOKURS CHCNAV ViLi i100', '-10px', '0px', 220, 141, 6800, 500, 150),
+      d('hero-ch-i85.webp', 'GNSS-приёмник GEOKURS CHCNAV i85', '84px', '-20px', 170, 110, 6000, 0, 310),
+    ],
   },
 ];
 
@@ -102,7 +108,9 @@ export const reasons = [
 ];
 
 export type PickItem = { name: string; brand: string; price: string | null; image: string | null; href: string };
-export type PickGroup = { title: string; href: string; items: PickItem[] };
+export type PickCat = { name: string; image: string; href: string };
+/** A group shows product cards (items) or, for accessories, subcategory cards (cats). */
+export type PickGroup = { title: string; href: string; items: PickItem[]; cats?: PickCat[] };
 
 /** «Подбор по категориям» на главной: реальные товары и цены с geokurs-online.kz. */
 export const picks: PickGroup[] = [
@@ -124,10 +132,20 @@ export const picks: PickGroup[] = [
     { name: 'Лазерный сканер Trimble X9 с контроллером Trimble T10X', brand: 'Trimble', price: '36 075 000 ₸', image: img('p-x9-t10x.webp'), href: '#' },
     { name: 'Ручной 3D LiDAR SLAM-сканер GEOKURS CHCNAV RS7 (40 м)', brand: 'CHCNAV', price: '5 000 000 ₸', image: null, href: '#' },
   ] },
-  { title: 'Нивелиры и теодолиты', href: '#', items: [
-    { name: 'Нивелир GEOKURS GTX 24 SET', brand: 'GEOKURS', price: '131 000 ₸', image: img('p-gtx24.webp'), href: '/product/geokurs-gtx-24-set' },
-    { name: 'Нивелир Геокурс GTX 132А', brand: 'GEOKURS', price: '166 500 ₸', image: img('p-gtx132a.webp'), href: '#' },
-    { name: 'Оптический нивелир Геокурс GTX 132 + штатив + рейка 4 м', brand: 'GEOKURS', price: '162 500 ₸', image: null, href: '#' },
-    { name: 'Нивелир Геокурс GTX 24', brand: 'GEOKURS', price: '99 500 ₸', image: null, href: '#' },
+  { title: 'Аксессуары', href: '#', items: [], cats: [
+    { name: 'Штативы', image: img('acc-shtativy.webp'), href: '#' },
+    { name: 'Адаптеры и трегеры', image: img('acc-adaptery.webp'), href: '#' },
+    { name: 'Измерительные рейки', image: img('acc-reyki.webp'), href: '#' },
+    { name: 'Биподы и триподы', image: img('acc-bipody.webp'), href: '#' },
+    { name: 'Источники питания', image: img('acc-pitanie.webp'), href: '#' },
+    { name: 'Кабели', image: img('acc-kabeli.webp'), href: '#' },
+    { name: 'Отражатели и марки', image: img('acc-otrazhateli.webp'), href: '#' },
+    { name: 'Вехи', image: img('acc-vehi.webp'), href: '#' },
+    { name: 'Крепления и переходники', image: img('acc-krepleniya.webp'), href: '#' },
+    { name: 'Курвиметры', image: img('acc-kurvimetry.webp'), href: '#' },
+    { name: 'Приёмники лазерных нивелиров', image: img('acc-priemniki.webp'), href: '#' },
+    { name: 'Кейсы', image: img('acc-keisy.webp'), href: '#' },
+    { name: 'Чехлы', image: img('acc-chehly.webp'), href: '#' },
+    { name: 'Разное', image: img('acc-raznoe.webp'), href: '#' },
   ] },
 ];

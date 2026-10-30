@@ -16,25 +16,37 @@ export function CategoryPicks() {
               <Icon name="arrowRight" size={16} stroke={2} className="desktop-only" />
             </SmartLink>
           </div>
-          <div className={`${s.row} no-scrollbar`}>
-            {g.items.map((p) => (
-              <article key={p.name} className={s.card}>
-                <span className={s.media}>
-                  {p.image ? <img src={p.image} alt={p.name} loading="lazy" /> : <span className={s.ph} aria-hidden="true">{p.brand}</span>}
-                </span>
-                <span className={s.body}>
-                  <SmartLink href={p.href} className={s.name}>{p.name}</SmartLink>
-                  <span className={s.foot}>
-                    <span className={s.price}>{p.price ?? 'По запросу'}</span>
-                    <button type="button" className={s.buy}>
-                      <Icon name="cart" size={16} stroke={1.8} className={s.buyIcon} />
-                      {p.price ? 'В корзину' : 'Узнать цену'}
-                    </button>
+          {g.cats ? (
+            <div className={`${s.cats} no-scrollbar`}>
+              {g.cats.map((c) => (
+                <SmartLink key={c.name} href={c.href} className={s.cat}>
+                  <span className={s.catMedia}><img src={c.image} alt="" loading="lazy" /></span>
+                  <span className={s.catName}>{c.name}</span>
+                  <span className={s.catMore}>Смотреть <Icon name="arrowRight" size={16} stroke={2} /></span>
+                </SmartLink>
+              ))}
+            </div>
+          ) : (
+            <div className={`${s.row} no-scrollbar`}>
+              {g.items.map((p) => (
+                <article key={p.name} className={s.card}>
+                  <span className={s.media}>
+                    {p.image ? <img src={p.image} alt={p.name} loading="lazy" /> : <span className={s.ph} aria-hidden="true">{p.brand}</span>}
                   </span>
-                </span>
-              </article>
-            ))}
-          </div>
+                  <span className={s.body}>
+                    <SmartLink href={p.href} className={s.name}>{p.name}</SmartLink>
+                    <span className={s.foot}>
+                      <span className={s.price}>{p.price ?? 'По запросу'}</span>
+                      <button type="button" className={s.buy}>
+                        <Icon name="cart" size={16} stroke={1.8} className={s.buyIcon} />
+                        {p.price ? 'В корзину' : 'Узнать цену'}
+                      </button>
+                    </span>
+                  </span>
+                </article>
+              ))}
+            </div>
+          )}
         </section>
       ))}
     </div>

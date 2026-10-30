@@ -93,15 +93,17 @@
 }
 
 @media (max-width: 767px) {
-  .hero { height: 360px; }
-  .glow { right: auto; left: -20%; top: auto; bottom: -30%; width: 600px; height: 600px; }
-  .fxBox { right: -150px; top: auto; bottom: -120px; transform: scale(0.5556); transform-origin: 100% 100%; }
-  .rings { right: -150px; top: auto; bottom: -120px; width: 400px; height: 400px; }
+  /* Phones: copy on top, the whole visual centred below it */
+  .hero { height: 540px; }
+  .glow { right: auto; left: 50%; top: auto; bottom: -260px; width: 600px; height: 600px; margin-left: -300px; }
+  .fxBox { right: auto; left: calc(50% - 360px); top: auto; bottom: -200px; transform: scale(0.6); transform-origin: 50% 50%; }
+  .rings { right: auto; left: calc(50% - 216px); top: auto; bottom: -56px; width: 432px; height: 432px; }
+  .stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: linear-gradient(180deg, rgba(11,58,19,0) 0%, rgba(11,58,19,0.85) 100%); pointer-events: none; }
   .device img { filter: drop-shadow(0 18px 22px rgba(0,0,0,0.3)); }
   .mark { left: 6px; top: 12px; font-size: 150px; animation-duration: 10s; }
   .content { padding-top: 24px; gap: 10px; }
   .logo { height: var(--logo-h-m); margin-bottom: 2px; }
-  .title { max-width: 220px; font-size: 23px; }
+  .title { max-width: 340px; font-size: 25px; }
   .badges span { height: 30px; padding: 0 12px; border-radius: 15px; font-size: 13px; }
   .ctas { gap: 8px; margin-top: 4px; }
   .primary { height: 44px; padding: 0 16px; border-radius: 24px; font-size: 15px; }

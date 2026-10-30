@@ -98,7 +98,8 @@ function Device({ d }: { d: HeroDevice }) {
 export function HeroSlider() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const touchX = useRef<number | null>(null);
+  const touch = useRef<{ x: number; y: number; dx: number; lock: 'x' | 'y' | null } | null>(null);
+  const slideRef = useRef<HTMLDivElement>(null);
   const phone = useIsPhone();
   const go = useCallback((i: number) => setActive((i + slides.length) % slides.length), []);
 
@@ -111,19 +112,33 @@ export function HeroSlider() {
       className={`${s.hero} ${paused ? s.paused : ''}`}
       aria-roledescription="карусель"
       aria-label="Главные предложения"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
+      // Pause the timer only for a real mouse hover or keyboard focus: on phones a tap
+      // fires emulated mouse/focus events that never "leave", which used to freeze the bar.
+      onPointerEnter={(e) => e.pointerType === 'mouse' && setPaused(true)}
+      onPointerLeave={(e) => e.pointerType === 'mouse' && setPaused(false)}
+      onFocus={(e) => { if ((e.target as HTMLElement).matches?.(':focus-visible')) setPaused(true); }}
       onBlur={() => setPaused(false)}
-      onTouchStart={(e) => { touchX.current = e.touches[0].clientX; }}
-      onTouchEnd={(e) => {
-        if (touchX.current === null) return;
-        const dx = e.changedTouches[0].clientX - touchX.current;
-        if (Math.abs(dx) > 48) go(active + (dx < 0 ? 1 : -1));
-        touchX.current = null;
+      onTouchStart={(e) => { touch.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, dx: 0, lock: null }; }}
+      onTouchMove={(e) => {
+        const t = touch.current;
+        if (!t) return;
+        const dx = e.touches[0].clientX - t.x, dy = e.touches[0].clientY - t.y;
+        if (!t.lock && Math.abs(dx) + Math.abs(dy) > 8) t.lock = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+        if (t.lock !== 'x') return;
+        t.dx = dx;
+        const el = slideRef.current;
+        if (el) { el.style.transition = 'none'; el.style.transform = `translateX(${dx * 0.5}px)`; el.style.opacity = String(1 - Math.min(Math.abs(dx) / 600, 0.35)); }
       }}
+      onTouchEnd={() => {
+        const t = touch.current;
+        touch.current = null;
+        const el = slideRef.current;
+        if (el) { el.style.transition = 'transform 0.25s ease, opacity 0.25s ease'; el.style.transform = ''; el.style.opacity = ''; }
+        if (t && t.lock === 'x' && Math.abs(t.dx) > 48) go(active + (t.dx < 0 ? 1 : -1));
+      }}
+      onTouchCancel={() => { touch.current = null; const el = slideRef.current; if (el) { el.style.transform = ''; el.style.opacity = ''; } }}
     >
-      <div key={slide.id} className={s.slide} role="group" aria-roledescription="слайд" aria-label={`${active + 1} из ${slides.length}`}>
+      <div key={slide.id} ref={slideRef} className={s.slide} role="group" aria-roledescription="слайд" aria-label={`${active + 1} из ${slides.length}`}>
         <div className={s.stage}>
           <div className={s.frame}>
             <div className={s.glow} />

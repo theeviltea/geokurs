@@ -1,4 +1,4 @@
-.hero { position: relative; height: 540px; overflow: hidden; background: var(--c-green-900); color: var(--c-white); }
+.hero { position: relative; touch-action: pan-y; height: 540px; overflow: hidden; background: var(--c-green-900); color: var(--c-white); }
 .slide { position: absolute; inset: 0; }
 .stage { position: absolute; inset: 0; background: var(--c-green-800); }
 /* Visuals follow the site grid: on wide screens they stay within a centred 1440px frame instead of sticking to the right edge. */
@@ -83,7 +83,6 @@
   .bgIn, .rise, .content, .glow, .sweep, .pulse, .wave, .spin, .dot, .scanLine, .device, .shine span, .mark { animation: none; }
   .pulse, .wave { opacity: 0; }
   .shine { display: none; }
-  .progress { animation: none; transform: scaleX(1); }
 }
 
 @media (max-width: 1100px) and (min-width: 768px) {

@@ -6,6 +6,10 @@ import { SimilarStrip } from '../components/SimilarStrip';
 import { SmartLink } from '../components/SmartLink';
 import { productBySlug, type ProductDetail } from '../data/catalog';
 import { img } from '../data/images';
+import { navProducts } from '../data/navigation';
+
+/** «Рекомендуем» under the product (phones): products that have their own page. */
+const RECOMMEND = ['i73', 's5', 'x9core', 'gtx24', 'x500', 'tbc', 'glm100'];
 import s from './Product.module.css';
 
 const SERVICE = [
@@ -178,7 +182,9 @@ export function Product() {
         </section>
       )}
       <Details p={p} />
-      <SimilarStrip title={p.simTitle} allLabel={p.simAll} allHref={p.catHref} items={p.similar} />
+      <SimilarStrip title={p.simTitle} allLabel={p.simAll} allHref={p.catHref} items={p.similar}
+        recommend={RECOMMEND.map((k) => navProducts.find((x) => x.key === k)!).filter((x) => x.href !== `/product/${p.slug}`).slice(0, 6)
+          .map((x) => ({ name: x.name, brand: x.brand, price: x.price, img: x.image, href: x.href }))} />
     </main>
   );
 }

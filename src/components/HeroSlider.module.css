@@ -94,10 +94,10 @@
 
 @media (max-width: 767px) {
   /* Phones: copy on top, the whole visual centred below it */
-  .hero { height: 540px; }
-  .glow { right: auto; left: 50%; top: auto; bottom: -260px; width: 600px; height: 600px; margin-left: -300px; }
-  .fxBox { right: auto; left: calc(50% - 360px); top: auto; bottom: -200px; transform: scale(0.6); transform-origin: 50% 50%; }
-  .rings { right: auto; left: calc(50% - 216px); top: auto; bottom: -56px; width: 432px; height: 432px; }
+  .hero { height: 470px; }
+  .glow { right: auto; left: 50%; top: auto; bottom: -300px; width: 540px; height: 540px; margin-left: -270px; }
+  .fxBox { right: auto; left: calc(50% - 360px); top: auto; bottom: -220px; transform: scale(0.5); transform-origin: 50% 50%; }
+  .rings { right: auto; left: calc(50% - 180px); top: auto; bottom: -40px; width: 360px; height: 360px; }
   .stage::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: linear-gradient(180deg, rgba(11,58,19,0) 0%, rgba(11,58,19,0.85) 100%); pointer-events: none; }
   .device img { filter: drop-shadow(0 18px 22px rgba(0,0,0,0.3)); }
   .mark { left: 6px; top: 12px; font-size: 150px; animation-duration: 10s; }

@@ -39,8 +39,8 @@ export const slides: Slide[] = [
       d('hero-x9.webp', 'Наземный 3D-сканер Trimble X9', 'calc(2% + 90px)', '50px', 320, 191, 7000, 700, 310),
     ],
     devicesMobile: [
-      d('hero-sx12.webp', 'Сканирующий тахеометр Trimble SX12 на штативе', 'calc(50% - 40px)', '-14px', 300, 183, 6000, 0, 150),
-      d('hero-x9.webp', 'Наземный 3D-сканер Trimble X9', 'calc(50% - 150px)', '34px', 190, 114, 7000, 700, 310),
+      d('hero-sx12.webp', 'Сканирующий тахеометр Trimble SX12 на штативе', 'calc(50% - 33px)', '-14px', 246, 150, 6000, 0, 150),
+      d('hero-x9.webp', 'Наземный 3D-сканер Trimble X9', 'calc(50% - 123px)', '28px', 156, 93, 7000, 700, 310),
     ],
   },
   {
@@ -53,9 +53,9 @@ export const slides: Slide[] = [
       d('hero-es-grey.webp', 'GNSS-приёмник GEOKURS E-Survey с адаптером', 'calc(2% + 0px)', '-70px', 330, 326, 5800, 1200, 470),
     ],
     devicesMobile: [
-      d('hero-es-cam.webp', 'GNSS-приёмник GEOKURS E-Survey с камерой', 'calc(50% - 88px)', '-14px', 280, 175, 6500, 0, 150),
-      d('hero-es-dome.webp', 'GNSS-приёмник GEOKURS E-Survey', 'calc(50% + 34px)', '-44px', 220, 140, 7200, 600, 310),
-      d('hero-es-grey.webp', 'GNSS-приёмник GEOKURS E-Survey с адаптером', 'calc(50% - 184px)', '-48px', 150, 148, 5800, 1200, 470),
+      d('hero-es-cam.webp', 'GNSS-приёмник GEOKURS E-Survey с камерой', 'calc(50% - 72px)', '-14px', 230, 144, 6500, 0, 150),
+      d('hero-es-dome.webp', 'GNSS-приёмник GEOKURS E-Survey', 'calc(50% + 28px)', '-36px', 180, 115, 7200, 600, 310),
+      d('hero-es-grey.webp', 'GNSS-приёмник GEOKURS E-Survey с адаптером', 'calc(50% - 151px)', '-39px', 123, 121, 5800, 1200, 470),
     ],
   },
   {
@@ -67,8 +67,8 @@ export const slides: Slide[] = [
       d('hero-ch-i85.webp', 'GNSS-приёмник GEOKURS CHCNAV i85 на вехе', 'calc(2% + 300px)', '-40px', 420, 273, 6000, 0, 310),
     ],
     devicesMobile: [
-      d('hero-ch-vili.webp', 'GNSS-приёмник GEOKURS CHCNAV ViLi i100', 'calc(50% - 166px)', '-14px', 290, 186, 6800, 500, 150),
-      d('hero-ch-i85.webp', 'GNSS-приёмник GEOKURS CHCNAV i85', 'calc(50% + 4px)', '-34px', 230, 150, 6000, 0, 310),
+      d('hero-ch-vili.webp', 'GNSS-приёмник GEOKURS CHCNAV ViLi i100', 'calc(50% - 136px)', '-14px', 238, 153, 6800, 500, 150),
+      d('hero-ch-i85.webp', 'GNSS-приёмник GEOKURS CHCNAV i85', 'calc(50% + 3px)', '-28px', 189, 123, 6000, 0, 310),
     ],
   },
 ];

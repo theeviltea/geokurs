@@ -11,7 +11,7 @@
 .close { width: 44px; height: 44px; border-radius: 22px; border: 0; background: transparent; color: var(--c-ink); display: flex; align-items: center; justify-content: center; }
 
 .nav { padding: 8px 16px 0; display: flex; flex-direction: column; }
-.navLink { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--c-surface-sunken); color: var(--c-ink); font-family: var(--font-display); font-size: 18px; font-weight: 700; }
+.navLink { width: 100%; padding: 0; border: 0; border-bottom: 1px solid var(--c-surface-sunken); background: transparent; text-align: left; cursor: pointer; min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--c-surface-sunken); color: var(--c-ink); font-family: var(--font-display); font-size: 18px; font-weight: 700; }
 
 .shop { padding: 20px 16px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .shopTile { min-height: 76px; border-radius: 16px; background: var(--c-bg); color: var(--c-ink); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-size: 13px; font-weight: 600; text-align: center; }
@@ -24,3 +24,27 @@
 .row svg { flex: none; margin-top: 1px; }
 .socials { display: flex; gap: 8px; margin-top: 4px; }
 .social { width: 44px; height: 44px; border-radius: 22px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+
+.title { flex: 1; min-width: 0; font-family: var(--font-display); font-size: 17px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.push { flex: none; margin-left: auto; }
+.catRow { width: 100%; min-height: 56px; padding: 0; border: 0; border-bottom: 1px solid var(--c-surface-sunken); background: transparent; color: var(--c-ink); display: flex; align-items: center; gap: 12px; font: inherit; font-size: 16px; font-weight: 600; text-align: left; cursor: pointer; }
+.thumb { flex: none; width: 36px; height: 36px; border-radius: 10px; background: var(--c-bg); display: flex; align-items: center; justify-content: center; }
+.thumb img { max-width: 28px; max-height: 28px; object-fit: contain; }
+.subRow { min-height: 56px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--c-surface-sunken); color: var(--c-ink); font-size: 16px; font-weight: 500; }
+.subAll { color: var(--c-green-600); font-weight: 700; }
+.popular { padding: 24px 0 0; display: flex; flex-direction: column; gap: 12px; }
+.label { padding: 0 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-gray-600); }
+.cards { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px; }
+.card { flex: none; width: 150px; border: 1px solid var(--c-surface-sunken); border-radius: 18px; padding: 8px 8px 12px; color: var(--c-ink); display: flex; flex-direction: column; gap: 8px; }
+.cardMedia { height: 104px; border-radius: 12px; background: var(--c-bg); display: flex; align-items: center; justify-content: center; }
+.cardMedia img { max-width: 76%; max-height: 84px; object-fit: contain; }
+.cardName { padding: 0 2px; min-height: 34px; font-size: 13px; line-height: 1.3; font-weight: 500; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cardPrice { padding: 0 2px; font-size: 14px; font-weight: 700; white-space: nowrap; }
+.helpList { padding: 8px 8px 0; display: flex; flex-direction: column; }
+.helpRow { padding: 10px 8px; border-radius: 14px; color: var(--c-ink); display: flex; align-items: center; gap: 14px; }
+.helpIcon { flex: none; width: 44px; height: 44px; border-radius: 12px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.helpText { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.helpText b { font-size: 16px; font-weight: 600; }
+.helpText small { font-size: 13px; color: var(--c-gray-600); }
+.subRow:hover, .helpRow:hover, .card:hover { color: var(--c-ink); }
+.subAll:hover { color: var(--c-green-600); }

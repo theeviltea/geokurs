@@ -1,13 +1,25 @@
 .header { background: var(--c-white); border-bottom: 1px solid var(--c-line); position: sticky; top: 0; z-index: 40; }
 
-.desktop { display: flex; flex-wrap: nowrap; align-items: center; gap: 40px; padding-top: 12px; padding-bottom: 12px; }
+.desktop { position: relative; z-index: 3; display: flex; flex-wrap: nowrap; align-items: center; gap: 40px; padding-top: 12px; padding-bottom: 12px; }
 .left { display: flex; flex: none; align-items: center; gap: 28px; }
 .logo img { height: 28px; width: auto; }
 .nav { display: flex; flex: none; gap: 22px; font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap; }
-.navLink { color: var(--c-ink); display: inline-flex; align-items: center; gap: 6px; }
+.navItem { position: relative; display: flex; }
+.navLink { position: relative; padding: 0; border: 0; background: transparent; font: inherit; letter-spacing: inherit; cursor: pointer; color: var(--c-ink); display: inline-flex; align-items: center; gap: 6px; }
 .navLink:hover { color: var(--c-green-600); }
+.navOn { color: var(--c-green-600); }
+.navOn::after { content: ''; position: absolute; left: 0; right: 0; bottom: -25px; height: 2px; border-radius: 1px; background: var(--c-green-600); }
+.chev { transition: transform 0.18s ease; }
+.navOn .chev { transform: rotate(180deg); }
 .search { flex: 1 1 0; min-width: 0; max-width: 320px; margin: 0 auto; display: flex; align-items: center; height: 40px; border-radius: 20px; background: var(--c-bg); border: 1px solid var(--c-line); padding: 0 14px; gap: 8px; }
+.search { position: relative; transition: border-color 0.15s ease, background 0.15s ease; }
 .search input { flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font-size: 14px; }
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+.searchOn { background: var(--c-white); border: 2px solid var(--c-green-600); padding: 0 13px; }
+.clear { flex: none; width: 28px; height: 28px; margin-right: -6px; border: 0; border-radius: 14px; background: var(--c-surface-sunken); color: var(--c-ink); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.results { position: absolute; top: 50px; left: 50%; z-index: 2; width: 640px; margin-left: -320px; background: var(--c-white); border-radius: 22px; padding: 18px 14px 14px; box-shadow: 0 24px 56px rgba(11,15,12,0.24); max-height: calc(100vh - 100px); overflow-y: auto; }
+/* Dims the page under an open catalog menu or search */
+.dim { position: fixed; left: 0; right: 0; top: 69px; bottom: 0; z-index: 1; background: rgba(11,15,12,0.4); }
 .right { display: flex; flex: none; align-items: center; gap: 16px; }
 .phone { color: var(--c-ink); font-weight: 600; font-size: 14px; white-space: nowrap; }
 .icons { display: flex; gap: 2px; white-space: nowrap; }

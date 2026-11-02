@@ -39,8 +39,10 @@ export function Header() {
   // The bottom tab bar asks for the catalog: open the menu straight on the sections list.
   useEffect(() => {
     const open = () => { setMenuView('cats'); setMenuOpen(true); };
+    const search = () => { if (window.matchMedia('(max-width: 1179px)').matches) setMobileSearch(true); else document.getElementById('site-search')?.focus(); };
     window.addEventListener('gk:open-catalog', open);
-    return () => window.removeEventListener('gk:open-catalog', open);
+    window.addEventListener('gk:open-search', search);
+    return () => { window.removeEventListener('gk:open-catalog', open); window.removeEventListener('gk:open-search', search); };
   }, []);
   useEffect(() => {
     if (!menu && !searchOpen) return;
@@ -107,7 +109,7 @@ export function Header() {
           <a href={PHONE.mainHref} className={s.phone}>{PHONE.main}</a>
           <div className={s.icons}>
             <Link to="/compare" aria-label={`Сравнение, ${st.compare.length}`} className={s.iconBtn}><Icon name="compare" stroke={1.8} />{st.compare.length > 0 && <span className={s.badge}>{st.compare.length}</span>}</Link>
-            <Link to="/account" aria-label="Отложенные" className={s.iconBtn}><Icon name="fav" stroke={1.8} /></Link>
+            <Link to="/favorites" aria-label={`Избранное, ${st.fav.length}`} className={s.iconBtn}><Icon name="fav" stroke={1.8} />{st.fav.length > 0 && <span className={s.badge}>{st.fav.length}</span>}</Link>
             <Link to="/account" aria-label="Мой кабинет" className={s.iconBtn}><Icon name="user" stroke={1.8} /></Link>
             <Link to="/cart" className={s.cartBtn}><Icon name="cart" size={20} stroke={1.9} />Корзина · {inCart}</Link>
           </div>

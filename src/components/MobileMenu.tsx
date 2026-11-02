@@ -68,7 +68,7 @@ export function MobileMenu({ open, onClose, startView = 'root' }: Props) {
               ))}
             </nav>
             <div className={s.block}>
-              <SmartLink href="/catalog/gnss-oborudovanie" className={s.callBtn} onClick={onClose}><Icon name="grid" size={20} />Весь каталог</SmartLink>
+              <SmartLink href="/catalog" className={s.callBtn} onClick={onClose}><Icon name="grid" size={20} />Весь каталог</SmartLink>
             </div>
           </>
         )}
@@ -130,7 +130,7 @@ export function MobileMenu({ open, onClose, startView = 'root' }: Props) {
         </nav>
 
         <div className={s.shop}>
-          {([['Личный кабинет', 'user', '/account'], ['Корзина', 'cartAlt', '/cart'], ['Избранное', 'fav', '/account']] as const).map(([label, icon, href]) => (
+          {([['Личный кабинет', 'user', '/account'], ['Корзина', 'cartAlt', '/cart'], ['Избранное', 'fav', '/favorites']] as const).map(([label, icon, href]) => (
             <SmartLink key={label} href={href} className={s.shopTile} onClick={onClose}>
               <Icon name={icon} color="var(--c-green-600)" />
               {label}

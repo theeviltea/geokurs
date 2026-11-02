@@ -12,6 +12,8 @@ import { AuthPage } from './pages/AuthPage';
 import { AccountPage } from './pages/AccountPage';
 import { CartPage } from './pages/CartPage';
 import { ComparePage } from './pages/ComparePage';
+import { CatalogPage, CatalogSectionPage } from './pages/CatalogPage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +37,9 @@ export function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/compare" element={<ComparePage />} />
+        <Route path="/catalog" element={<CatalogPage />} />
+        <Route path="/catalog/s/:key" element={<CatalogSectionPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

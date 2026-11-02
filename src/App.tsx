@@ -7,6 +7,10 @@ import { Home } from './pages/Home';
 import { NewsPage } from './pages/NewsPage';
 import { Product } from './pages/Product';
 import { PromoPage } from './pages/PromoPage';
+import { AuthPage } from './pages/AuthPage';
+import { AccountPage } from './pages/AccountPage';
+import { CartPage } from './pages/CartPage';
+import { ComparePage } from './pages/ComparePage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -25,6 +29,11 @@ export function App() {
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/news/novaya-bazovaya-stanciya-v-zhezkazgane" element={<NewsPage />} />
         <Route path="/promo/baza-rover" element={<PromoPage />} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
+        <Route path="/register" element={<AuthPage mode="register" />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/compare" element={<ComparePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

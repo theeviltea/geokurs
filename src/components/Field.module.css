@@ -1,0 +1,15 @@
+.field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 14px; font-weight: 600; }
+.head a { font-size: 13px; font-weight: 500; }
+.box { position: relative; display: block; }
+.input { width: 100%; height: 52px; padding: 0 16px; border-radius: 14px; border: 1px solid var(--c-line); background: var(--c-bg); color: var(--c-ink); font-size: 15px; }
+.input::placeholder { color: #8A968C; }
+.input:focus { outline: none; border-color: var(--c-green-600); background: var(--c-white); }
+.withEye { padding-right: 48px; }
+.eye { position: absolute; right: 4px; top: 4px; width: 44px; height: 44px; border: 0; border-radius: 22px; background: transparent; color: var(--c-gray-600); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.eye[aria-pressed='true'] { color: var(--c-green-600); }
+.check { position: relative; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; cursor: pointer; }
+.check input { position: absolute; opacity: 0; width: 22px; height: 22px; margin: 0; }
+.tick { flex: none; width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid var(--c-line-strong); color: transparent; display: flex; align-items: center; justify-content: center; }
+.check input:checked + .tick { border-color: var(--c-green-600); background: var(--c-green-600); color: var(--c-white); }
+.check input:focus-visible + .tick { outline: 2px solid var(--c-green-600); outline-offset: 2px; }

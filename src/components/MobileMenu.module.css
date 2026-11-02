@@ -48,3 +48,6 @@
 .helpText small { font-size: 13px; color: var(--c-gray-600); }
 .subRow:hover, .helpRow:hover, .card:hover { color: var(--c-ink); }
 .subAll:hover { color: var(--c-green-600); }
+
+/* No divider after the last row of a list */
+.nav > :last-child { border-bottom: 0; }

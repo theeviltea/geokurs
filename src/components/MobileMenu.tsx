@@ -130,11 +130,11 @@ export function MobileMenu({ open, onClose }: Props) {
         </nav>
 
         <div className={s.shop}>
-          {([['Личный кабинет', 'user'], ['Корзина', 'cartAlt'], ['Избранное', 'fav']] as const).map(([label, icon]) => (
-            <a key={label} href="#" className={s.shopTile}>
+          {([['Личный кабинет', 'user', '/account'], ['Корзина', 'cartAlt', '/cart'], ['Избранное', 'fav', '/account']] as const).map(([label, icon, href]) => (
+            <SmartLink key={label} href={href} className={s.shopTile} onClick={onClose}>
               <Icon name={icon} color="var(--c-green-600)" />
               {label}
-            </a>
+            </SmartLink>
           ))}
         </div>
 

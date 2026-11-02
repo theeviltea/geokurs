@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { img } from '../data/images';
 import { mainNav, PHONE } from '../data/nav';
 import { searchCatalog } from '../lib/search';
+import { cartCount, useStore } from '../lib/store';
 import { Icon } from './Icon';
 import { MobileMenu } from './MobileMenu';
 import { MobileSearch } from './MobileSearch';
@@ -22,6 +23,8 @@ export function Header() {
   const timer = useRef<number | undefined>(undefined);
   const searchRef = useRef<HTMLFormElement>(null);
   const location = useLocation();
+  const st = useStore();
+  const inCart = cartCount(st);
   const navigate = useNavigate();
 
   const closeAll = useCallback(() => { window.clearTimeout(timer.current); setMenu(null); setSearchOpen(false); }, []);
@@ -96,10 +99,10 @@ export function Header() {
         <div className={s.right}>
           <a href={PHONE.mainHref} className={s.phone}>{PHONE.main}</a>
           <div className={s.icons}>
-            <a href="#" aria-label="Сравнение, 0" className={s.iconBtn}><Icon name="compare" stroke={1.8} /></a>
-            <a href="#" aria-label="Отложенные, 0" className={s.iconBtn}><Icon name="fav" stroke={1.8} /></a>
-            <a href="#" aria-label="Мой кабинет" className={s.iconBtn}><Icon name="user" stroke={1.8} /></a>
-            <a href="#" className={s.cartBtn}><Icon name="cart" size={20} stroke={1.9} />Корзина · 0</a>
+            <Link to="/compare" aria-label={`Сравнение, ${st.compare.length}`} className={s.iconBtn}><Icon name="compare" stroke={1.8} />{st.compare.length > 0 && <span className={s.badge}>{st.compare.length}</span>}</Link>
+            <Link to="/account" aria-label="Отложенные" className={s.iconBtn}><Icon name="fav" stroke={1.8} /></Link>
+            <Link to="/account" aria-label="Мой кабинет" className={s.iconBtn}><Icon name="user" stroke={1.8} /></Link>
+            <Link to="/cart" className={s.cartBtn}><Icon name="cart" size={20} stroke={1.9} />Корзина · {inCart}</Link>
           </div>
         </div>
       </div>
@@ -112,10 +115,10 @@ export function Header() {
           <img src={img('logo-green.png')} alt="GEOKURS" />
         </Link>
         <button type="button" aria-label="Поиск" className={s.iconBtn} style={{ marginLeft: 'auto' }} onClick={() => setMobileSearch(true)}><Icon name="search" stroke={1.5} /></button>
-        <a href="#" aria-label="Корзина, 0 товаров" className={s.iconBtn}>
+        <Link to="/cart" aria-label={`Корзина, ${inCart} товаров`} className={s.iconBtn}>
           <Icon name="cart" stroke={1.5} />
-          <span className={s.badge}>0</span>
-        </a>
+          <span className={s.badge}>{inCart}</span>
+        </Link>
         <button type="button" aria-label="Меню" aria-expanded={menuOpen} aria-controls="mobile-menu" className={s.iconBtn} onClick={() => setMenuOpen(true)}>
           <Icon name="menu" stroke={1.8} />
         </button>

@@ -1460,4 +1460,6 @@ export const productBySlug = (slug: string | undefined) => productDetails.find((
 /** Ссылки на карточки из списков товаров (id в products.ts → slug). */
 export const productHref: Record<string, string> = {
   i73: '/product/geokurs-chcnav-i73', s5: '/product/trimble-s5', gtx24: '/product/geokurs-gtx-24-set', x500: '/product/chcnav-x500',
+  x9core: '/product/trimble-x9-core', tbc: '/product/trimble-business-center', glm100: '/product/bosch-glm-100-25-c', tx73: '/product/chcnav-tx73',
+  apache6: '/product/chcnav-apache-6', s9: '/product/trimble-s9', case: '/product/trimble-case-s-series', soap: '/product/geokurs-soap-r8s',
 };

@@ -16,6 +16,7 @@ type Menu = 'catalog' | 'help' | null;
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [menuView, setMenuView] = useState<'root' | 'cats'>('root');
   const [mobileSearch, setMobileSearch] = useState(false);
   const [menu, setMenu] = useState<Menu>(null);
   const [q, setQ] = useState('');
@@ -35,6 +36,12 @@ export function Header() {
 
   useEffect(() => { closeAll(); setMenuOpen(false); setMobileSearch(false); }, [location.pathname, closeAll]);
   useEffect(() => () => window.clearTimeout(timer.current), []);
+  // The bottom tab bar asks for the catalog: open the menu straight on the sections list.
+  useEffect(() => {
+    const open = () => { setMenuView('cats'); setMenuOpen(true); };
+    window.addEventListener('gk:open-catalog', open);
+    return () => window.removeEventListener('gk:open-catalog', open);
+  }, []);
   useEffect(() => {
     if (!menu && !searchOpen) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeAll(); };
@@ -115,15 +122,11 @@ export function Header() {
           <img src={img('logo-green.png')} alt="GEOKURS" />
         </Link>
         <button type="button" aria-label="Поиск" className={s.iconBtn} style={{ marginLeft: 'auto' }} onClick={() => setMobileSearch(true)}><Icon name="search" stroke={1.5} /></button>
-        <Link to="/cart" aria-label={`Корзина, ${inCart} товаров`} className={s.iconBtn}>
-          <Icon name="cart" stroke={1.5} />
-          <span className={s.badge}>{inCart}</span>
-        </Link>
-        <button type="button" aria-label="Меню" aria-expanded={menuOpen} aria-controls="mobile-menu" className={s.iconBtn} onClick={() => setMenuOpen(true)}>
+        <button type="button" aria-label="Меню" aria-expanded={menuOpen} aria-controls="mobile-menu" className={s.iconBtn} onClick={() => { setMenuView('root'); setMenuOpen(true); }}>
           <Icon name="menu" stroke={1.8} />
         </button>
       </div>
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu open={menuOpen} startView={menuView} onClose={() => setMenuOpen(false)} />
       <MobileSearch open={mobileSearch} onClose={() => setMobileSearch(false)} />
     </header>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Crumbs } from '../components/Crumbs';
 import { Check, Field } from '../components/Field';
 import { Icon } from '../components/Icon';
@@ -38,7 +39,8 @@ function OrderCard({ o }: { o: Order }) {
 }
 
 export function AccountPage() {
-  const [tab, setTab] = useState<Tab>('orders');
+  const [params] = useSearchParams();
+  const [tab, setTab] = useState<Tab>(params.get('tab') === 'fav' ? 'fav' : 'orders');
   return (
     <main className={`container ${s.page}`}>
       <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Личный кабинет' }]} back={{ label: 'Главная', href: '/' }} />

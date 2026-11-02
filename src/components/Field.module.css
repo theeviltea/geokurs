@@ -13,3 +13,5 @@
 .tick { flex: none; width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid var(--c-line-strong); color: transparent; display: flex; align-items: center; justify-content: center; }
 .check input:checked + .tick { border-color: var(--c-green-600); background: var(--c-green-600); color: var(--c-white); }
 .check input:focus-visible + .tick { outline: 2px solid var(--c-green-600); outline-offset: 2px; }
+.lead { position: absolute; left: 16px; top: 16px; color: #8A968C; display: flex; pointer-events: none; }
+.withIcon { padding-left: 48px; }

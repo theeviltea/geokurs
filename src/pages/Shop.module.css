@@ -21,13 +21,24 @@
 .ghostSm:hover { color: var(--c-ink); border-color: var(--c-ink); }
 
 /* ---------- Sign-in / registration ---------- */
-.authGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr); gap: 20px; align-items: stretch; }
+.authGrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr); gap: 20px; align-items: start; }
+.authSingle { grid-template-columns: minmax(0, 640px); justify-content: center; }
+.seg { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 4px; border-radius: 26px; background: var(--c-bg); }
+.seg button { height: 44px; border: 0; border-radius: 22px; background: transparent; color: var(--c-gray-600); font-size: 15px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+.seg .segOn { background: var(--c-white); color: var(--c-green-700); box-shadow: 0 1px 4px rgba(11,15,12,0.08); }
+.rowBetween { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rowBetween > a { font-size: 14px; font-weight: 500; white-space: nowrap; }
+.u { text-decoration: underline; }
+.or { display: flex; align-items: center; gap: 14px; font-size: 14px; color: #8A968C; }
+.or span { flex: 1; height: 1px; background: var(--c-surface-sunken); }
+.switchLine { margin: 0; text-align: center; font-size: 15px; }
+.switchLine a { font-weight: 600; }
 .authCard { padding: 48px 56px; display: flex; flex-direction: column; gap: 28px; }
 .authHead { display: flex; flex-direction: column; gap: 10px; }
 .authHead .h1 { font-size: 40px; }
-.form { display: flex; flex-direction: column; gap: 18px; }
-.formNarrow { max-width: 440px; }
-.form .primary { margin-top: 6px; }
+.form { display: flex; flex-direction: column; gap: 16px; }
+.formNarrow { max-width: 460px; }
+.form .primary { margin-top: 4px; }
 .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .side { position: relative; overflow: hidden; border-radius: 28px; background: var(--c-green-800); color: var(--c-white); padding: 44px 40px; display: flex; flex-direction: column; gap: 20px; }
 .sideRings { position: absolute; right: -140px; bottom: -160px; width: 460px; height: 460px; }
@@ -140,7 +151,7 @@
 .sumInfo { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .sumInfo li { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--c-gray-600); }
 .sumInfo svg { flex: none; }
-.checkoutBar { position: sticky; bottom: 0; z-index: 30; margin: 0 -16px; background: var(--c-white); border-top: 1px solid var(--c-line); padding: 12px 16px; align-items: center; gap: 12px; box-shadow: 0 -8px 24px rgba(11,15,12,0.06); }
+.checkoutBar { position: sticky; bottom: var(--tabbar-h); z-index: 30; margin: 0 -16px; background: var(--c-white); border-top: 1px solid var(--c-line); padding: 12px 16px; align-items: center; gap: 12px; box-shadow: 0 -8px 24px rgba(11,15,12,0.06); }
 .checkoutBar > span { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 .checkoutBar small { font-size: 12px; color: var(--c-gray-600); }
 .checkoutBar b { font-family: var(--font-display); font-size: 19px; font-weight: 800; white-space: nowrap; }
@@ -218,6 +229,7 @@
   .authCard { border-radius: 24px; padding: 24px 18px; gap: 20px; }
   .authHead .h1 { font-size: 28px; }
   .form { gap: 16px; }
+  .seg button { font-size: 14px; }
   .side { border-radius: 24px; padding: 24px 20px; gap: 14px; }
   .sideTitle { font-size: 22px; }
   .sideText { font-size: 14px; }

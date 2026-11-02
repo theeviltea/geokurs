@@ -6,18 +6,18 @@ import { Icon } from './Icon';
 import { SmartLink } from './SmartLink';
 import s from './MobileMenu.module.css';
 
-type Props = { open: boolean; onClose: () => void };
+type Props = { open: boolean; onClose: () => void; startView?: 'root' | 'cats' };
 /** 'root' = main menu, 'cats' = catalog sections, 'cat:<key>' = one section, 'help' = «Как купить». */
 type View = string;
 const byKey = Object.fromEntries(navProducts.map((p) => [p.key, p]));
 
-export function MobileMenu({ open, onClose }: Props) {
+export function MobileMenu({ open, onClose, startView = 'root' }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const panel = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<View>('root');
   const cur = view.startsWith('cat:') ? navCategories.find((c) => 'cat:' + c.key === view) : undefined;
   const go = (v: View) => { setView(v); panel.current?.scrollTo(0, 0); };
-  useEffect(() => { if (!open) setView('root'); }, [open]);
+  useEffect(() => { setView(open ? startView : 'root'); }, [open, startView]);
   useEffect(() => {
     // Keep the closed drawer out of the tab order and the accessibility tree.
     if (ref.current) (ref.current as HTMLDivElement & { inert: boolean }).inert = !open;

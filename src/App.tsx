@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
+import { TabBar } from './components/TabBar';
 import { Category } from './pages/Category';
 import { Home } from './pages/Home';
 import { NewsPage } from './pages/NewsPage';
@@ -37,6 +38,7 @@ export function App() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />
+      <TabBar />
     </>
   );
 }

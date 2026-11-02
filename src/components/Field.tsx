@@ -33,3 +33,22 @@ export function Check({ children, defaultChecked = false }: { children: ReactNod
     </label>
   );
 }
+
+type IconProps = InputHTMLAttributes<HTMLInputElement> & { icon: 'call' | 'mail' | 'lock'; label: string };
+
+/** Field with a leading icon and no visible label (the label is read by screen readers). */
+export function IconField({ icon, label, type = 'text', ...rest }: IconProps) {
+  const [show, setShow] = useState(false);
+  const isPass = type === 'password';
+  return (
+    <span className={s.box}>
+      <span className={s.lead} aria-hidden="true"><Icon name={icon} size={20} stroke={1.6} /></span>
+      <input aria-label={label} type={isPass && show ? 'text' : type} className={`${s.input} ${s.withIcon} ${isPass ? s.withEye : ''}`} {...rest} />
+      {isPass && (
+        <button type="button" className={s.eye} aria-label={show ? 'Скрыть пароль' : 'Показать пароль'} aria-pressed={show} onClick={() => setShow((v) => !v)}>
+          <Icon name="eye" size={20} stroke={1.6} />
+        </button>
+      )}
+    </span>
+  );
+}

@@ -37,3 +37,10 @@ h1, h2, h3 { margin: 0; }
   .desktop-only { display: none !important; }
   .mobile-only { display: revert !important; }
 }
+
+/* Phones: the bottom tab bar is fixed, so pages keep room for it. */
+:root { --tabbar-h: 0px; }
+@media (max-width: 1179px) {
+  :root { --tabbar-h: calc(62px + env(safe-area-inset-bottom)); }
+  body { padding-bottom: var(--tabbar-h); }
+}

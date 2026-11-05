@@ -7,13 +7,13 @@ export const mainNav = [
   { label: 'Акции', href: '/promo/baza-rover' },
   { label: 'Как купить', href: '#', dropdown: true },
   { label: 'Сервис', href: 'https://geokurs.kz/services/' },
-  { label: 'О компании', href: 'https://geokurs.kz/about' },
+  { label: 'О компании', href: '/about' },
 ];
 
 export const mobileNav = [
   { label: 'Каталог', href: '/catalog/gnss-oborudovanie' },
   { label: 'Услуги', href: 'https://geokurs.kz/services/' },
-  { label: 'О компании', href: 'https://geokurs.kz/about' },
+  { label: 'О компании', href: '/about' },
   { label: 'Акции', href: '/promo/baza-rover' },
   { label: 'Как купить', href: '#' },
   { label: 'Контакты', href: 'https://geokurs.kz/contacts' },
@@ -29,5 +29,5 @@ export const socials = [
 export const footerNav = [
   { title: 'Каталог', links: [['Тахеометры', '#'], ['GNSS-оборудование', '/catalog/gnss-oborudovanie'], ['Нивелиры', '#'], ['Теодолиты', '#'], ['Дальномеры', '#'], ['Аксессуары', '#']] },
   { title: 'Помощь', links: [['Доставка и оплата', '#'], ['Покупка в кредит', '#'], ['Гарантия', '#'], ['Банковские реквизиты', '#']] },
-  { title: 'Компания', links: [['О компании', 'https://geokurs.kz/about'], ['Акции', '/promo/baza-rover'], ['Новости', '/news/novaya-bazovaya-stanciya-v-zhezkazgane'], ['Корпоративный сайт', 'https://geokurs.kz']] },
+  { title: 'Компания', links: [['О компании', '/about'], ['Акции', '/promo/baza-rover'], ['Новости', '/news/novaya-bazovaya-stanciya-v-zhezkazgane'], ['Корпоративный сайт', 'https://geokurs.kz']] },
 ] as const;

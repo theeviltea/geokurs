@@ -19,10 +19,12 @@ const FX: Record<string, Keyframe[]> = {
   slide320: [{ transform: 'translateX(0)' }, { transform: 'translateX(-320px)' }],
   slideBack180: [{ transform: 'translateX(-180px)' }, { transform: 'translateX(0)' }],
   bob: [{ transform: 'translateX(-46px)' }, { transform: 'translateX(46px)' }, { transform: 'translateX(-46px)' }],
+  marquee: [{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }],
 };
 
-function useFx() {
-  const ref = useRef<HTMLDivElement>(null);
+/** Runs the looping [data-fx] animations inside the returned ref. */
+export function useFx<T extends HTMLElement = HTMLDivElement>() {
+  const ref = useRef<T>(null);
   useEffect(() => {
     const root = ref.current;
     if (!root || !root.animate) return;

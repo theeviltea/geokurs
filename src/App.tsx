@@ -20,6 +20,7 @@ import { ServiceCenterPage } from './pages/ServiceCenterPage';
 import { SupportPage } from './pages/SupportPage';
 import { MetrologyPage } from './pages/MetrologyPage';
 import { GnssBrandsPage } from './pages/GnssBrandsPage';
+import { AboutPage } from './pages/AboutPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -52,6 +53,7 @@ export function App() {
         <Route path="/services/repair" element={<ServiceCenterPage />} />
         <Route path="/services/support" element={<SupportPage />} />
         <Route path="/services/metrology" element={<MetrologyPage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

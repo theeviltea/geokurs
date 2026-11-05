@@ -77,7 +77,7 @@ export function Header() {
               return (
                 <div key={n.label} className={s.navItem}>
                   <button type="button" className={`${s.navLink} ${on ? s.navOn : ''}`} aria-expanded={on} aria-haspopup="true"
-                    onMouseEnter={() => hoverOpen(key)} onClick={() => toggle(key)}>
+                    onMouseEnter={() => hoverOpen(key)} onClick={() => { if (key === 'catalog') { closeAll(); navigate('/catalog'); } else toggle(key); }}>
                     {n.label}
                     <Icon name="chevronDown" size={14} stroke={2} className={s.chev} />
                   </button>
@@ -108,8 +108,8 @@ export function Header() {
         <div className={s.right}>
           <a href={PHONE.mainHref} className={s.phone}>{PHONE.main}</a>
           <div className={s.icons}>
-            <Link to="/compare" aria-label={`Сравнение, ${st.compare.length}`} className={s.iconBtn}><Icon name="compare" stroke={1.8} />{st.compare.length > 0 && <span className={s.badge}>{st.compare.length}</span>}</Link>
-            <Link to="/favorites" aria-label={`Избранное, ${st.fav.length}`} className={s.iconBtn}><Icon name="fav" stroke={1.8} />{st.fav.length > 0 && <span className={s.badge}>{st.fav.length}</span>}</Link>
+            <Link to="/compare" aria-label={`Сравнение, ${st.compare.length}`} className={s.iconBtn}><Icon name="compare" stroke={1.8} />{st.compare.length > 0 && <span key={st.compare.length} className={s.badge}>{st.compare.length}</span>}</Link>
+            <Link to="/favorites" aria-label={`Избранное, ${st.fav.length}`} className={s.iconBtn}><Icon name="fav" stroke={1.8} />{st.fav.length > 0 && <span key={st.fav.length} className={s.badge}>{st.fav.length}</span>}</Link>
             <Link to="/account" aria-label="Мой кабинет" className={s.iconBtn}><Icon name="user" stroke={1.8} /></Link>
             <Link to="/cart" className={s.cartBtn}><Icon name="cart" size={20} stroke={1.9} />Корзина · {inCart}</Link>
           </div>

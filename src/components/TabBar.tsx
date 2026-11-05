@@ -23,7 +23,7 @@ export function TabBar() {
       </Link>
       <Link to="/catalog" className={cls('catalog')}><Icon name="grid" size={24} />Каталог</Link>
       <Link to="/cart" className={cls('cart')} aria-label={`Корзина, ${n} товаров`}>
-        <span className={s.icon}><Icon name="cartAlt" size={24} />{n > 0 && <span className={s.badge}>{n}</span>}</span>Корзина
+        <span className={s.icon}><Icon name="cartAlt" size={24} />{n > 0 && <span key={n} className={s.badge}>{n}</span>}</span>Корзина
       </Link>
       <Link to="/favorites" className={cls('fav')}><Icon name="fav" size={24} />Избранное</Link>
       <Link to="/account" className={cls('account')}><Icon name="user" size={24} />Кабинет</Link>

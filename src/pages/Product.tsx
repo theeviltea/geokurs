@@ -7,6 +7,8 @@ import { SmartLink } from '../components/SmartLink';
 import { productBySlug, type ProductDetail } from '../data/catalog';
 import { img } from '../data/images';
 import { navProducts } from '../data/navigation';
+import { FavIcon } from '../components/ProductCard';
+import { store, useStore, type Item } from '../lib/store';
 
 /** «Рекомендуем» under the product (phones): products that have their own page. */
 const RECOMMEND = ['i73', 's5', 'x9core', 'gtx24', 'x500', 'tbc', 'glm100'];
@@ -21,12 +23,21 @@ const SERVICE = [
 
 const fmt = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
+/** Cart / favourites entry for a product page (menu key when the product is in the menu data). */
+const itemOf = (p: ProductDetail): Item => {
+  const nav = navProducts.find((x) => x.href === `/product/${p.slug}`);
+  return { key: nav?.key ?? `p:${p.slug}`, name: p.name, brand: p.brand, price: p.price != null ? `${p.priceFrom ? 'от ' : ''}${fmt(p.price)} ₸` : null, image: p.shots[0]?.src ?? '', cat: nav?.cat, href: `/product/${p.slug}` };
+};
+
 type TabId = 'desc' | 'specs' | 'kit' | 'service';
 
 function Gallery({ p }: { p: ProductDetail }) {
   const shots = [...p.shots.map((x) => ({ ...x, video: false })), { src: '', alt: 'Видеообзор', dark: true, video: true }];
   const [sel, setSel] = useState(0);
   const cur = shots[sel];
+  const st = useStore();
+  const item = itemOf(p);
+  const faved = st.fav.includes(item.key);
   return (
     <div className={s.gallery}>
       <div role="tablist" aria-label="Фото товара" className={s.thumbs}>
@@ -46,7 +57,7 @@ function Gallery({ p }: { p: ProductDetail }) {
           <img src={cur.src} alt={cur.alt} className={s.main} style={{ maxHeight: `min(${p.maxH}px, 100%)`, maxWidth: `${p.maxW}%` }} />
         )}
         {p.hit && <span className={s.hit}>Хит</span>}
-        <button type="button" aria-label="Отложить" className={`${s.stageFav} mobile-only`}><Icon name="fav" size={22} stroke={1.6} /></button>
+        <button type="button" aria-label={faved ? 'Убрать из избранного' : 'В избранное'} aria-pressed={faved} className={`${s.stageFav} ${faved ? s.favOn : ''} mobile-only`} onClick={() => store.toggleFav(item)}><FavIcon on={faved} size={22} /></button>
         <span className={`${s.counter} desktop-only`}>{sel + 1} / {shots.length}</span>
         <div role="tablist" aria-label="Фото товара" className={`${s.dots} mobile-only`}>
           {shots.map((t, i) => (
@@ -61,6 +72,9 @@ function Gallery({ p }: { p: ProductDetail }) {
 function BuyBox({ p }: { p: ProductDetail }) {
   const [qty, setQty] = useState(1);
   const priced = p.price != null;
+  const st = useStore();
+  const item = itemOf(p);
+  const faved = st.fav.includes(item.key);
   return (
     <div className={s.buy}>
       <div className={s.priceRow}>
@@ -76,8 +90,8 @@ function BuyBox({ p }: { p: ProductDetail }) {
           <span>{qty}</span>
           <button type="button" aria-label="Больше" onClick={() => setQty((q) => q + 1)}><Icon name="plus" size={18} stroke={2} /></button>
         </div>
-        <button type="button" className={s.cart}><Icon name="cart" size={20} stroke={1.9} />{priced ? 'В корзину' : 'Узнать цену'}</button>
-        <button type="button" aria-label="Отложить" className={`${s.round} desktop-only`}><Icon name="fav" size={20} stroke={1.8} /></button>
+        <button type="button" className={s.cart} onClick={() => { if (priced) store.addToCart(item, qty); }}><Icon name="cart" size={20} stroke={1.9} />{priced ? 'В корзину' : 'Узнать цену'}</button>
+        <button type="button" aria-label={faved ? 'Убрать из избранного' : 'В избранное'} aria-pressed={faved} className={`${s.round} ${faved ? s.favOn : ''} desktop-only`} onClick={() => store.toggleFav(item)}><FavIcon on={faved} /></button>
         <button type="button" aria-label="Добавить к сравнению" className={s.round}><Icon name="compare" size={20} stroke={1.8} /></button>
       </div>
       <a href="#" className={s.kp}><span className="desktop-only">Запросить коммерческое предложение</span><span className="mobile-only">Запросить КП</span></a>
@@ -151,7 +165,7 @@ export function Product() {
   return (
     <main key={p.slug}>
       <div className={`container ${s.top}`}>
-        <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Каталог', href: '#' }, { label: p.cat, href: p.catHref }, { label: p.short }]} back={{ label: p.cat, href: p.catHref }} />
+        <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Каталог', href: '/catalog' }, { label: p.cat, href: p.catHref }, { label: p.short }]} back={{ label: p.cat, href: p.catHref }} />
       </div>
       <section className={`container ${s.hero}`}>
         <Gallery p={p} />

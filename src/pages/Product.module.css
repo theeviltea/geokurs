@@ -170,3 +170,5 @@
   .service { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .service a { min-height: 0; border-radius: 16px; padding: 14px 16px; }
 }
+
+.favOn, .favOn:hover { color: var(--c-green-600) !important; }

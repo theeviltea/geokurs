@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { TabBar } from './components/TabBar';
+import { Toaster } from './components/Toaster';
 import { Category } from './pages/Category';
 import { Home } from './pages/Home';
 import { NewsPage } from './pages/NewsPage';
@@ -30,6 +31,7 @@ export function App() {
     <>
       <ScrollToTop />
       <Header />
+      <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog/gnss-oborudovanie" element={<Category />} />

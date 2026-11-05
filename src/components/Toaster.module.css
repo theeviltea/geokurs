@@ -1,0 +1,29 @@
+.wrap { position: fixed; z-index: 60; top: 88px; left: 0; right: 0; pointer-events: none; }
+.stack { width: 100%; max-width: 1376px; margin: 0 auto; padding: 0 32px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+.toast { pointer-events: auto; position: relative; overflow: hidden; width: 380px; border-radius: 18px; background: var(--c-white); box-shadow: 0 18px 40px rgba(11,15,12,0.16), 0 2px 6px rgba(11,15,12,0.06); padding: 12px; display: grid; grid-template-columns: 56px minmax(0, 1fr) 32px; gap: 12px; align-items: center; animation: toastIn 0.32s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.thumb { position: relative; width: 56px; height: 56px; border-radius: 14px; background: var(--c-bg); display: flex; align-items: center; justify-content: center; }
+.thumb img { max-width: 46px; max-height: 46px; object-fit: contain; }
+.mark { position: absolute; right: -6px; bottom: -6px; width: 24px; height: 24px; border-radius: 12px; border: 2px solid var(--c-white); background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; }
+.unfav .mark { background: #8A968C; }
+.text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.text b { font-size: 14px; font-weight: 700; }
+.name { font-size: 13px; line-height: 1.3; color: var(--c-gray-600); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.link { align-self: flex-start; margin-top: 2px; padding: 0; border: 0; background: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--c-green-600); display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.link:hover { color: var(--c-green-700); }
+.close { align-self: start; width: 32px; height: 32px; border: 0; border-radius: 16px; background: transparent; color: #8A968C; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.close:hover { background: var(--c-bg); color: var(--c-ink); }
+/* Shrinking line shows how long the notice stays */
+.timer { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--c-green-600); opacity: 0.6; transform-origin: left center; animation: toastTimer 4s linear forwards; }
+.fav .timer { background: var(--c-green-300); }
+.unfav .timer { background: var(--c-line-strong); }
+.toast:hover .timer { animation-play-state: paused; }
+
+@keyframes toastIn { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity: 1; transform: none; } }
+@keyframes toastTimer { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@media (prefers-reduced-motion: reduce) { .toast, .timer { animation: none; } }
+
+@media (max-width: 767px) {
+  .wrap { top: 72px; }
+  .stack { padding: 0 12px; }
+  .toast { width: 100%; }
+}

@@ -1,24 +1,31 @@
 import { Icon } from './Icon';
 import { SmartLink } from './SmartLink';
+import { FavIcon } from './ProductCard';
+import { keyByName, store, useStore, type Item } from '../lib/store';
 import s from './SimilarStrip.module.css';
 
 export type MiniProduct = { name: string; brand: string; price: string | null; img: string | null; href?: string };
 
+const asItem = (p: MiniProduct): Item => ({ key: keyByName(p.name) ?? `m:${p.name}`, name: p.name, brand: p.brand, price: p.price, image: p.img ?? '', href: p.href });
+
 function Row({ items }: { items: MiniProduct[] }) {
+  const st = useStore();
   return (
     <div className={`${s.grid} no-scrollbar`}>
       {items.map((p) => (
         <article key={p.name} className={s.card}>
           <div className={s.media}>
             {p.img ? <img src={p.img} alt={p.name} loading="lazy" /> : <span className={s.ph} aria-hidden="true">{p.brand}</span>}
-            <button type="button" aria-label="Отложить" className={s.fav}><Icon name="fav" size={20} stroke={1.6} /></button>
+            {(() => { const on = st.fav.includes(asItem(p).key); return (
+              <button type="button" aria-label={on ? 'Убрать из избранного' : 'В избранное'} aria-pressed={on} className={`${s.fav} ${on ? s.favOn : ''}`} onClick={() => store.toggleFav(asItem(p))}><FavIcon on={on} /></button>
+            ); })()}
           </div>
           <div className={s.body}>
             <span className={s.meta}>Под заказ · {p.brand}</span>
             <h3 className={s.name}><SmartLink href={p.href ?? '#'}>{p.name}</SmartLink></h3>
             <div className={s.foot}>
               <span className={s.price}>{p.price ?? 'По запросу'}</span>
-              <button type="button" className={s.buy} aria-label={p.price ? 'В корзину' : 'Узнать цену'}>
+              <button type="button" className={s.buy} aria-label={p.price ? 'В корзину' : 'Узнать цену'} onClick={() => { if (p.price) store.addToCart(asItem(p)); }}>
                 <Icon name="cart" size={18} stroke={1.8} className={s.buyIcon} />
                 <span className={s.buyLabel}>{p.price ? 'В корзину' : 'Узнать цену'}</span>
               </button>

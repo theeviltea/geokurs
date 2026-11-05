@@ -14,7 +14,7 @@ export function CatalogGrid() {
             <span className={s.pic}><img src={c.image} alt="" className={c.wide ? s.wide : undefined} loading="lazy" /></span>
           </SmartLink>
         ))}
-        <SmartLink href="#" className={`${s.all} desktop-only`}>
+        <SmartLink href="/catalog" className={`${s.all} desktop-only`}>
           <svg className={s.allRings} viewBox="0 0 260 260" fill="none" aria-hidden="true">
             <circle cx="130" cy="130" r="125" stroke="#FFFFFF" strokeOpacity="0.14" />
             <circle cx="130" cy="130" r="80" stroke="#FFFFFF" strokeOpacity="0.14" />
@@ -26,7 +26,7 @@ export function CatalogGrid() {
           </span>
           <span className={s.allArrow} aria-hidden="true"><Icon name="arrowRight" size={22} stroke={2} /></span>
         </SmartLink>
-        <SmartLink href="#" className={`${s.tile} ${s.allMobile} mobile-only`}>
+        <SmartLink href="/catalog" className={`${s.tile} ${s.allMobile} mobile-only`}>
           <span className={s.name}>Весь каталог</span>
           <span className={`${s.pic} ${s.allPic}`}>
             <svg className={s.allRings} viewBox="0 0 260 260" fill="none" aria-hidden="true">

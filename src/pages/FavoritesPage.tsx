@@ -11,7 +11,6 @@ import s from './Favorites.module.css';
 
 const POPULAR = ['r780', 'tbc', 'glm100', 'apache6'];
 const catName = Object.fromEntries(navCategories.map((c) => [c.key, c.name]));
-const HEART = 'M2,8.69C2,13.03 7.59,17.86 10.41,19.97C11.36,20.68 12.64,20.68 13.59,19.97C16.41,17.86 22,13.03 22,8.69C22,5.83 19.89,3.5 17,3.5C15.5,3.5 14,4 12,6C10,4 8.5,3.5 7,3.5C4.11,3.5 2,5.83 2,8.69Z';
 
 export function FavoritesPage() {
   const st = useStore();
@@ -48,9 +47,6 @@ export function FavoritesPage() {
             {shown.map((p, i) => (
               <div key={p.key} className={s.cell}>
                 <ProductCard product={asCard(p.key, i)} meta={`${catName[p.cat]} · ${p.brand}`} variant="carousel" className={s.cardFix} />
-                <button type="button" aria-label="Убрать из избранного" className={s.heart} onClick={() => store.unfav(p.key)}>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" aria-hidden="true"><path d={HEART} /></svg>
-                </button>
               </div>
             ))}
           </div>

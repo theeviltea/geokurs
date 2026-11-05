@@ -9,6 +9,7 @@
 .round:hover { color: var(--c-green-600); }
 .fav { top: 8px; }
 .favOn, .favOn:hover { color: var(--c-green-600); }
+.cmpOn, .cmpOn:hover { background: var(--c-green-800); color: var(--c-white); }
 .favOn svg { animation: favPop 0.3s ease; }
 @keyframes favPop { 50% { transform: scale(1.25); } }
 @media (prefers-reduced-motion: reduce) { .favOn svg { animation: none; } }

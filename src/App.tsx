@@ -19,6 +19,7 @@ import { BaseStationsPage } from './pages/BaseStationsPage';
 import { ServiceCenterPage } from './pages/ServiceCenterPage';
 import { SupportPage } from './pages/SupportPage';
 import { MetrologyPage } from './pages/MetrologyPage';
+import { GnssBrandsPage } from './pages/GnssBrandsPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog/gnss-oborudovanie" element={<Category />} />
+        <Route path="/catalog/gnss-oborudovanie/priemniki" element={<GnssBrandsPage />} />
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/news/novaya-bazovaya-stanciya-v-zhezkazgane" element={<NewsPage />} />
         <Route path="/promo/baza-rover" element={<PromoPage />} />

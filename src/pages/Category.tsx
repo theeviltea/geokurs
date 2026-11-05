@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { GNSS_BRANDS_PATH, brandHref, gnssBrands } from '../data/gnssBrands';
 import { Filters, emptyFilters, type FilterState } from '../components/Filters';
 import { Icon } from '../components/Icon';
 import { ProductCard } from '../components/ProductCard';
@@ -20,13 +21,18 @@ const plural = (n: number) =>
 const PAGE = 12;
 
 export function Category() {
-  const [filters, setFilters] = useState<FilterState>(emptyFilters);
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
+  const brand = gnssBrands.find((b) => b.brand === params.get('brand'))?.brand ?? null;
+  const [filters, setFilters] = useState<FilterState>(brand ? { ...emptyFilters, brands: [brand] } : emptyFilters);
+  // Coming from the brand step (?brand=…) preselects that brand; switching brands keeps the URL in sync.
+  useEffect(() => { setFilters((f) => ({ ...f, brands: brand ? [brand] : [] })); }, [brand]);
   const [sort, setSort] = useState<Sort>('pop');
   const [sub, setSub] = useState('all');
   const [showAll, setShowAll] = useState(false);
   const [sheet, setSheet] = useState(false);
 
-  useEffect(() => { document.title = 'GNSS-оборудование — GEOKURS'; return () => { document.title = 'GEOKURS — интернет-магазин геодезического оборудования'; }; }, []);
+  useEffect(() => { document.title = `${brand ? `${brand} — GNSS-приёмники` : 'GNSS-оборудование'} — GEOKURS`; return () => { document.title = 'GEOKURS — интернет-магазин геодезического оборудования'; }; }, [brand]);
   useEffect(() => {
     if (!sheet) return;
     const prev = document.body.style.overflow;
@@ -54,21 +60,34 @@ export function Category() {
       <section className={`container ${s.title}`}>
         <nav aria-label="Хлебные крошки" className={`${s.crumbs} desktop-only`}>
           <Link to="/">Главная</Link><span aria-hidden="true">/</span>
-          <a href="#">Каталог</a><span aria-hidden="true">/</span>
-          <span aria-current="page">GNSS-оборудование</span>
+          <Link to="/catalog">Каталог</Link><span aria-hidden="true">/</span>
+          {brand ? <>
+            <Link to="/catalog/gnss-oborudovanie">GNSS-оборудование</Link><span aria-hidden="true">/</span>
+            <Link to={GNSS_BRANDS_PATH}>GNSS-приёмники</Link><span aria-hidden="true">/</span>
+            <span aria-current="page">{brand}</span>
+          </> : <span aria-current="page">GNSS-оборудование</span>}
         </nav>
-        <Link to="/" className={`${s.back} mobile-only`}><Icon name="chevronLeft" size={16} stroke={2} />Каталог</Link>
+        <Link to={brand ? GNSS_BRANDS_PATH : '/catalog'} className={`${s.back} mobile-only`}><Icon name="chevronLeft" size={16} stroke={2} />{brand ? 'Бренды приёмников' : 'Каталог'}</Link>
         <div className={s.h1Row}>
-          <h1 className={s.h1}>GNSS-оборудование</h1>
-          <span className={s.total}>{GNSS_TOTAL} товаров</span>
+          <h1 className={s.h1}>{brand ?? 'GNSS-оборудование'}</h1>
+          <span className={s.total}>{brand ? foundLabel : `${GNSS_TOTAL} товаров`}</span>
         </div>
+        {brand ? (
+          <div className={`${s.subs} no-scrollbar`} aria-label="Бренд приёмников">
+            <Link to={GNSS_BRANDS_PATH} className={s.sub}><Icon name="chevronLeft" size={14} stroke={2} />Все бренды</Link>
+            {gnssBrands.map((b) => (
+              <Link key={b.brand} to={brandHref(b.brand)} aria-current={b.brand === brand ? 'page' : undefined} className={`${s.sub} ${b.brand === brand ? s.subOn : ''}`}>{b.brand}</Link>
+            ))}
+          </div>
+        ) : (
         <div className={`${s.subs} no-scrollbar`}>
           {gnssSubcategories.map((c) => (
-            <button key={c.id} type="button" aria-pressed={sub === c.id} className={`${s.sub} ${sub === c.id ? s.subOn : ''}`} onClick={() => setSub(c.id)}>
+            <button key={c.id} type="button" aria-pressed={sub === c.id} className={`${s.sub} ${sub === c.id ? s.subOn : ''}`} onClick={() => (c.id === 'rx' ? navigate(GNSS_BRANDS_PATH) : setSub(c.id))}>
               {c.name}<span className={s.subCount}>{c.count}</span>
             </button>
           ))}
         </div>
+        )}
       </section>
 
       <section className={`container ${s.body}`}>

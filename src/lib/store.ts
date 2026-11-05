@@ -30,6 +30,16 @@ export const store = {
     set({ ...state, cart: has ? state.cart.map((l) => (l.key === it.key ? { ...l, qty: l.qty + qty } : l)) : [...state.cart, { key: it.key, qty }] });
     toast.push({ kind: 'cart', name: it.name, image: it.image });
   },
+  toggleCompare: (it: Item) => {
+    register(it);
+    if (state.compare.includes(it.key)) {
+      set({ ...state, compare: state.compare.filter((k) => k !== it.key) });
+      toast.push({ kind: 'uncmp', name: it.name, image: it.image, undo: () => store.toggleCompare(it) });
+    } else {
+      set({ ...state, compare: [...state.compare, it.key] });
+      toast.push({ kind: 'cmp', name: it.name, image: it.image });
+    }
+  },
   toggleFav: (it: Item) => {
     register(it);
     if (state.fav.includes(it.key)) {

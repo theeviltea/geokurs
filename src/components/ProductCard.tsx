@@ -12,6 +12,7 @@ export function ProductCard({ product: p, meta, badges = false, variant = 'grid'
   const badge = badges ? (p.hit ? 'hit' : p.isNew ? 'new' : null) : null;
   const st = useStore();
   const faved = st.fav.includes(p.id);
+  const compared = st.compare.includes(p.id);
   const item: Item = { key: p.id, name: p.name, brand: p.brand, price: p.price ? formatPrice(p) : null, image: p.image, cat: navByKey[p.id]?.cat, href: productHref[p.id] };
   return (
     <article className={`${s.card} ${variant === 'carousel' ? s.carousel : ''} ${className ?? ''}`}>
@@ -20,7 +21,7 @@ export function ProductCard({ product: p, meta, badges = false, variant = 'grid'
         {badge === 'hit' && <span className={`${s.badge} ${s.hit}`}><span className="desktop-only">Хит продаж</span><span className="mobile-only">Хит</span></span>}
         {badge === 'new' && <span className={`${s.badge} ${s.new}`}>Новинка</span>}
         <button type="button" aria-label={faved ? 'Убрать из избранного' : 'В избранное'} aria-pressed={faved} className={`${s.round} ${s.fav} ${faved ? s.favOn : ''}`} onClick={() => store.toggleFav(item)}><FavIcon on={faved} /></button>
-        <button type="button" aria-label="Добавить к сравнению" className={`${s.round} ${s.compare}`}><Icon name="compare" size={20} stroke={1.6} /></button>
+        <button type="button" aria-label={compared ? 'Убрать из сравнения' : 'Добавить к сравнению'} aria-pressed={compared} className={`${s.round} ${s.compare} ${compared ? s.cmpOn : ''}`} onClick={() => store.toggleCompare(item)}><Icon name="compare" size={20} stroke={1.6} /></button>
       </div>
       <div className={s.body}>
         <span className={s.meta}><span className={s.dot} />{meta ?? `Под заказ · ${p.brand}`}</span>

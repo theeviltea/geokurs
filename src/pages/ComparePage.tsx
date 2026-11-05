@@ -12,14 +12,16 @@ export function ComparePage() {
   const st = useStore();
   const [diff, setDiff] = useState(false);
   const [off, setOff] = useState(0);
-  const idx = compareKeys.map((k, i) => (st.compare.includes(k) ? i : -1)).filter((i) => i >= 0);
-  const prods = idx.map((i) => navByKey[compareKeys[i]]);
+  // Demo specs exist for the three sample receivers; anything else added from the catalog shows «—».
+  const keys = st.compare.filter((k) => navByKey[k]);
+  const idx = keys.map((k) => compareKeys.indexOf(k));
+  const prods = keys.map((k) => navByKey[k]);
   const n = prods.length;
   const start = Math.min(off, Math.max(0, n - 2));
   const groups = compareSpecs.map((g) => ({
     group: g.group,
     rows: g.rows.map(([label, vals]) => {
-      const v = idx.map((i) => vals[i]);
+      const v = idx.map((i) => (i >= 0 ? vals[i] : '—'));
       return { label, v, same: v.every((x) => x === v[0]) };
     }).filter((r) => !diff || !r.same),
   })).filter((g) => g.rows.length > 0);

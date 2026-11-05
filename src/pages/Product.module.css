@@ -172,3 +172,4 @@
 }
 
 .favOn, .favOn:hover { color: var(--c-green-600) !important; }
+.cmpOn, .cmpOn:hover { background: var(--c-green-800) !important; border-color: var(--c-green-800) !important; color: var(--c-white) !important; }

@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 
 /** Short notices shown under the header after «В корзину» / «В избранное». */
-export type Toast = { id: number; kind: 'cart' | 'fav' | 'unfav'; name: string; image: string; undo?: () => void };
+export type Toast = { id: number; kind: 'cart' | 'fav' | 'unfav' | 'cmp' | 'uncmp'; name: string; image: string; undo?: () => void };
 
 const LIFETIME = 4000;
 let list: Toast[] = [];

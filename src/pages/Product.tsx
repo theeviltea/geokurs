@@ -92,7 +92,7 @@ function BuyBox({ p }: { p: ProductDetail }) {
         </div>
         <button type="button" className={s.cart} onClick={() => { if (priced) store.addToCart(item, qty); }}><Icon name="cart" size={20} stroke={1.9} />{priced ? 'В корзину' : 'Узнать цену'}</button>
         <button type="button" aria-label={faved ? 'Убрать из избранного' : 'В избранное'} aria-pressed={faved} className={`${s.round} ${faved ? s.favOn : ''} desktop-only`} onClick={() => store.toggleFav(item)}><FavIcon on={faved} /></button>
-        <button type="button" aria-label="Добавить к сравнению" className={s.round}><Icon name="compare" size={20} stroke={1.8} /></button>
+        <button type="button" aria-label={st.compare.includes(item.key) ? 'Убрать из сравнения' : 'Добавить к сравнению'} aria-pressed={st.compare.includes(item.key)} className={`${s.round} ${st.compare.includes(item.key) ? s.cmpOn : ''}`} onClick={() => store.toggleCompare(item)}><Icon name="compare" size={20} stroke={1.8} /></button>
       </div>
       <a href="#" className={s.kp}><span className="desktop-only">Запросить коммерческое предложение</span><span className="mobile-only">Запросить КП</span></a>
       {p.physical && (

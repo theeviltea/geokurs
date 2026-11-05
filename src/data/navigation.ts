@@ -33,7 +33,7 @@ export const navProducts: NavProduct[] = [
 
 export const navCategories: NavCategory[] = [
   { key: "gnss", name: "GNSS-оборудование", image: img("cat-gnss.webp"), href: "/catalog/gnss-oborudovanie", products: ["r780", "i73", "i93"],
-    subs: [{ name: "GNSS-приёмники", href: "/catalog/gnss-oborudovanie" }, { name: "Радиомодемы", href: "#" }, { name: "Антенны", href: "#" }, { name: "Аксессуары для GNSS-оборудования", href: "#" }] },
+    subs: [{ name: "GNSS-приёмники", href: "/catalog/gnss-oborudovanie/priemniki" }, { name: "Радиомодемы", href: "#" }, { name: "Антенны", href: "#" }, { name: "Аксессуары для GNSS-оборудования", href: "#" }] },
   { key: "ts", name: "Тахеометры", image: img("cat-total-stations.webp"), href: "/product/trimble-s5", products: ["s5", "c5", "nikon"],
     subs: [{ name: "Механические тахеометры", href: "#" }, { name: "Роботизированные тахеометры", href: "#" }, { name: "Сканирующие тахеометры", href: "#" }, { name: "Аксессуары для тахеометров", href: "#" }] },
   { key: "uav", name: "БПЛА", image: img("cat-uav.webp"), href: "/product/chcnav-x500", products: ["x500"],

@@ -17,6 +17,8 @@ const FX: Record<string, Keyframe[]> = {
   slide180: [{ transform: 'translateX(0)' }, { transform: 'translateX(-180px)' }],
   slide240: [{ transform: 'translateX(0)' }, { transform: 'translateX(-240px)' }],
   slide320: [{ transform: 'translateX(0)' }, { transform: 'translateX(-320px)' }],
+  slideBack180: [{ transform: 'translateX(-180px)' }, { transform: 'translateX(0)' }],
+  bob: [{ transform: 'translateX(-46px)' }, { transform: 'translateX(46px)' }, { transform: 'translateX(-46px)' }],
 };
 
 function useFx() {
@@ -36,11 +38,12 @@ function useFx() {
 }
 
 /** Compact dark-green service banner with animated abstract art on the right. */
-export function ServiceHero({ art, artClass, children }: { art: string; artClass: 'net' | 'dial' | 'wave'; children: ReactNode }) {
+/** `auto` lets the banner grow with its content (min 248px) instead of the fixed 248px. */
+export function ServiceHero({ art, artClass, auto = false, children }: { art: string; artClass: 'net' | 'dial' | 'wave' | 'level'; auto?: boolean; children: ReactNode }) {
   const ref = useFx();
   return (
-    <section className={s.hero}>
-      <div ref={ref} aria-hidden="true" className={`${s.art} ${artClass === 'dial' ? s.artDial : s.artNet} ${artClass === 'wave' ? s.artWave : ''}`} dangerouslySetInnerHTML={{ __html: art }} />
+    <section className={`${s.hero} ${auto ? s.heroAuto : ''}`}>
+      <div ref={ref} aria-hidden="true" className={`${s.art} ${artClass === 'dial' ? s.artDial : s.artNet} ${artClass === 'wave' || artClass === 'level' ? s.artWave : ''} ${artClass === 'level' ? s.artLevel : ''}`} dangerouslySetInnerHTML={{ __html: art }} />
       <div className={s.heroBody}>{children}</div>
     </section>
   );
@@ -154,12 +157,12 @@ export function ContactCard({ text }: { text: string }) {
 }
 
 /** Hero title with an icon tile (service centre, support). */
-export function HeroTitle({ icon, title, lede, cta }: { icon: IconName; title: string; lede: string; cta: ReactNode }) {
+export function HeroTitle({ icon, title, lede, cta, nowrap = false }: { icon: IconName; title: string; lede: string; cta: ReactNode; nowrap?: boolean }) {
   return (
     <>
       <div className={s.titleRow}>
         <span className={s.heroTile} aria-hidden="true"><Icon name={icon} size={30} stroke={1.8} /></span>
-        <h1 className={s.h1}>{title}</h1>
+        <h1 className={`${s.h1} ${nowrap ? s.h1Nowrap : ''}`}>{title}</h1>
       </div>
       <p className={s.heroLede}>{lede}</p>
       {cta}

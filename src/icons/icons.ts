@@ -63,6 +63,7 @@ export const icons = {
   whatsapp: 'M3 21l1.65-4.95A8.5 8.5 0 1 1 8 19.6L3 21z',
   monitor: 'M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 21h8M12 17v4',
   car: 'M5 17h14M6 17v2M18 17v2M3 13l2-6a2 2 0 0 1 1.9-1.4h10.2A2 2 0 0 1 19 7l2 6v4H3zM7 13h.01M17 13h.01',
+  award: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM8.2 13.9 7 22l5-3 5 3-1.2-8.1',
 } as const;
 
 export type IconName = keyof typeof icons;

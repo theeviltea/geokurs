@@ -10,10 +10,14 @@
 .art { position: absolute; pointer-events: none; }
 .artNet { right: 0; top: -150px; width: 660px; height: 550px; }
 .artWave { right: 0; top: -150px; width: 660px; height: 550px; }
+.artLevel { }
 .artDial { right: 60px; top: -170px; width: 560px; height: 560px; }
+.heroAuto { height: auto; min-height: 248px; }
+.heroAuto .heroBody { padding: 40px 48px; }
 .heroBody { position: relative; height: 100%; max-width: 820px; padding: 0 48px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
 
 /* Hero title + contact card */
+.h1Nowrap { white-space: nowrap; }
 .h1 { margin: 0; font-family: var(--font-display); font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
 .titleRow { display: flex; align-items: center; gap: 18px; }
 .heroTile { flex: none; width: 60px; height: 60px; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: var(--c-green-300); display: flex; align-items: center; justify-content: center; }
@@ -86,8 +90,10 @@
   .hero { height: auto; border-radius: 24px; }
   .artNet { right: -170px; top: -120px; width: 400px; height: 333px; opacity: 0.8; }
   .artWave { right: -230px; top: -110px; width: 420px; height: 350px; opacity: 0.75; }
+  .artLevel { opacity: 0.5; }
   .artDial { right: -150px; top: -140px; width: 340px; height: 340px; opacity: 0.75; }
-  .heroBody { padding: 20px 18px; gap: 14px; }
+  .heroBody, .heroAuto .heroBody { padding: 20px 18px; gap: 14px; }
+  .h1Nowrap { white-space: normal; }
   .h1 { font-size: 30px; line-height: 1.05; }
   .titleRow { flex-direction: column; align-items: flex-start; gap: 14px; }
   .heroTile { width: 48px; height: 48px; border-radius: 16px; }

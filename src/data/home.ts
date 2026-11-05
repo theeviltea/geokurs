@@ -76,7 +76,7 @@ export const slides: Slide[] = [
 export const services: { name: string; text: string; href: string; icon: IconName }[] = [
   { name: 'Базовые станции', text: 'Подключение к сети базовых станций', href: '/services/base-stations', icon: 'baseStation' },
   { name: 'Сервисный центр', text: 'Ремонт и диагностика приборов', href: '/services/repair', icon: 'wrench' },
-  { name: 'Метрология', text: 'Поверка и калибровка оборудования', href: 'https://geokurs-online.kz/help/metrology_service/', icon: 'gauge' },
+  { name: 'Метрология', text: 'Поверка и калибровка оборудования', href: '/services/metrology', icon: 'gauge' },
   { name: 'Техподдержка 24/7', text: 'Помощь с приборами и ПО', href: '/services/support', icon: 'support' },
   { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: 'https://geokurs.kz/services/trade-in', icon: 'tradeIn' },
 ];

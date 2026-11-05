@@ -15,7 +15,7 @@ import s from './Product.module.css';
 const SERVICE = [
   { name: 'Метрология', text: 'Поверка и калибровка оборудования', href: 'https://geokurs-online.kz/help/metrology_service/' },
   { name: 'Сервисный центр', text: 'Ремонт и диагностика приборов', href: '/services/repair' },
-  { name: 'Техподдержка 24/7', text: 'Помощь с приборами и ПО', href: 'https://geokurs.kz/services/support' },
+  { name: 'Техподдержка 24/7', text: 'Помощь с приборами и ПО', href: '/services/support' },
   { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: 'https://geokurs.kz/services/trade-in' },
 ];
 

@@ -9,8 +9,28 @@
 .hero { position: relative; overflow: hidden; height: 248px; border-radius: 28px; color: var(--c-white); background: radial-gradient(120% 160% at 90% 20%, #1A6B28 0%, var(--c-green-800) 55%, #072A0D 100%); }
 .art { position: absolute; pointer-events: none; }
 .artNet { right: 0; top: -150px; width: 660px; height: 550px; }
+.artWave { right: 0; top: -150px; width: 660px; height: 550px; }
 .artDial { right: 60px; top: -170px; width: 560px; height: 560px; }
 .heroBody { position: relative; height: 100%; max-width: 820px; padding: 0 48px; display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+
+/* Hero title + contact card */
+.h1 { margin: 0; font-family: var(--font-display); font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
+.titleRow { display: flex; align-items: center; gap: 18px; }
+.heroTile { flex: none; width: 60px; height: 60px; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: var(--c-green-300); display: flex; align-items: center; justify-content: center; }
+.heroLede { margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: var(--c-on-dark); }
+.contact { position: relative; overflow: hidden; border-radius: 24px; background: #E6F3E7; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
+.contactRings { position: absolute; right: -110px; top: -110px; width: 300px; height: 300px; }
+.contactTop { position: relative; display: flex; flex-direction: column; gap: 18px; }
+.contactTop > div { display: flex; flex-direction: column; gap: 8px; }
+.contactTop b { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--c-green-800); }
+.contactTop > div > span { font-size: 15px; line-height: 1.5; color: #2A302B; }
+.contactBadge { position: relative; flex: none; width: 68px; height: 68px; border-radius: 22px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(34,120,49,0.28); }
+.contactBadge i { position: absolute; right: -4px; top: -4px; width: 16px; height: 16px; border-radius: 8px; background: var(--c-green-300); border: 3px solid #E6F3E7; }
+.pills { position: relative; display: flex; flex-direction: column; gap: 8px; }
+.pillLink { height: 52px; padding: 0 18px 0 8px; border-radius: 26px; background: var(--c-white); color: var(--c-green-800); display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; }
+.pillLink:hover { color: var(--c-green-800); box-shadow: 0 6px 16px rgba(11,15,12,0.08); }
+.pillLink > span { flex: none; width: 36px; height: 36px; border-radius: 18px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.pillLink > svg:last-child { margin-left: auto; color: #8A968C; }
 
 /* Steps */
 .steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
@@ -65,8 +85,21 @@
 
   .hero { height: auto; border-radius: 24px; }
   .artNet { right: -170px; top: -120px; width: 400px; height: 333px; opacity: 0.8; }
+  .artWave { right: -230px; top: -110px; width: 420px; height: 350px; opacity: 0.75; }
   .artDial { right: -150px; top: -140px; width: 340px; height: 340px; opacity: 0.75; }
   .heroBody { padding: 20px 18px; gap: 14px; }
+  .h1 { font-size: 30px; line-height: 1.05; }
+  .titleRow { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .heroTile { width: 48px; height: 48px; border-radius: 16px; }
+  .heroTile svg { width: 24px; height: 24px; }
+  .heroLede { font-size: 15px; }
+  .contact { border-radius: 20px; padding: 20px 16px; gap: 16px; }
+  .contactTop { gap: 14px; }
+  .contactTop b { font-size: 20px; }
+  .contactTop > div > span { font-size: 14px; }
+  .contactBadge { width: 56px; height: 56px; border-radius: 18px; }
+  .contactBadge svg { width: 28px; height: 28px; }
+  
 
   .steps { display: flex; flex-direction: column; gap: 0; background: var(--c-white); border-radius: 20px; padding: 20px 16px; }
   .step { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; padding: 0 0 22px; border-radius: 0; background: none; }

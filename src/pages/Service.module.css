@@ -4,7 +4,6 @@
 .eyebrow { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* Hero content */
-.h1 { margin: 0; font-family: var(--font-display); font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
 .status { align-self: flex-start; height: 32px; padding: 0 14px 0 12px; border-radius: 16px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; }
 .status > span { width: 8px; height: 8px; border-radius: 4px; background: var(--c-green-300); box-shadow: 0 0 0 4px rgba(123,219,132,0.25); }
 .heroRow { display: flex; align-items: center; gap: 16px; }
@@ -16,9 +15,6 @@
 .ntrip > * + * { margin-left: 10px; }
 .ntrip i { font-style: normal; opacity: 0.4; }
 .ntrip br + span { margin-left: 10px; }
-.titleRow { display: flex; align-items: center; gap: 18px; }
-.heroTile { flex: none; width: 60px; height: 60px; border-radius: 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.18); color: var(--c-green-300); display: flex; align-items: center; justify-content: center; }
-.heroLede { margin: 0; max-width: 560px; font-size: 16px; line-height: 1.5; color: var(--c-on-dark); }
 
 /* Tariffs */
 .tGroup { background: var(--c-white); border-radius: 24px; overflow: hidden; }
@@ -83,6 +79,15 @@
 .trustDark b { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
 .trustLight > span:last-child > span:last-child { font-size: 15px; line-height: 1.45; }
 
+/* Support formats */
+.formats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.format { min-width: 0; border-radius: 20px; background: var(--c-white); padding: 22px 24px; display: flex; flex-direction: column; gap: 16px; }
+.format > span:first-child { width: 48px; height: 48px; border-radius: 14px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.format > span:last-child { display: flex; flex-direction: column; gap: 3px; }
+.format b { font-size: 17px; font-weight: 600; line-height: 1.25; }
+.format > span:last-child > span { font-size: 14px; color: var(--c-gray-600); }
+.optional { font-weight: 400; color: var(--c-gray-600); }
+
 /* Repair request */
 .formRow { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 16px; align-items: stretch; scroll-margin-top: 96px; }
 .form { background: var(--c-white); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; gap: 16px; scroll-margin-top: 96px; }
@@ -99,39 +104,22 @@
 .sent > span:first-child { width: 64px; height: 64px; border-radius: 32px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
 .sent b { font-family: var(--font-display); font-size: 22px; }
 .sent > span:last-child { font-size: 15px; color: var(--c-gray-600); }
-.contact { position: relative; overflow: hidden; border-radius: 24px; background: #E6F3E7; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; }
-.contactRings { position: absolute; right: -110px; top: -110px; width: 300px; height: 300px; }
-.contactTop { position: relative; display: flex; flex-direction: column; gap: 18px; }
-.contactTop > div { display: flex; flex-direction: column; gap: 8px; }
-.contactTop b { font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--c-green-800); }
-.contactTop > div > span { font-size: 15px; line-height: 1.5; color: #2A302B; }
-.contactBadge { position: relative; flex: none; width: 68px; height: 68px; border-radius: 22px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 24px rgba(34,120,49,0.28); }
-.contactBadge i { position: absolute; right: -4px; top: -4px; width: 16px; height: 16px; border-radius: 8px; background: var(--c-green-300); border: 3px solid #E6F3E7; }
-.pills { position: relative; display: flex; flex-direction: column; gap: 8px; }
-.pillLink { height: 52px; padding: 0 18px 0 8px; border-radius: 26px; background: var(--c-white); color: var(--c-green-800); display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; }
-.pillLink:hover { color: var(--c-green-800); box-shadow: 0 6px 16px rgba(11,15,12,0.08); }
-.pillLink > span { flex: none; width: 36px; height: 36px; border-radius: 18px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
-.pillLink > svg:last-child { margin-left: auto; color: #8A968C; }
 
 @media (max-width: 1100px) and (min-width: 768px) {
   .cover, .formRow { grid-template-columns: minmax(0, 1fr); }
   .kinds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .heroRow { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 767px) {
   .page { padding-top: 12px; padding-bottom: 36px; gap: 36px; }
   .page > nav + a { margin-bottom: -24px; }
-  .h1 { font-size: 30px; line-height: 1.05; }
   .status { font-size: 11px; }
   .heroRow { flex-direction: column; align-items: stretch; gap: 14px; }
   .heroBtn { align-self: stretch; height: 48px; }
   .ntrip { align-self: flex-start; font-size: 11px; white-space: normal; line-height: 1.8; }
   .ntrip br + span { margin-left: 0; }
-  .titleRow { flex-direction: column; align-items: flex-start; gap: 14px; }
-  .heroTile { width: 48px; height: 48px; border-radius: 16px; }
-  .heroTile svg { width: 24px; height: 24px; }
-  .heroLede { font-size: 15px; }
 
   .tGroup { border-radius: 20px; }
   .tHead { padding: 16px; }
@@ -154,6 +142,11 @@
   .need > b { font-size: 17px; }
   .need li { font-size: 14px; }
 
+  .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .format { padding: 16px; gap: 12px; }
+  .format > span:first-child { width: 40px; height: 40px; }
+  .format b { font-size: 15px; }
+  .format > span:last-child > span { font-size: 13px; }
   .kinds { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
   .kind { flex: none; width: 144px; height: 112px; }
   .kind b { font-size: 14px; }
@@ -166,10 +159,4 @@
   .form { border-radius: 20px; padding: 20px 16px; }
   .formHead > span { font-size: 14px; }
   .two { grid-template-columns: minmax(0, 1fr); }
-  .contact { border-radius: 20px; padding: 20px 16px; gap: 16px; }
-  .contactTop { gap: 14px; }
-  .contactTop b { font-size: 20px; }
-  .contactTop > div > span { font-size: 14px; }
-  .contactBadge { width: 56px; height: 56px; border-radius: 18px; }
-  .contactBadge svg { width: 28px; height: 28px; }
 }

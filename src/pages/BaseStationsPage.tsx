@@ -18,7 +18,7 @@ export function BaseStationsPage() {
 
       <ServiceHero art={NET_SVG} artClass="net">
         <span className={s.status}><span aria-hidden="true" />Сеть онлайн · 21 из 24 станций</span>
-        <h1 className={s.h1}>Базовые станции</h1>
+        <h1 className={b.h1}>Базовые станции</h1>
         <div className={s.heroRow}>
           <a href={BS_CABINET} className={s.heroBtn}><Icon name="user" size={18} />Перейти в личный кабинет</a>
           <div className={s.ntrip}>

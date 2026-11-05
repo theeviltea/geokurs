@@ -13,6 +13,10 @@ const FX: Record<string, Keyframe[]> = {
   breathe: [{ transform: 'scale(1)', opacity: 0.8 }, { transform: 'scale(1.18)', opacity: 1 }, { transform: 'scale(1)', opacity: 0.8 }],
   glow: [{ opacity: 0.45 }, { opacity: 1 }, { opacity: 0.45 }],
   dash: [{ strokeDashoffset: 0 }, { strokeDashoffset: -20 }],
+  bar: [{ transform: 'scaleY(0.35)' }, { transform: 'scaleY(1)' }, { transform: 'scaleY(0.35)' }],
+  slide180: [{ transform: 'translateX(0)' }, { transform: 'translateX(-180px)' }],
+  slide240: [{ transform: 'translateX(0)' }, { transform: 'translateX(-240px)' }],
+  slide320: [{ transform: 'translateX(0)' }, { transform: 'translateX(-320px)' }],
 };
 
 function useFx() {
@@ -32,11 +36,11 @@ function useFx() {
 }
 
 /** Compact dark-green service banner with animated abstract art on the right. */
-export function ServiceHero({ art, artClass, children }: { art: string; artClass: 'net' | 'dial'; children: ReactNode }) {
+export function ServiceHero({ art, artClass, children }: { art: string; artClass: 'net' | 'dial' | 'wave'; children: ReactNode }) {
   const ref = useFx();
   return (
     <section className={s.hero}>
-      <div ref={ref} aria-hidden="true" className={`${s.art} ${artClass === 'net' ? s.artNet : s.artDial}`} dangerouslySetInnerHTML={{ __html: art }} />
+      <div ref={ref} aria-hidden="true" className={`${s.art} ${artClass === 'dial' ? s.artDial : s.artNet} ${artClass === 'wave' ? s.artWave : ''}`} dangerouslySetInnerHTML={{ __html: art }} />
       <div className={s.heroBody}>{children}</div>
     </section>
   );
@@ -129,4 +133,37 @@ export function OtherServices({ exclude }: { exclude: string }) {
 }
 
 export const WHATSAPP = '#';
+const CONTACTS: [IconName, string, string][] = [['call', '+7 727 229 00 00', 'tel:+77272290000'], ['whatsapp', 'WhatsApp', '#'], ['mail', 'info@geokurs.kz', 'mailto:info@geokurs.kz']];
+
+/** Light-green «Свяжитесь напрямую» card that sits next to a request form. */
+export function ContactCard({ text }: { text: string }) {
+  return (
+    <div className={s.contact}>
+      <svg aria-hidden="true" className={s.contactRings} viewBox="0 0 300 300" fill="none"><circle cx="150" cy="150" r="148" stroke="#227831" strokeOpacity="0.1" /><circle cx="150" cy="150" r="104" stroke="#227831" strokeOpacity="0.12" /><circle cx="150" cy="150" r="60" stroke="#227831" strokeOpacity="0.14" /><circle cx="58" cy="236" r="5" fill="#227831" fillOpacity="0.35" /><circle cx="40" cy="120" r="3.5" fill="#227831" fillOpacity="0.3" /></svg>
+      <div className={s.contactTop}>
+        <span className={s.contactBadge} aria-hidden="true"><Icon name="headset" size={34} stroke={1.7} /><i /></span>
+        <div><b>Свяжитесь напрямую</b><span>{text}</span></div>
+      </div>
+      <div className={s.pills}>
+        {CONTACTS.map(([icon, label, href]) => (
+          <a key={label} href={href} className={s.pillLink}><span><Icon name={icon} size={18} /></span>{label}<Icon name="arrowRight" size={16} stroke={2} /></a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Hero title with an icon tile (service centre, support). */
+export function HeroTitle({ icon, title, lede, cta }: { icon: IconName; title: string; lede: string; cta: ReactNode }) {
+  return (
+    <>
+      <div className={s.titleRow}>
+        <span className={s.heroTile} aria-hidden="true"><Icon name={icon} size={30} stroke={1.8} /></span>
+        <h1 className={s.h1}>{title}</h1>
+      </div>
+      <p className={s.heroLede}>{lede}</p>
+      {cta}
+    </>
+  );
+}
 export const PHONE = { label: '+7 727 229 00 00', href: 'tel:+77272290000' };

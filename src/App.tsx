@@ -16,6 +16,7 @@ import { CatalogPage, CatalogSectionPage } from './pages/CatalogPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { BaseStationsPage } from './pages/BaseStationsPage';
 import { ServiceCenterPage } from './pages/ServiceCenterPage';
+import { SupportPage } from './pages/SupportPage';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ export function App() {
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/services/base-stations" element={<BaseStationsPage />} />
         <Route path="/services/repair" element={<ServiceCenterPage />} />
+        <Route path="/services/support" element={<SupportPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

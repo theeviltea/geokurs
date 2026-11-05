@@ -61,6 +61,8 @@ export const icons = {
   send: 'M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z',
   filedoc: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 13h6M9 17h4',
   whatsapp: 'M3 21l1.65-4.95A8.5 8.5 0 1 1 8 19.6L3 21z',
+  monitor: 'M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 21h8M12 17v4',
+  car: 'M5 17h14M6 17v2M18 17v2M3 13l2-6a2 2 0 0 1 1.9-1.4h10.2A2 2 0 0 1 19 7l2 6v4H3zM7 13h.01M17 13h.01',
 } as const;
 
 export type IconName = keyof typeof icons;

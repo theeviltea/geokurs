@@ -14,7 +14,7 @@ import s from './Product.module.css';
 
 const SERVICE = [
   { name: 'Метрология', text: 'Поверка и калибровка оборудования', href: 'https://geokurs-online.kz/help/metrology_service/' },
-  { name: 'Сервисный центр', text: 'Ремонт и диагностика приборов', href: 'https://geokurs.kz/services/' },
+  { name: 'Сервисный центр', text: 'Ремонт и диагностика приборов', href: '/services/repair' },
   { name: 'Техподдержка 24/7', text: 'Помощь с приборами и ПО', href: 'https://geokurs.kz/services/support' },
   { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: 'https://geokurs.kz/services/trade-in' },
 ];
@@ -114,7 +114,7 @@ function Panels({ p, id }: { p: ProductDetail; id: TabId }) {
   return (
     <div className={s.service}>
       {SERVICE.map((x) => (
-        <a key={x.name} href={x.href}><b>{x.name}</b><small>{x.text}</small><Icon name="arrowRight" size={18} stroke={2} /></a>
+        <SmartLink key={x.name} href={x.href}><b>{x.name}</b><small>{x.text}</small><Icon name="arrowRight" size={18} stroke={2} /></SmartLink>
       ))}
     </div>
   );

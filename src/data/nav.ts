@@ -28,6 +28,6 @@ export const socials = [
 
 export const footerNav = [
   { title: 'Каталог', links: [['Тахеометры', '#'], ['GNSS-оборудование', '/catalog/gnss-oborudovanie'], ['Нивелиры', '#'], ['Теодолиты', '#'], ['Дальномеры', '#'], ['Аксессуары', '#']] },
-  { title: 'Помощь', links: [['Доставка и оплата', '#'], ['Покупка в кредит', '#'], ['Гарантия', '#'], ['Банковские реквизиты', '#']] },
+  { title: 'Помощь', links: [['Доставка', '/help/delivery'], ['Оплата', '/help/payment'], ['Покупка в кредит', '/help/credit'], ['Гарантия', '/help/warranty'], ['Банковские реквизиты', '/help/requisites']] },
   { title: 'Компания', links: [['О компании', '/about'], ['Акции', '/promo/baza-rover'], ['Новости', '/news/novaya-bazovaya-stanciya-v-zhezkazgane'], ['Корпоративный сайт', 'https://geokurs.kz']] },
 ] as const;

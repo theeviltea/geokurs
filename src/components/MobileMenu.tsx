@@ -100,11 +100,11 @@ export function MobileMenu({ open, onClose, startView = 'root' }: Props) {
           <>
             <nav aria-label="Как купить" className={s.helpList}>
               {helpLinks.map((h) => (
-                <a key={h.name} href={h.href} className={s.helpRow}>
+                <SmartLink key={h.name} href={h.href} className={s.helpRow} onClick={onClose}>
                   <span className={s.helpIcon}><Icon name={h.icon} size={22} /></span>
                   <span className={s.helpText}><b>{h.name}</b><small>{h.text}</small></span>
                   <Icon name="chevronRight" size={18} stroke={2} color="var(--c-gray-600)" />
-                </a>
+                </SmartLink>
               ))}
             </nav>
             <div className={s.block}>

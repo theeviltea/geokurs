@@ -20,6 +20,10 @@ const FX: Record<string, Keyframe[]> = {
   slideBack180: [{ transform: 'translateX(-180px)' }, { transform: 'translateX(0)' }],
   bob: [{ transform: 'translateX(-46px)' }, { transform: 'translateX(46px)' }, { transform: 'translateX(-46px)' }],
   marquee: [{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }],
+  bobY: [{ transform: 'translateY(0)' }, { transform: 'translateY(-14px)' }, { transform: 'translateY(0)' }],
+  driftA: [{ transform: 'translate(0px, 0px)' }, { transform: 'translate(6px, -12px)' }, { transform: 'translate(-5px, -5px)' }, { transform: 'translate(0px, 0px)' }],
+  driftB: [{ transform: 'translate(0px, 0px)' }, { transform: 'translate(-8px, 7px)' }, { transform: 'translate(5px, -6px)' }, { transform: 'translate(0px, 0px)' }],
+  travel: [{ offsetDistance: '0%' } as Keyframe, { offsetDistance: '100%' } as Keyframe],
 };
 
 /** Runs the looping [data-fx] animations inside the returned ref. */

@@ -75,10 +75,10 @@ export function HelpMenu({ onGo }: { onGo: () => void }) {
   return (
     <div className={s.drop} role="region" aria-label="Как купить">
       {helpLinks.map((h) => (
-        <a key={h.name} href={h.href} className={s.dropItem} onClick={onGo}>
+        <SmartLink key={h.name} href={h.href} className={s.dropItem} onClick={onGo}>
           <span className={s.dropIcon}><Icon name={h.icon} size={20} /></span>
           <span className={s.dropText}><b>{h.name}</b><small>{h.text}</small></span>
-        </a>
+        </SmartLink>
       ))}
       <div className={s.dropFoot}>
         <span><b>Нужна консультация?</b><small>Поможем выбрать прибор</small></span>

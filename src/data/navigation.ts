@@ -59,12 +59,12 @@ export const navCategories: NavCategory[] = [
 ];
 
 export const helpLinks: HelpLink[] = [
-  { name: "Доставка", text: "В любую точку Казахстана", icon: "truck", href: "https://geokurs-online.kz/help/delivery/" },
-  { name: "Оплата", text: "Способы оплаты заказа", icon: "wallet", href: "https://geokurs-online.kz/help/payment/" },
-  { name: "Гарантия на товар", text: "Условия гарантийного обслуживания", icon: "badge", href: "https://geokurs-online.kz/help/warranty/" },
-  { name: "Покупка в кредит", text: "Кредит и рассрочка 0‑0‑24", icon: "percent", href: "https://geokurs-online.kz/help/credit_purchase/" },
-  { name: "Метрология и сервис", text: "Поверка, калибровка и ремонт", icon: "gauge", href: "https://geokurs-online.kz/help/metrology_service/" },
-  { name: "Банковские реквизиты", text: "Для оплаты по счёту", icon: "doc", href: "https://geokurs-online.kz/include/requesites.php" },
+  { name: "Доставка", text: "В любую точку Казахстана", icon: "truck", href: "/help/delivery" },
+  { name: "Оплата", text: "Способы оплаты заказа", icon: "wallet", href: "/help/payment" },
+  { name: "Гарантия на товар", text: "Условия гарантийного обслуживания", icon: "badge", href: "/help/warranty" },
+  { name: "Покупка в кредит", text: "Кредит и рассрочка 0‑0‑24", icon: "percent", href: "/help/credit" },
+  { name: "Метрология и сервис", text: "Поверка, калибровка и ремонт", icon: "gauge", href: "/help/metrology-service" },
+  { name: "Банковские реквизиты", text: "Для оплаты по счёту", icon: "doc", href: "/help/requisites" },
 ];
 
 export const popularQueries = ["CHCNAV i73+", "Trimble X9", "Trimble S5", "Нивелир", "Штатив", "Квадрокоптер"];

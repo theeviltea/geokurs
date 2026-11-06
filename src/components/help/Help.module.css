@@ -1,0 +1,190 @@
+/* «Помощь покупателю»: Доставка, Оплата, Гарантия, Кредит, Метрология и сервис, Реквизиты */
+.page { padding-top: 20px; padding-bottom: 96px; display: flex; flex-direction: column; gap: 28px; }
+.page > nav:first-child { margin-bottom: -8px; }
+
+/* Hero: no fill, text flush left, the whole illustration on the right */
+.hero { position: relative; min-height: 380px; color: var(--c-ink); display: flex; align-items: center; }
+.art { position: absolute; right: 0; top: 0; bottom: 0; width: 52%; pointer-events: none; }
+.art svg { display: block; width: 100%; height: 100%; }
+.heroBody { position: relative; max-width: 640px; padding: 12px 0; display: flex; flex-direction: column; gap: 18px; }
+.h1 { margin: 0; font-family: var(--font-display); font-size: 52px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
+.heroLede { margin: 0; font-size: 17px; line-height: 1.55; color: var(--c-gray-600); }
+.badges { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 8px; }
+.badge { height: 40px; padding: 0 16px; border-radius: 20px; background: var(--c-white); border: 1px solid var(--c-line); font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.badge > svg { color: var(--c-green-600); }
+
+/* Layout: side menu + content */
+.layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 32px; align-items: start; }
+.body { min-width: 0; padding-top: 8px; display: flex; flex-direction: column; gap: 56px; }
+.aside { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 12px; }
+.side { background: var(--c-white); border-radius: 22px; padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+.sideTitle { padding: 10px 16px 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-gray-600); }
+.sideLink { height: 48px; padding: 0 16px; border-radius: 14px; color: var(--c-ink); font-size: 15px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.sideLink > svg { color: var(--c-line-strong); }
+.sideLink:hover { background: var(--c-bg); color: var(--c-ink); }
+.sideOn, .sideOn:hover { background: var(--c-green-800); color: var(--c-white); font-weight: 600; }
+.sideOn > svg { color: var(--c-green-300); }
+.ask { border-radius: 22px; background: #E6F3E7; padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+.askIcon { width: 44px; height: 44px; border-radius: 14px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; }
+.ask b { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--c-green-800); }
+.ask > span:not(.askIcon) { font-size: 14px; color: #2A302B; }
+.ask a { font-size: 16px; font-weight: 700; color: var(--c-green-600); }
+.chipsWrap { min-width: 0; }
+.chips { position: relative; display: flex; gap: 6px; overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
+.chip { flex: none; height: 40px; padding: 0 16px; border-radius: 20px; background: var(--c-white); color: var(--c-ink); font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; white-space: nowrap; }
+.chipOn, .chipOn:hover { background: var(--c-green-800); color: var(--c-white); }
+
+/* Sections */
+.section { display: flex; flex-direction: column; gap: 18px; }
+.secHead { display: flex; flex-direction: column; gap: 6px; }
+.h2 { margin: 0; font-family: var(--font-display); font-size: 32px; line-height: 1.1; font-weight: 700; letter-spacing: -0.01em; }
+.lede { margin: 0; font-size: 16px; line-height: 1.5; color: var(--c-gray-600); }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+
+/* Method card */
+.method { position: relative; min-width: 0; border-radius: 24px; background: var(--c-white); padding: 28px; display: flex; flex-direction: column; gap: 18px; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease; }
+.method:hover { transform: translateY(-4px); box-shadow: 0 18px 36px rgba(11, 15, 12, 0.12); }
+.methodTop { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.methodIcon { width: 56px; height: 56px; border-radius: 18px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; transition: transform 0.35s ease; }
+.methodLogo { height: 56px; width: auto; display: block; transition: transform 0.35s ease; }
+.method:hover .methodIcon, .method:hover .methodLogo { transform: rotate(-6deg) scale(1.06); }
+.tag { height: 26px; padding: 0 10px; border-radius: 13px; background: #E6F3E7; color: var(--c-green-600); font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; white-space: nowrap; }
+.methodText { display: flex; flex-direction: column; gap: 6px; }
+.methodText b { font-family: var(--font-display); font-size: 22px; line-height: 1.2; font-weight: 700; }
+.methodText span { font-size: 15px; line-height: 1.5; color: var(--c-gray-600); }
+.points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.points li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; line-height: 1.45; }
+.points li > span { flex: none; margin-top: 2px; width: 20px; height: 20px; border-radius: 10px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.methodBtn { margin-top: auto; align-self: flex-start; height: 44px; padding: 0 18px; border-radius: 22px; background: var(--c-green-600); color: var(--c-white); font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
+.methodBtn:hover { background: var(--c-green-700); color: var(--c-white); }
+
+/* Note */
+.note { border-radius: 20px; background: #E6F3E7; padding: 20px 22px; display: flex; gap: 14px; align-items: flex-start; }
+.noteWhite { background: var(--c-white); }
+.noteIcon { flex: none; width: 40px; height: 40px; border-radius: 13px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; }
+.noteText { display: flex; flex-direction: column; gap: 4px; }
+.noteText b { font-size: 16px; font-weight: 700; }
+.noteText > span { font-size: 15px; line-height: 1.5; color: #2A302B; }
+.noteText a { color: var(--c-green-600); font-weight: 600; }
+
+/* Checklist */
+.checklist { min-width: 0; border-radius: 24px; background: var(--c-white); padding: 12px 28px; }
+.checkTitle { display: block; padding: 12px 0 4px; font-size: 14px; color: var(--c-gray-600); }
+.checklist ul { list-style: none; margin: 0; padding: 0; }
+.checklist li { display: flex; align-items: center; gap: 12px; padding: 14px 0; font-size: 15px; font-weight: 500; }
+.checklist li + li { border-top: 1px solid #ECF0EA; }
+.checklist li > span { flex: none; width: 36px; height: 36px; border-radius: 12px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+
+/* Stat */
+.stat { position: relative; overflow: hidden; min-width: 0; border-radius: 24px; background: var(--c-white); padding: 24px 26px; display: flex; flex-direction: column; gap: 6px; }
+.stat > b { position: relative; font-family: var(--font-display); font-size: 52px; line-height: 1; font-weight: 800; color: var(--c-green-600); }
+.stat > b > span { font-size: 0.42em; font-weight: 700; }
+.statText { position: relative; font-size: 15px; color: var(--c-gray-600); }
+.statRings { position: absolute; right: -60px; bottom: -80px; width: 200px; height: 200px; }
+.eyebrow { position: relative; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-gray-600); }
+.statTall { padding: 28px; justify-content: space-between; gap: 10px; }
+.statTall > b { font-size: 64px; }
+
+/* Return block (Доставка): number card + conditions */
+.ret { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 12px; align-items: stretch; }
+
+/* Security card (Оплата) */
+.secure { position: relative; overflow: hidden; border-radius: 24px; background: var(--c-white); padding: 32px 36px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.secureRings { position: absolute; right: -90px; top: -120px; width: 320px; height: 320px; }
+.secureText { position: relative; display: flex; flex-direction: column; gap: 10px; }
+.secureText > span:first-child { width: 48px; height: 48px; border-radius: 16px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.secureText b { font-family: var(--font-display); font-size: 26px; line-height: 1.15; font-weight: 700; }
+.secureText p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--c-gray-600); }
+.secureList { position: relative; display: flex; flex-direction: column; gap: 12px; }
+.secureList > div { border-radius: 16px; background: var(--c-bg); padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.secureList b { font-size: 15px; font-weight: 700; color: var(--c-green-600); }
+.secureList span { font-size: 14px; line-height: 1.5; color: #2A302B; }
+
+/* Quote */
+.quote { border-radius: 24px; background: var(--c-white); padding: 32px 36px; display: flex; gap: 18px; align-items: flex-start; }
+.quote > span { flex: none; font-family: var(--font-display); font-size: 72px; line-height: 0.8; font-weight: 800; color: var(--c-green-600); }
+.quote > b { font-family: var(--font-display); font-size: 22px; line-height: 1.35; font-weight: 700; }
+
+/* Call strip */
+.strip { border-radius: 24px; background: #E6F3E7; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.stripText { display: flex; align-items: center; gap: 16px; }
+.stripText > span:last-child { display: flex; flex-direction: column; gap: 4px; }
+.stripText b { font-family: var(--font-display); font-size: 21px; font-weight: 700; color: var(--c-green-800); }
+.stripText > span:last-child > span { font-size: 15px; color: #2A302B; }
+.stripIcon { flex: none; width: 52px; height: 52px; border-radius: 16px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; }
+.btn { flex: none; height: 48px; padding: 0 22px; border: 0; border-radius: 24px; background: var(--c-green-600); color: var(--c-white); font: inherit; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+.btn:hover { background: var(--c-green-700); color: var(--c-white); }
+
+/* Requisites */
+.req { border-radius: 24px; background: var(--c-white); padding: 8px 28px; }
+.reqRow { display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 0; }
+.reqRow + .reqRow { border-top: 1px solid #ECF0EA; }
+.reqKey { font-size: 13px; color: var(--c-gray-600); }
+.reqVal { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.reqVal b { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; word-break: break-word; }
+.copy { height: 36px; padding: 0 14px; border: 0; border-radius: 18px; background: var(--c-bg); color: var(--c-ink); font: inherit; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; white-space: nowrap; }
+.copy:hover { background: var(--c-surface-sunken); }
+.copied, .copied:hover { background: var(--c-green-600); color: var(--c-white); }
+.copyIcon { flex: none; width: 36px; padding: 0; }
+.copyAll { align-self: flex-start; height: 52px; padding: 0 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .method, .methodIcon, .methodLogo { transition: none; }
+}
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .layout { grid-template-columns: 240px minmax(0, 1fr); gap: 24px; }
+  .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .h1 { font-size: 44px; }
+  .heroBody { max-width: 52%; }
+  .ret, .secure { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 767px) {
+  .page { padding-top: 12px; padding-bottom: 36px; gap: 28px; }
+  .page > nav:first-child, .page > a:first-child { margin-bottom: -16px; }
+  .hero { min-height: 0; flex-direction: column; align-items: stretch; gap: 14px; }
+  .art { position: relative; inset: auto; width: auto; height: 150px; margin: 0 -16px; display: flex; justify-content: center; }
+  .heroBody { max-width: none; padding: 0; gap: 14px; }
+  .h1 { font-size: 32px; line-height: 1.05; }
+  .heroLede { font-size: 15px; line-height: 1.5; }
+  .badges { margin-top: 0; gap: 6px; }
+  .badge { height: 34px; padding: 0 12px; font-size: 13px; }
+  .layout { display: flex; flex-direction: column; align-items: stretch; gap: 28px; }
+  .body { padding-top: 0; gap: 28px; }
+  .section { gap: 14px; }
+  .h2 { font-size: 24px; }
+  .lede { font-size: 15px; }
+  .grid, .grid3, .ret { display: flex; flex-direction: column; gap: 8px; }
+  .stack { gap: 8px; }
+  .method { border-radius: 20px; padding: 18px 16px; gap: 14px; }
+  .methodIcon { width: 48px; height: 48px; }
+  .methodLogo { height: 48px; }
+  .methodText b { font-size: 19px; }
+  .methodText span, .points li { font-size: 14px; }
+  .note { border-radius: 18px; padding: 16px; }
+  .noteText b { font-size: 15px; }
+  .noteText > span { font-size: 14px; }
+  .checklist { border-radius: 20px; padding: 8px 16px; }
+  .checkTitle { padding: 10px 0 0; }
+  .checklist li { padding: 12px 0; font-size: 14px; }
+  .stat { border-radius: 20px; padding: 18px 16px; }
+  .stat > b { font-size: 40px; }
+  .statText { font-size: 14px; }
+  .statTall > b { font-size: 44px; }
+  .secure { border-radius: 20px; padding: 20px 16px; display: flex; flex-direction: column; gap: 16px; }
+  .secureText b { font-size: 20px; }
+  .secureText p { font-size: 14px; }
+  .quote { border-radius: 20px; padding: 20px 18px; }
+  .quote > span { font-size: 56px; }
+  .quote > b { font-size: 17px; }
+  .strip { border-radius: 20px; padding: 20px 16px; flex-direction: column; align-items: stretch; gap: 14px; }
+  .stripText b { font-size: 18px; }
+  .stripText > span:last-child > span { font-size: 14px; }
+  .req { border-radius: 20px; padding: 4px 16px; }
+  .reqRow { display: flex; flex-direction: column; align-items: stretch; gap: 4px; padding: 14px 0; }
+  .reqVal b { font-size: 15px; }
+  .copyAll { align-self: stretch; }
+}

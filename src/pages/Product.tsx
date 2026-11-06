@@ -71,18 +71,36 @@ function Gallery({ p }: { p: ProductDetail }) {
 
 function BuyBox({ p }: { p: ProductDetail }) {
   const [qty, setQty] = useState(1);
-  const priced = p.price != null;
+  const [vi, setVi] = useState(0);
+  const v = p.variants?.options[vi];
+  const price = v ? v[1] : p.price;
+  const priced = price != null;
   const st = useStore();
   const item = itemOf(p);
+  // Each variant is its own cart line; favourites and compare keep the product itself.
+  const cartItem = v ? { ...item, key: `${item.key}~${v[0]}`, name: `${p.name}, ${p.variants!.title.toLowerCase()} ${v[0]}`, price: `${fmt(v[1])} ₸` } : item;
   const faved = st.fav.includes(item.key);
   return (
     <div className={s.buy}>
+      {p.variants && (
+        <div className={s.variants}>
+          <span className={s.varHead}><b id="variant-title">{p.variants.title}</b><span>влияет на цену</span></span>
+          <div role="radiogroup" aria-labelledby="variant-title" className={s.varRow}>
+            {p.variants.options.map(([label, pr], i) => (
+              <button key={label} type="button" role="radio" aria-checked={i === vi} className={`${s.varBtn} ${i === vi ? s.varOn : ''}`} onClick={() => setVi(i)}>
+                {label}
+                <small>{i === 0 ? 'базовая' : <><span className="desktop-only">+{fmt(pr - p.variants!.options[0][1])}</span><span className="mobile-only">+{((pr - p.variants!.options[0][1]) / 1e6).toFixed(1).replace('.', ',')} млн</span></>}</small>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
       <div className={s.priceRow}>
         <div className={s.priceCol}>
-          <span className={s.price}>{priced ? `${p.priceFrom ? 'от ' : ''}${fmt(p.price!)} ₸` : 'Цена по запросу'}</span>
+          <span className={s.price}>{priced ? `${p.priceFrom && !v ? 'от ' : ''}${fmt(price!)} ₸` : 'Цена по запросу'}</span>
           <span className={s.stock}><span className={s.stockDot} />{priced ? 'Под заказ · срок поставки уточнит менеджер' : 'Наличие и цену уточнит менеджер'}</span>
         </div>
-        {priced && p.price! >= 100000 && <a href="#" className={s.inst}>0‑0‑24 · от {fmt(Math.round(p.price! / 24))} ₸/мес</a>}
+        {priced && price! >= 100000 && <a href="#" className={s.inst}>0‑0‑24 · от {fmt(Math.ceil(price! / 24))} ₸/мес</a>}
       </div>
       <div className={s.actions}>
         <div role="group" aria-label="Количество" className={`${s.qty} desktop-only`}>
@@ -90,7 +108,7 @@ function BuyBox({ p }: { p: ProductDetail }) {
           <span>{qty}</span>
           <button type="button" aria-label="Больше" onClick={() => setQty((q) => q + 1)}><Icon name="plus" size={18} stroke={2} /></button>
         </div>
-        <button type="button" className={s.cart} onClick={() => { if (priced) store.addToCart(item, qty); }}><Icon name="cart" size={20} stroke={1.9} />{priced ? 'В корзину' : 'Узнать цену'}</button>
+        <button type="button" className={s.cart} onClick={() => { if (priced) store.addToCart(cartItem, qty); }}><Icon name="cart" size={20} stroke={1.9} />{priced ? 'В корзину' : 'Узнать цену'}</button>
         <button type="button" aria-label={faved ? 'Убрать из избранного' : 'В избранное'} aria-pressed={faved} className={`${s.round} ${faved ? s.favOn : ''} desktop-only`} onClick={() => store.toggleFav(item)}><FavIcon on={faved} /></button>
         <button type="button" aria-label={st.compare.includes(item.key) ? 'Убрать из сравнения' : 'Добавить к сравнению'} aria-pressed={st.compare.includes(item.key)} className={`${s.round} ${st.compare.includes(item.key) ? s.cmpOn : ''}`} onClick={() => store.toggleCompare(item)}><Icon name="compare" size={20} stroke={1.8} /></button>
       </div>

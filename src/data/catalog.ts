@@ -9,6 +9,8 @@ export type ProductDetail = {
   facts: [string, string][]; quick: string[]; desc: string[]; specs: [string, string][]; kit: string[];
   simTitle: string; simAll: string; promo: boolean; physical: boolean; verify: boolean;
   similar: { name: string; brand: string; price: string | null; img: string | null }[];
+  /** Options that change the price, e.g. angular accuracy of a total station. */
+  variants?: { title: string; options: [string, number][] };
 };
 
 const raw: ProductDetail[] = [
@@ -173,6 +175,7 @@ const raw: ProductDetail[] = [
   "name": "Электронный тахеометр Trimble S5 Autolock, DR Plus",
   "price": 10417000,
   "priceFrom": true,
+  "variants": { "title": "Угловая точность", "options": [["5″", 10417000], ["3″", 11150000], ["2″", 12300000], ["1″", 14680000]] },
   "lede": "Тахеометр с автонаведением на призму, безотражательным режимом DR Plus и приводом MagDrive.",
   "shots": [
    {

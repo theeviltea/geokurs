@@ -63,7 +63,8 @@ export const helpLinks: HelpLink[] = [
   { name: "Оплата", text: "Способы оплаты заказа", icon: "wallet", href: "/help/payment" },
   { name: "Гарантия на товар", text: "Условия гарантийного обслуживания", icon: "badge", href: "/help/warranty" },
   { name: "Покупка в кредит", text: "Кредит и рассрочка 0‑0‑24", icon: "percent", href: "/help/credit" },
-  { name: "Метрология и сервис", text: "Поверка, калибровка и ремонт", icon: "gauge", href: "/help/metrology-service" },
+  { name: "Метрология", text: "Поверка и сертификаты", icon: "gauge", href: "/help/metrology" },
+  { name: "Сервис и ремонт", text: "Ремонт и диагностика приборов", icon: "wrench", href: "/help/service" },
   { name: "Банковские реквизиты", text: "Для оплаты по счёту", icon: "doc", href: "/help/requisites" },
 ];
 

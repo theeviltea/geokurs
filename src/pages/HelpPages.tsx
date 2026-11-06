@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { CallStrip, Checklist, Grid, HelpLayout, Method, Note, Quote, Section, Stat } from '../components/help/HelpBlocks';
 import s from '../components/help/Help.module.css';
-import { CREDIT_SVG, DOC_SVG, METRO_SVG, PAY_SVG, ROUTE_SVG, SHIELD_SVG } from '../components/help/art';
+import { CREDIT_SVG, DOC_SVG, METRO_SVG, PAY_SVG, ROUTE_SVG, SERVICE_SVG, SHIELD_SVG } from '../components/help/art';
 import { Icon } from '../components/Icon';
 import { SmartLink } from '../components/SmartLink';
 import { Steps } from '../components/services/ServiceBlocks';
@@ -143,27 +143,52 @@ export function CreditPage() {
   );
 }
 
-export function MetroServicePage() {
-  const go = (href: string, label: string) => <SmartLink href={href} className={s.methodBtn}>{label}<Icon name="arrowRight" size={16} stroke={2} /></SmartLink>;
+const go = (href: string, label: string) => <SmartLink href={href} className={s.methodBtn}>{label}<Icon name="arrowRight" size={16} stroke={2} /></SmartLink>;
+
+export function MetrologyHelpPage() {
   return (
-    <HelpLayout title="Метрология и сервис" hero={{ art: METRO_SVG, lede: 'Ежегодная метрологическая аттестация и ремонт геодезических приборов любого уровня сложности.',
-      badges: [['award', 'Сертификат за 1–2 недели'], ['doc', 'Лицензия 000764 №0146016'], ['shield', 'Сертификат Trimble']] }}>
+    <HelpLayout title="Метрология" hero={{ art: METRO_SVG, lede: 'Ежегодная метрологическая аттестация геодезических приборов из реестра Республики Казахстан.',
+      badges: [['award', 'Сертификат за 1–2 недели'], ['calendar', 'Аттестация каждый год'], ['doc', 'Приборы из реестра РК']] }}>
       <Grid cols={2}>
         <Method icon="gauge" title="Метрологическая служба" text="Делаем метрологические сертификаты на всё оборудование из реестра Республики Казахстан."
           points={['Приборы нужно аттестовать каждый год', 'Сертификат готов через 1–2 недели', 'Принимаем в офисе GEOKURS или у партнёров']} action={go('/services/metrology', 'Поверочная лаборатория')} />
-        <Method icon="wrench" title="Сервисный центр" text="Оснащён современным оборудованием для ремонта приборов любой сложности."
-          points={['Лицензия 000764 №0146016', 'Сертификат Trimble на ремонт в Казахстане', 'Инженеры ежегодно обучаются у производителей']} action={go('/services/repair', 'Сервисный центр')} />
+        <div className={s.stack}>
+          <Note icon="pin" title="Где сдать прибор" text="В офисе GEOKURS или у наших партнёров — подскажем ближайший пункт по телефону." />
+          <Note white icon="award" title="Сертификат о поверке" text="Оформляем метрологический сертификат на прибор после аттестации." />
+          <Note white icon="wrench" title="Точность не соответствует?" text={<>По вашему желанию проведём диагностику и ремонт в <SmartLink href="/help/service">сервисном центре</SmartLink>.</>} />
+        </div>
       </Grid>
       <Steps title="Как пройти поверку" steps={[
         { icon: 'truck', title: 'Привезите прибор', text: 'В офис GEOKURS или партнёров' }, { icon: 'gauge', title: 'Аттестация', text: 'Проверим соответствие паспортной точности' },
         { icon: 'award', title: 'Сертификат', text: 'Будет готов через 1–2 недели' }, { icon: 'wrench', title: 'Диагностика', text: 'Если точность не та — по вашему желанию' }]} />
+      <CallStrip icon="gauge" title="Пора на поверку?" text="Позвоните — подскажем сроки и куда привезти прибор." />
+    </HelpLayout>
+  );
+}
+
+export function ServiceHelpPage() {
+  return (
+    <HelpLayout title="Сервис и ремонт" hero={{ art: SERVICE_SVG, lede: 'Сервисный центр GEOKURS ремонтирует геодезические приборы любого уровня сложности.',
+      badges: [['doc', 'Лицензия 000764 №0146016'], ['shield', 'Сертификат Trimble'], ['wrench', 'Ремонт любой сложности']] }}>
+      <Grid cols={2}>
+        <Method icon="wrench" title="Сервисный центр" text="Оснащён современным оборудованием для ремонта приборов любой сложности."
+          points={['Лицензия 000764 №0146016', 'Сертификат Trimble на ремонт в Казахстане', 'Инженеры ежегодно обучаются у производителей']} action={go('/services/repair', 'Сервисный центр')} />
+        <div className={s.stack}>
+          <Note icon="shield" title="Гарантийный ремонт" text="Для приборов на гарантии — в нашем сервисном центре: Алматы, ул. Абая, 150." />
+          <Note white icon="gauge" title="После ремонта — поверка" text={<>Метрологическую аттестацию можно <SmartLink href="/help/metrology">пройти у нас же</SmartLink>.</>} />
+        </div>
+      </Grid>
+      <Steps title="Как сдать прибор в ремонт" steps={[
+        { icon: 'call', title: 'Обращение', text: 'Позвоните или напишите в WhatsApp' }, { icon: 'truck', title: 'Передача', text: 'Привезите или отправьте прибор в Алматы' },
+        { icon: 'crosshair', title: 'Диагностика', text: 'Найдём причину неисправности' }, { icon: 'wrench', title: 'Ремонт', text: 'Гарантийный или негарантийный' }]} />
       <Section title="Основные направления" lede="Подробности — по телефонам компании или в офисе.">
         <Grid cols={3}>
           <Note white icon="wrench" title="Гарантийный и негарантийный ремонт" text="Trimble, Nikon, Spectra Geospatial, CST/berger, Bosch; оптические нивелиры и теодолиты любых производителей." />
           <Note white icon="crosshair" title="Диагностика и юстировка" text="Геодезического оборудования любых производителей." />
-          <Note white icon="award" title="Сертификат о поверке" text="Оформление метрологического сертификата." />
+          <Note white icon="award" title="Обучение инженеров" text="Инженеры сервисного центра ежегодно проходят обучение у производителей." />
         </Grid>
       </Section>
+      <CallStrip icon="wrench" title="Прибор сломался?" text="Позвоните — подскажем, как передать его в сервисный центр." />
     </HelpLayout>
   );
 }

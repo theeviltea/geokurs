@@ -21,7 +21,7 @@ import { SupportPage } from './pages/SupportPage';
 import { MetrologyPage } from './pages/MetrologyPage';
 import { GnssBrandsPage } from './pages/GnssBrandsPage';
 import { AboutPage } from './pages/AboutPage';
-import { CreditPage, DeliveryPage, MetroServicePage, PaymentPage, RequisitesPage, WarrantyPage } from './pages/HelpPages';
+import { CreditPage, DeliveryPage, MetrologyHelpPage, PaymentPage, RequisitesPage, ServiceHelpPage, WarrantyPage } from './pages/HelpPages';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -59,7 +59,9 @@ export function App() {
         <Route path="/help/payment" element={<PaymentPage />} />
         <Route path="/help/warranty" element={<WarrantyPage />} />
         <Route path="/help/credit" element={<CreditPage />} />
-        <Route path="/help/metrology-service" element={<MetroServicePage />} />
+        <Route path="/help/metrology" element={<MetrologyHelpPage />} />
+        <Route path="/help/service" element={<ServiceHelpPage />} />
+        <Route path="/help/metrology-service" element={<Navigate to="/help/metrology" replace />} />
         <Route path="/help/requisites" element={<RequisitesPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

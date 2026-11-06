@@ -184,8 +184,23 @@
 .clearBtn:hover { color: var(--c-ink); }
 .cmpTable { padding: 8px 8px 24px; }
 :global(.desktop-only).cmpTable { display: block; }
-.cmpHead { position: sticky; top: 69px; z-index: 2; background: var(--c-white); border-radius: 22px 22px 0 0; display: grid; grid-template-columns: 280px minmax(0, 1fr); border-bottom: 1px solid var(--c-surface-sunken); }
-.cmpLead { padding: 24px 20px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; font-size: 14px; color: var(--c-gray-600); }
+.cmpHeadWrap { position: sticky; top: 69px; z-index: 2; background: var(--c-white); border-radius: 22px 22px 0 0; border-bottom: 1px solid var(--c-surface-sunken); }
+.cmpHeadScroll { overflow: hidden; border-radius: 22px 22px 0 0; }
+.cmpHead { display: grid; grid-template-columns: 292px minmax(0, 1fr); padding-right: 12px; } /* 12px + 280px label column of the rows below */
+.cmpBodyScroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.cmpFade { position: absolute; top: 0; bottom: 0; width: 40px; pointer-events: none; }
+.cmpFadeL { left: 292px; background: linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0)); }
+.cmpFadeR { right: 0; border-top-right-radius: 22px; background: linear-gradient(270deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0)); }
+.cmpArrows { margin-top: 10px; display: flex; gap: 8px; }
+.cmpArrows button { width: 40px; height: 40px; border: 1px solid var(--c-line); border-radius: 20px; background: var(--c-white); color: var(--c-ink); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.cmpArrows button:hover:not(:disabled) { border-color: var(--c-ink); }
+.cmpArrows button:disabled { opacity: 0.35; cursor: default; }
+.cmpTabs { min-width: 0; display: flex; gap: 8px; overflow-x: auto; }
+.cmpTabs .chip { flex: none; border: 0; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.chipOff { background: var(--c-white); color: var(--c-ink); }
+.chipOff span { background: var(--c-bg); color: var(--c-gray-600); }
+.chipOff:hover { background: var(--c-surface-sunken); }
+.cmpLead { position: sticky; left: 0; z-index: 3; background: var(--c-white); padding: 24px 20px 24px 32px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; font-size: 14px; color: var(--c-gray-600); }
 .cmpLead b { font-family: var(--font-display); font-size: 20px; color: var(--c-ink); }
 .cmpCols { display: grid; }
 .cmpProd { position: relative; min-width: 0; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
@@ -197,11 +212,12 @@
 .cmpName:hover { color: var(--c-green-600); }
 .cmpBuy { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .cmpBuy b { font-size: 19px; white-space: nowrap; }
-.buySm { height: 40px; padding: 0 16px; border: 0; border-radius: 20px; background: var(--c-green-600); color: var(--c-white); font-size: 14px; font-weight: 600; cursor: pointer; }
+.buySm { height: 40px; padding: 0 16px; border: 0; border-radius: 20px; background: var(--c-green-600); color: var(--c-white); font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .buySm:hover { background: var(--c-green-700); }
+.cmpGroup span { position: sticky; left: 12px; }
 .cmpGroup { margin: 20px 12px 4px; padding: 10px 12px; border-radius: 12px; background: var(--c-bg); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-gray-600); }
 .cmpRow { display: grid; grid-template-columns: 280px minmax(0, 1fr); margin: 0 12px; border-bottom: 1px solid var(--c-surface-sunken); }
-.cmpLabel { padding: 14px 12px; font-size: 14px; color: var(--c-gray-600); }
+.cmpLabel { position: sticky; left: 0; z-index: 1; background: var(--c-white); padding: 14px 12px; font-size: 14px; color: var(--c-gray-600); }
 .cmpRow .cmpCols span { padding: 14px 16px; font-size: 15px; line-height: 1.4; }
 .diff { font-weight: 600; }
 .pager { align-self: flex-end; align-items: center; gap: 6px; font-size: 13px; color: var(--c-gray-600); }

@@ -6,7 +6,7 @@ import { SimilarStrip } from '../components/SimilarStrip';
 import { SmartLink } from '../components/SmartLink';
 import { productBySlug, type ProductDetail } from '../data/catalog';
 import { img } from '../data/images';
-import { navProducts } from '../data/navigation';
+import { navCategories, navProducts } from '../data/navigation';
 import { FavIcon } from '../components/ProductCard';
 import { store, useStore, type Item } from '../lib/store';
 
@@ -26,7 +26,7 @@ const fmt = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 /** Cart / favourites entry for a product page (menu key when the product is in the menu data). */
 const itemOf = (p: ProductDetail): Item => {
   const nav = navProducts.find((x) => x.href === `/product/${p.slug}`);
-  return { key: nav?.key ?? `p:${p.slug}`, name: p.name, brand: p.brand, price: p.price != null ? `${p.priceFrom ? 'от ' : ''}${fmt(p.price)} ₸` : null, image: p.shots[0]?.src ?? '', cat: nav?.cat, href: `/product/${p.slug}` };
+  return { key: nav?.key ?? `p:${p.slug}`, name: p.name, brand: p.brand, price: p.price != null ? `${p.priceFrom ? 'от ' : ''}${fmt(p.price)} ₸` : null, image: p.shots[0]?.src ?? '', cat: nav?.cat ?? navCategories.find((c) => c.name === p.cat)?.key, href: `/product/${p.slug}` };
 };
 
 type TabId = 'desc' | 'specs' | 'kit' | 'service';

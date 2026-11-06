@@ -37,6 +37,8 @@
 .secIcon { flex: none; width: 72px; height: 72px; border-radius: 20px; background: var(--c-white); display: flex; align-items: center; justify-content: center; }
 .secIcon img { max-width: 76%; max-height: 58px; object-fit: contain; }
 .secList { background: var(--c-white); border-radius: 24px; padding: 4px 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+/* Two columns: the bottom item of each column has no divider (the last two items when the count is even or odd). */
+.secList > :nth-last-child(-n+2) { border-bottom: 0; }
 .secRow { min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--c-surface-sunken); color: var(--c-ink); font-size: 16px; font-weight: 500; }
 .secRow svg { flex: none; }
 .secRow:hover { color: var(--c-green-600); }
@@ -72,6 +74,7 @@
   .secIcon { width: 64px; height: 64px; border-radius: 18px; }
   .secHead .h1 { font-size: 26px; }
   .secList { grid-template-columns: minmax(0, 1fr); border-radius: 20px; padding: 4px 16px; }
+  .secList > :nth-last-child(2) { border-bottom: 1px solid var(--c-surface-sunken); }
   .secList > :last-child { border-bottom: 0; }
   .pop { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px; }
   .mini { flex: none; width: 156px; }

@@ -4,7 +4,7 @@ export const ADDRESS = 'Алматы, пр. Абая 150, н.п. 1А';
 
 export const mainNav = [
   { label: 'Каталог', href: '/catalog/gnss-oborudovanie', dropdown: true },
-  { label: 'Акции', href: '/promo/baza-rover' },
+  { label: 'Акции', href: '/promo' },
   { label: 'Как купить', href: '#', dropdown: true },
   { label: 'Сервис', href: 'https://geokurs.kz/services/' },
   { label: 'О компании', href: '/about' },
@@ -14,7 +14,7 @@ export const mobileNav = [
   { label: 'Каталог', href: '/catalog/gnss-oborudovanie' },
   { label: 'Услуги', href: 'https://geokurs.kz/services/' },
   { label: 'О компании', href: '/about' },
-  { label: 'Акции', href: '/promo/baza-rover' },
+  { label: 'Акции', href: '/promo' },
   { label: 'Как купить', href: '#' },
   { label: 'Контакты', href: 'https://geokurs.kz/contacts' },
 ];
@@ -29,5 +29,5 @@ export const socials = [
 export const footerNav = [
   { title: 'Каталог', links: [['Тахеометры', '#'], ['GNSS-оборудование', '/catalog/gnss-oborudovanie'], ['Нивелиры', '#'], ['Теодолиты', '#'], ['Дальномеры', '#'], ['Аксессуары', '#']] },
   { title: 'Помощь', links: [['Доставка', '/help/delivery'], ['Оплата', '/help/payment'], ['Покупка в кредит', '/help/credit'], ['Гарантия', '/help/warranty'], ['Банковские реквизиты', '/help/requisites']] },
-  { title: 'Компания', links: [['О компании', '/about'], ['Акции', '/promo/baza-rover'], ['Новости', '/news/novaya-bazovaya-stanciya-v-zhezkazgane'], ['Корпоративный сайт', 'https://geokurs.kz']] },
+  { title: 'Компания', links: [['О компании', '/about'], ['Акции', '/promo'], ['Новости', '/news/novaya-bazovaya-stanciya-v-zhezkazgane'], ['Корпоративный сайт', 'https://geokurs.kz']] },
 ] as const;

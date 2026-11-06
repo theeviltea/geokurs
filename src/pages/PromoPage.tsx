@@ -27,7 +27,7 @@ export function PromoPage() {
   return (
     <main>
       <div className={`container ${s.top}`}>
-        <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Акции', href: '/promo/baza-rover' }, { label: 'Комплект база + ровер' }]} back={{ label: 'Акции', href: '/' }} />
+        <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Акции', href: '/promo' }, { label: 'Комплект база + ровер' }]} back={{ label: 'Акции', href: '/promo' }} />
       </div>
 
       <section className={`container ${s.heroWrap}`}>
@@ -120,11 +120,11 @@ export function PromoPage() {
         <div className={`container ${s.sheetWrap}`}>
           <h2 className={`h2 ${s.h2}`}>Другие акции</h2>
           <div className={s.others}>
-            <a href="#" className={`${s.other} ${s.otherGreen}`}>
+            <SmartLink href="/help/credit" className={`${s.other} ${s.otherGreen}`}>
               <span className={s.otherEyebrow}>Рассрочка</span>
               <span className={s.otherCopy}><span className={s.big}>0‑0‑24</span><span className={s.otherNote}>0 ₸ первый взнос, 0% переплаты, 24 месяца</span></span>
               <img src={img('p-s5.webp')} alt="" className={s.otherS5} />
-            </a>
+            </SmartLink>
             <a href="https://geokurs.kz/services/trade-in" className={`${s.other} ${s.otherWhite}`}>
               <span className={s.otherEyebrow}>Trade-in</span>
               <span className={s.otherCopy}><span className={s.otherTitle}>Обменяйте старый прибор на i73+</span><span className={`${s.otherNote} desktop-only`}>Сдайте приёмник в зачёт стоимости нового.</span></span>

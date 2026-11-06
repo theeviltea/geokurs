@@ -9,6 +9,7 @@ import { Home } from './pages/Home';
 import { NewsPage } from './pages/NewsPage';
 import { Product } from './pages/Product';
 import { PromoPage } from './pages/PromoPage';
+import { PromosPage } from './pages/PromosPage';
 import { AuthPage } from './pages/AuthPage';
 import { AccountPage } from './pages/AccountPage';
 import { CartPage } from './pages/CartPage';
@@ -41,6 +42,7 @@ export function App() {
         <Route path="/catalog/gnss-oborudovanie/priemniki" element={<GnssBrandsPage />} />
         <Route path="/product/:slug" element={<Product />} />
         <Route path="/news/novaya-bazovaya-stanciya-v-zhezkazgane" element={<NewsPage />} />
+        <Route path="/promo" element={<PromosPage />} />
         <Route path="/promo/baza-rover" element={<PromoPage />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/register" element={<AuthPage mode="register" />} />

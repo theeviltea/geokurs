@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useState } from 'react';
 import { docUrl, img } from '../../data/images';
 import { Icon } from '../Icon';
+import { Lightbox, type LightboxItem } from './Lightbox';
 import s from './Certificates.module.css';
 
 type Cert = { id: string; issuer: string; title: string; sub: string; wide?: boolean };
@@ -13,46 +13,7 @@ export const CERTS: Cert[] = [
   { id: 'trimble-service', issuer: 'Trimble', title: 'Авторизованный сервисный техник Trimble', sub: 'Обучение S Series Total Stations · 10.01.2026', wide: true },
 ];
 
-/** Lightbox: the certificate large, with prev/next, download and keyboard control (Esc, ←, →). */
-function Viewer({ index, onClose, onGo }: { index: number; onClose: () => void; onGo: (i: number) => void }) {
-  const c = CERTS[index];
-  const close = useRef<HTMLButtonElement>(null);
-  const go = useCallback((d: number) => onGo((index + d + CERTS.length) % CERTS.length), [index, onGo]);
-  useEffect(() => {
-    const prev = document.activeElement as HTMLElement | null;
-    close.current?.focus();
-    const body = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = body; prev?.focus?.(); };
-  }, []);
-  useEffect(() => {
-    const key = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      else if (e.key === 'ArrowRight') go(1);
-      else if (e.key === 'ArrowLeft') go(-1);
-    };
-    window.addEventListener('keydown', key);
-    return () => window.removeEventListener('keydown', key);
-  }, [go, onClose]);
-  return createPortal(
-    <div className={s.overlay} role="dialog" aria-modal="true" aria-label={c.title} onClick={onClose}>
-      <button ref={close} type="button" aria-label="Закрыть" className={s.close} onClick={onClose}><Icon name="close" size={22} stroke={2} /></button>
-      <button type="button" aria-label="Предыдущий сертификат" className={`${s.nav} ${s.prev}`} onClick={(e) => { e.stopPropagation(); go(-1); }}><Icon name="chevronLeft" size={24} stroke={2} /></button>
-      <button type="button" aria-label="Следующий сертификат" className={`${s.nav} ${s.next}`} onClick={(e) => { e.stopPropagation(); go(1); }}><Icon name="chevronRight" size={24} stroke={2} /></button>
-      <figure key={c.id} className={`${s.figure} ${c.wide ? s.figureWide : ''}`} onClick={(e) => e.stopPropagation()}>
-        <img src={img(`cert-${c.id}.webp`)} alt={c.title} />
-        <figcaption className={s.caption}>
-          <span className={s.capText}><b>{c.title}</b><span>{c.issuer} · {c.sub}</span></span>
-          <span className={s.capTools}>
-            <span className={s.counter}>{index + 1} / {CERTS.length}</span>
-            <a href={docUrl(`geokurs-${c.id}.pdf`)} download={`geokurs-${c.id}.pdf`} className={s.dl}><Icon name="download" size={18} stroke={2} />PDF</a>
-          </span>
-        </figcaption>
-      </figure>
-    </div>,
-    document.body,
-  );
-}
+const ITEMS: LightboxItem[] = CERTS.map((c) => ({ src: img(`cert-${c.id}.webp`), alt: c.title, title: c.title, sub: `${c.issuer} · ${c.sub}`, wide: c.wide, download: { href: docUrl(`geokurs-${c.id}.pdf`), name: `geokurs-${c.id}.pdf` } }));
 
 /** PDF file mark in the site palette: green sheet, mint folded corner, white label. */
 const PdfBadge = () => (
@@ -88,7 +49,7 @@ export function Certificates() {
           </button>
         ))}
       </div>
-      {open !== null && <Viewer index={open} onClose={() => setOpen(null)} onGo={setOpen} />}
+      {open !== null && <Lightbox items={ITEMS} index={open} onClose={() => setOpen(null)} onGo={setOpen} noun="сертификат" />}
     </section>
   );
 }

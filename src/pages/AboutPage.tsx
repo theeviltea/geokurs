@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Certificates } from '../components/about/Certificates';
+import { Gallery } from '../components/about/Gallery';
 import { Branches } from '../components/Branches';
 import { Icon } from '../components/Icon';
 import { SmartLink } from '../components/SmartLink';
@@ -105,6 +106,8 @@ export function AboutPage() {
         </section>
 
         <Certificates />
+
+        <Gallery />
       </main>
 
       <Branches />

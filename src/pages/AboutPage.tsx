@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Certificates } from '../components/about/Certificates';
 import { Branches } from '../components/Branches';
 import { Icon } from '../components/Icon';
 import { SmartLink } from '../components/SmartLink';
@@ -102,6 +103,8 @@ export function AboutPage() {
             })}
           </div>
         </section>
+
+        <Certificates />
       </main>
 
       <Branches />

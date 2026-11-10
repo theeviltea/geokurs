@@ -22,6 +22,12 @@ const images = Object.fromEntries(
     .map((f) => [f, `data:${mime[extname(f)]};base64,${readFileSync(join(imgDir, f)).toString('base64')}`]),
 );
 
+// Downloadable documents (certificates) — inlined too so «Скачать PDF» works in the preview.
+const docDir = 'public/docs';
+const docs = Object.fromEntries(
+  readdirSync(docDir).filter((f) => extname(f) === '.pdf').map((f) => [f, `data:application/pdf;base64,${readFileSync(join(docDir, f)).toString('base64')}`]),
+);
+
 // The artifact host wraps the page in its own doctype/head/body skeleton, so the file starts at <title>.
 const html = `<title>GEOKURS Online Preview</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -31,7 +37,7 @@ const html = `<title>GEOKURS Online Preview</title>
 <style>${css}
 html,body{background:#F4F6F2;color:#0B0F0C}</style>
 <div id="root"></div>
-<script>window.__GK_IMAGES=${JSON.stringify(images)};</script>
+<script>window.__GK_IMAGES=${JSON.stringify(images)};window.__GK_DOCS=${JSON.stringify(docs)};</script>
 <script type="module">${js}</script>
 `;
 

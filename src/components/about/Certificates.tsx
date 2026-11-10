@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { docUrl, img } from '../../data/images';
 import { Icon } from '../Icon';
@@ -54,7 +54,16 @@ function Viewer({ index, onClose, onGo }: { index: number; onClose: () => void; 
   );
 }
 
-/** «Сертификаты и авторизации»: document previews on soft stages; a click opens the lightbox. */
+/** PDF file mark in the site palette: green sheet, mint folded corner, white label. */
+const PdfBadge = () => (
+  <svg aria-hidden="true" className={s.pdf} viewBox="0 0 44 52" fill="none">
+    <path d="M6 0h22l16 16v30a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6Z" fill="#227831" />
+    <path d="M28 0v10a6 6 0 0 0 6 6h10L28 0Z" fill="#7BDB84" />
+    <text x="20" y="40" textAnchor="middle" fill="#FFFFFF" fontFamily="Montserrat, 'Golos Text', sans-serif" fontSize="11.5" fontWeight="800" letterSpacing="0.04em">PDF</text>
+  </svg>
+);
+
+/** «Сертификаты и авторизации»: the top of each document peeks out of a soft stage; a click opens the lightbox. */
 export function Certificates() {
   const [open, setOpen] = useState<number | null>(null);
   return (
@@ -67,8 +76,8 @@ export function Certificates() {
         {CERTS.map((c, i) => (
           <button key={c.id} type="button" data-reveal={i * 90} className={s.card} onClick={() => setOpen(i)} aria-label={`Открыть: ${c.title}`}>
             <span className={s.stage}>
-              <span aria-hidden="true" className={s.rings} />
-              <img className={`${s.doc} ${c.wide ? s.docWide : ''}`} style={{ "--tilt": `${i % 2 ? 2.5 : -2.5}deg` } as CSSProperties} src={img(`cert-${c.id}-thumb.webp`)} alt="" loading="lazy" />
+              <PdfBadge />
+              <img className={`${s.doc} ${c.wide ? s.docWide : ''}`} src={img(`cert-${c.id}-thumb.webp`)} alt="" loading="lazy" />
               <span className={s.zoom} aria-hidden="true"><Icon name="zoomIn" size={20} stroke={2} /></span>
             </span>
             <span className={s.meta}>

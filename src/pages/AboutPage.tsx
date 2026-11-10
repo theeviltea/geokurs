@@ -53,8 +53,8 @@ export function AboutPage() {
       <section className={s.hero}>
         <div ref={heroFx} aria-hidden="true" className={s.topo} dangerouslySetInnerHTML={{ __html: TOPO_SVG }} />
         <div className={`container ${s.heroBody}`}>
-          <h1 data-reveal="80" className={s.h1}>Точность — <span>наша профессия</span></h1>
-          <p data-reveal="160" className={s.lede}>GEOKURS — высокотехнологичный бизнес, который развивается в тесном партнёрстве с заказчиками и поставщиками геодезического и строительно-измерительного оборудования.</p>
+          <h1 data-reveal="80" className={s.h1}>Ваши цели&nbsp;— <span style={{ whiteSpace: 'nowrap' }}>наш курс</span></h1>
+          <p data-reveal="160" className={s.lede}>GEOKURS объединяет передовые геодезические технологии, уникальные отраслевые решения, собственную сеть базовых станций по Казахстану и полный комплекс сервисного и технического сопровождения.</p>
         </div>
       </section>
 

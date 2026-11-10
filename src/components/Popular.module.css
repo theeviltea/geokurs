@@ -5,15 +5,15 @@
 .tabOn { border-color: var(--c-ink); background: var(--c-ink); color: var(--c-white); font-weight: 600; }
 .allLink { font-size: 14px; font-weight: 600; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap: 16px; }
-.allCard { position: relative; overflow: hidden; border-radius: 24px; background: var(--c-green-600); color: var(--c-white); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; }
+.allCard { position: relative; overflow: hidden; border-radius: 24px; background: var(--c-green-600); color: var(--c-white); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; }
 .allCard:hover { color: var(--c-white); background: var(--c-green-700); }
-.allTitle { font-family: var(--font-display); font-size: 24px; font-weight: 600; line-height: 1.15; }
+.allTitle { font-family: var(--font-display); font-size: 22px; line-height: 1.15; font-weight: 700; }
 .allText { position: relative; display: flex; flex-direction: column; gap: 6px; }
 .allSub { font-size: 14px; color: var(--c-green-100); }
-.allRings { position: absolute; right: -130px; bottom: -130px; width: 400px; height: 400px; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.allRings { position: absolute; right: -90px; bottom: -90px; width: 260px; height: 260px; transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .allCard:hover .allRings { transform: rotate(45deg) scale(1.05); }
 @media (prefers-reduced-motion: reduce) { .allRings { transition: none; } }
-.allArrow { position: relative; display: inline-flex; align-self: flex-end; width: 64px; height: 64px; border-radius: 32px; background: var(--c-white); color: var(--c-green-600); align-items: center; justify-content: center; }
+.allArrow { position: relative; width: 52px; height: 52px; border-radius: 26px; background: var(--c-white); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
 
 @media (max-width: 767px) {
   .wrap { padding: 32px 0 0; }

@@ -27,19 +27,17 @@ export function Popular() {
           <ProductCard key={p.id} product={p} variant="carousel" meta={p.sku ? `Под заказ · ${p.sku}` : `Под заказ · ${p.brand}`} />
         ))}
         <SmartLink href="/catalog/gnss-oborudovanie" className={`${s.allCard} desktop-only`}>
-          {/* same ring + crosshair pattern as the «Весь каталог» tile in the catalog grid, scaled to the taller card */}
+          {/* same look as the «Весь каталог» tile in the catalog grid: rings, title, sub, arrow bottom-left */}
           <svg className={s.allRings} viewBox="0 0 260 260" fill="none" aria-hidden="true">
             <circle cx="130" cy="130" r="125" stroke="#FFFFFF" strokeOpacity="0.14" />
             <circle cx="130" cy="130" r="80" stroke="#FFFFFF" strokeOpacity="0.14" />
-            <circle cx="130" cy="130" r="36" stroke="#FFFFFF" strokeOpacity="0.14" />
             <path d="M130 0v260M0 130h260" stroke="#FFFFFF" strokeOpacity="0.14" />
-            <circle cx="130" cy="130" r="4" fill="#FFFFFF" fillOpacity="0.35" />
           </svg>
           <span className={s.allText}>
             <span className={s.allTitle}>Весь каталог</span>
             <span className={s.allSub}>12 разделов: от GNSS до аксессуаров</span>
           </span>
-          <span className={s.allArrow}><Icon name="arrowUpRight" size={26} stroke={2} /></span>
+          <span className={s.allArrow} aria-hidden="true"><Icon name="arrowRight" size={22} stroke={2} /></span>
         </SmartLink>
       </div>
     </div>

@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { Crumbs } from '../components/Crumbs';
+import { DemoModal } from '../components/demo/DemoModal';
 import { Icon } from '../components/Icon';
 import { SimilarStrip } from '../components/SimilarStrip';
 import { SmartLink } from '../components/SmartLink';
@@ -72,6 +73,8 @@ function Gallery({ p }: { p: ProductDetail }) {
 function BuyBox({ p }: { p: ProductDetail }) {
   const [qty, setQty] = useState(1);
   const [vi, setVi] = useState(0);
+  const [demo, setDemo] = useState(false);
+  const closeDemo = useCallback(() => setDemo(false), []);
   const v = p.variants?.options[vi];
   const price = v ? v[1] : p.price;
   const priced = price != null;
@@ -112,7 +115,11 @@ function BuyBox({ p }: { p: ProductDetail }) {
         <button type="button" aria-label={faved ? 'Убрать из избранного' : 'В избранное'} aria-pressed={faved} className={`${s.round} ${faved ? s.favOn : ''} desktop-only`} onClick={() => store.toggleFav(item)}><FavIcon on={faved} /></button>
         <button type="button" aria-label={st.compare.includes(item.key) ? 'Убрать из сравнения' : 'Добавить к сравнению'} aria-pressed={st.compare.includes(item.key)} className={`${s.round} ${st.compare.includes(item.key) ? s.cmpOn : ''}`} onClick={() => store.toggleCompare(item)}><Icon name="compare" size={20} stroke={1.8} /></button>
       </div>
-      <a href="#" className={s.kp}><span className="desktop-only">Запросить коммерческое предложение</span><span className="mobile-only">Запросить КП</span></a>
+      <div className={s.leadRow}>
+        <button type="button" className={s.kp} onClick={() => setDemo(true)}><Icon name="play" size={18} stroke={1.8} /><span className="desktop-only">Заказать демонстрацию</span><span className="mobile-only">Демонстрация</span></button>
+        <a href="#" className={s.kp}><Icon name="doc" size={18} stroke={1.6} />Запросить КП</a>
+      </div>
+      {demo && <DemoModal product={p.name} image={p.shots[0]?.src} onClose={closeDemo} />}
       {p.physical && (
         <ul className={s.perks}>
           <li><Icon name="truck" size={22} stroke={1.6} /><span><b>Доставка в любую точку Казахстана</b><small>Стоимость и срок рассчитает менеджер</small></span></li>

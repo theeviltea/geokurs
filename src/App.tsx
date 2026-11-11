@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { TabBar } from './components/TabBar';
+import { NotFoundPage, OfflinePage, PageErrorBoundary, ServerErrorPage, useOffline } from './components/errors/SystemPage';
 import { Toaster } from './components/Toaster';
 import { Category } from './pages/Category';
 import { Home } from './pages/Home';
@@ -31,11 +32,15 @@ function ScrollToTop() {
 }
 
 export function App() {
+  const { pathname } = useLocation();
+  const [offline, recheck] = useOffline();
   return (
     <>
       <ScrollToTop />
       <Header />
       <Toaster />
+      {offline ? <OfflinePage onRetry={recheck} /> : (
+      <PageErrorBoundary resetKey={pathname}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/catalog/gnss-oborudovanie" element={<Category />} />
@@ -65,8 +70,12 @@ export function App() {
         <Route path="/help/service" element={<ServiceHelpPage />} />
         <Route path="/help/metrology-service" element={<Navigate to="/help/metrology" replace />} />
         <Route path="/help/requisites" element={<RequisitesPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/500" element={<ServerErrorPage />} />
+        <Route path="/offline" element={<OfflinePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
+      </PageErrorBoundary>
+      )}
       <Footer />
       <TabBar />
     </>

@@ -1,0 +1,56 @@
+/* System pages: 404, 500, offline */
+.page { padding-top: 56px; padding-bottom: 96px; min-height: 560px; display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 48px; align-items: center; }
+.art { grid-column: 2; grid-row: 1; height: 520px; }
+.art svg { display: block; width: 100%; height: 100%; }
+.copy { grid-column: 1; grid-row: 1; max-width: 560px; display: flex; flex-direction: column; gap: 22px; }
+.eyebrow { align-self: flex-start; height: 30px; padding: 0 12px; border-radius: 15px; background: var(--c-green-100); color: #1B6128; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow > span { width: 8px; height: 8px; border-radius: 4px; background: currentColor; }
+.eyebrowRed { background: #FDE8E8; color: #B42318; }
+.h1 { margin: 0; font-family: var(--font-display); font-size: 56px; line-height: 1.02; font-weight: 800; letter-spacing: -0.02em; }
+.text { margin: 0; font-size: 17px; line-height: 1.55; color: var(--c-gray-600); }
+
+.search { max-width: 520px; height: 56px; padding: 0 6px 0 18px; box-sizing: border-box; border-radius: 28px; background: var(--c-white); border: 1px solid var(--c-line); color: var(--c-gray-600); display: flex; align-items: center; gap: 8px; }
+.search:focus-within { border-color: var(--c-green-600); }
+.search input { flex: 1; min-width: 0; height: 100%; border: 0; outline: none; background: transparent; font: inherit; font-size: 15px; color: var(--c-ink); }
+.search button { flex: none; height: 44px; padding: 0 20px; border: 0; border-radius: 22px; background: var(--c-ink); color: var(--c-white); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { height: 52px; padding: 0 24px; box-sizing: border-box; border: 1px solid var(--c-line); border-radius: 26px; background: var(--c-white); color: var(--c-ink); font: inherit; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 10px; white-space: nowrap; cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(11, 15, 12, 0.1); color: var(--c-ink); }
+.btn > svg { flex: none; }
+.primary, .primary:hover { border-color: transparent; background: var(--c-green-600); color: var(--c-white); }
+.primary:hover { box-shadow: 0 10px 22px rgba(34, 120, 49, 0.25); }
+
+.popular { display: flex; flex-direction: column; gap: 10px; }
+.popular > span { font-size: 13px; color: var(--c-gray-600); }
+.popular > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.popular a { height: 36px; padding: 0 14px; border-radius: 18px; background: var(--c-white); color: var(--c-ink); font-size: 14px; font-weight: 500; display: inline-flex; align-items: center; white-space: nowrap; }
+.popular a:hover { background: var(--c-green-100); color: #1B6128; }
+
+.card { max-width: 520px; padding: 16px 18px; box-sizing: border-box; border-radius: 20px; background: var(--c-white); display: flex; align-items: center; gap: 14px; }
+.cardIcon { flex: none; width: 44px; height: 44px; border-radius: 14px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.cardIconRed { background: #FDE8E8; color: #B42318; }
+.cardText { display: flex; flex-direction: column; gap: 2px; font-size: 14px; color: var(--c-gray-600); }
+.cardText b { font-size: 15px; color: var(--c-ink); }
+.cardText a { color: var(--c-green-600); font-weight: 600; }
+.code { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #9AA39C; }
+
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .page { grid-template-columns: minmax(0, 1fr) 400px; gap: 32px; }
+  .art { height: 380px; }
+  .h1 { font-size: 44px; }
+}
+
+@media (max-width: 767px) {
+  .page { padding-top: 8px; padding-bottom: 40px; min-height: 0; display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+  .art { height: 300px; margin: 0 -16px; }
+  .copy { max-width: none; gap: 16px; }
+  .h1 { font-size: 34px; }
+  .text { font-size: 15px; }
+  .search, .card { max-width: none; }
+  .actions { flex-wrap: nowrap; }
+  .actions .btn { flex: 1 1 auto; min-width: 0; padding: 0 14px; }
+  .actionsStack { flex-direction: column; }
+}

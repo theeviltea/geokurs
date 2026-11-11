@@ -1,0 +1,21 @@
+/* Motion for the system-page illustrations (class names are used inside the generated SVG strings). */
+.er-spin{animation:erSpin 24s linear infinite;transform-box:fill-box;transform-origin:center}
+.er-spin-r{animation:erSpin 36s linear infinite reverse;transform-box:fill-box;transform-origin:center}
+.er-hunt{animation:erHunt 7s ease-in-out infinite}
+.er-blink{animation:erBlink 2.4s ease-in-out infinite}
+.er-pulse{animation:erPulse 3s ease-out infinite;transform-box:fill-box;transform-origin:center}
+.er-bubble{animation:erBubble 4.5s ease-in-out infinite}
+.er-tilt{animation:erTilt 4.5s ease-in-out infinite;transform-box:view-box;transform-origin:280px 300px}
+.er-sat{animation:erSat 6s ease-in-out infinite}
+.er-lost{animation:erLost 3.2s ease-in-out infinite}
+.er-dot{animation:erDot 1.4s ease-in-out infinite}
+@keyframes erSpin{to{transform:rotate(360deg)}}
+@keyframes erHunt{0%,100%{transform:translate(0,0)}25%{transform:translate(46px,-28px)}50%{transform:translate(-30px,34px)}75%{transform:translate(38px,22px)}}
+@keyframes erBlink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes erPulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+@keyframes erBubble{0%,100%{transform:translate(34px,-10px)}50%{transform:translate(58px,-24px)}}
+@keyframes erTilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-7deg)}}
+@keyframes erSat{0%,100%{transform:translate(0,0)}50%{transform:translate(0,-8px)}}
+@keyframes erLost{0%,100%{opacity:.85}45%{opacity:.85}55%{opacity:.1}90%{opacity:.1}}
+@keyframes erDot{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion: reduce){.er-spin,.er-spin-r,.er-hunt,.er-blink,.er-pulse,.er-bubble,.er-tilt,.er-sat,.er-lost,.er-dot{animation:none}}

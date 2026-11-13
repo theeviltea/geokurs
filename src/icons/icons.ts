@@ -1,5 +1,14 @@
 // Hugeicons (Stroke Rounded) paths, the same set the design canvas uses. 24×24 viewBox, stroke icons.
 export const icons = {
+  tag: 'M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9zM8 8h.01',
+  radio: 'M8 2v6M6 8h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2zM8 13h8M8 17h5',
+  scan: 'M7 3h10v18H7zM7 8h10M12 12v5',
+  level: 'M3 16h18M6 16l2-8h8l2 8M10 8V5h4v3M12 16v5M8 21h8',
+  shieldCheck: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4',
+  coins: 'M9 14a6 6 0 1 0 0-12 6 6 0 0 0 0 12zM18.1 10.4A6 6 0 1 1 10.4 18.1M7 6h2v4M16.7 13.9l.7.7-2.8 2.8',
+  speed: 'M12 14l4-4M3.3 19a10 10 0 1 1 17.4 0',
+  alert: 'M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z',
+  cert: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M9 15l2 2 4-4',
   chat: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zM8 9h8M8 13h5',
   bulb: 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V18h6v-1.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z',
   flag: 'M5 21V4M5 4h12l-2 4 2 4H5',

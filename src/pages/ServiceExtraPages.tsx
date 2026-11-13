@@ -96,7 +96,7 @@ function Seg({ label, options, initial = 0 }: { label: string; options: string[]
   );
 }
 
-function RequestForm({ id, title, lede, contact, children }: { id: string; title: string; lede: string; contact: string; children: ReactNode }) {
+export function RequestForm({ id, title, lede, contact, children }: { id: string; title: string; lede: string; contact: string; children: ReactNode }) {
   const [sent, setSent] = useState(false);
   const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
   return (
@@ -118,7 +118,7 @@ function RequestForm({ id, title, lede, contact, children }: { id: string; title
   );
 }
 
-function Closing({ exclude }: { exclude: string }) {
+export function Closing({ exclude }: { exclude: string }) {
   return (
     <>
       <DarkCta

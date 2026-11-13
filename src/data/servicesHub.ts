@@ -70,7 +70,7 @@ export const hubServices: HubService[] = [
     "key": "used",
     "title": "Купить / продать Б/У",
     "text": "Проверенные приборы с пробегом и выкуп вашего оборудования",
-    "href": null,
+    "href": "/services/used",
     "motion": "swing",
     "d": "M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9zM8 8h.01"
   },

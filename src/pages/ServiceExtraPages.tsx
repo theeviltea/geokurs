@@ -7,8 +7,8 @@ import { DIAL_SVG } from '../components/services/art';
 import { ContactCard, DarkCta, Faq, Head, HeroTitle, OtherServices, PHONE, ServiceHero, Steps, WHATSAPP } from '../components/services/ServiceBlocks';
 import b from '../components/services/ServiceBlocks.module.css';
 import {
-  daysLabel, eduAbout, eduCourses, eduFaq, eduFree, eduPhotos, kitsLabel, rentCats, rentDocs, rentFaq, rentSteps,
-  tiAccept, tiFaq, tiKinds, tiPhotos, tiSteps,
+  daysLabel, demoBenefits, demoPhotos, demoSteps, eduAbout, eduCourses, eduFaq, eduFree, eduPhotos, kitsLabel, rentCats, rentDocs, rentFaq, rentSteps,
+  pilotGains, pilotPhotos, pilotSteps, tiAccept, tiFaq, tiKinds, tiPhotos, tiSteps,
 } from '../data/serviceExtras';
 import type { IconName } from '../icons/icons';
 import s from './Service.module.css';
@@ -19,10 +19,10 @@ function Crumb({ label }: { label: string }) {
   return <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы', href: '/services' }, { label }]} back={{ label: 'Сервисы', href: '/services' }} />;
 }
 
-function Hero({ icon, title, lede, cta, href }: { icon: IconName; title: string; lede: string; cta: string; href: string }) {
+function Hero({ icon, title, lede, cta, href, nowrap = false }: { icon: IconName; title: string; lede: string; cta: string; href: string; nowrap?: boolean }) {
   return (
     <ServiceHero art={DIAL_SVG} artClass="dial" auto>
-      <HeroTitle icon={icon} title={title} lede={lede} cta={<a href={href} className={s.heroBtn}><Icon name="send" size={18} />{cta}</a>} />
+      <HeroTitle icon={icon} title={title} nowrap={nowrap} lede={lede} cta={<a href={href} className={s.heroBtn}><Icon name="send" size={18} />{cta}</a>} />
     </ServiceHero>
   );
 }
@@ -336,6 +336,121 @@ export function EducationPage() {
 
       <Faq items={eduFaq} />
       <Closing exclude="Обучение" />
+    </main>
+  );
+}
+
+/* ---------- Демонстрация ---------- */
+function Quote({ lead, text }: { lead: string; text: string }) {
+  return (
+    <div className={x.quote}>
+      <span aria-hidden="true" className={x.quoteMark}>“</span>
+      <p className={x.quoteLead}>{lead}</p>
+      <p className={x.quoteText}>{text}</p>
+    </div>
+  );
+}
+
+export function DemoServicePage() {
+  return (
+    <main className={`container ${s.page}`}>
+      <Crumb label="Демонстрация оборудования" />
+      <Hero icon="play" nowrap title="Демонстрация оборудования" href="#demo-form" cta="Заказать демонстрацию"
+        lede="Новый объект с нестандартной задачей и вы не уверены, что прибор справится? Покажем оборудование в деле и вместе обсудим нюансы его использования на вашем объекте." />
+
+      <section className={b.block}>
+        <Head title="Зачем нужна демонстрация" />
+        <div className={x.split}>
+          <Quote lead="Геодезическое оборудование стоит недёшево — перед покупкой хочется убедиться, что оно подходит под ваши задачи."
+            text="Большая часть нашей работы — показывать вам оборудование, и мы очень любим это делать. Демонстрация — это не только повод пообщаться лично, но и возможность отшлифовать ваши и наши знания и проверить себя на новых нестандартных задачах." />
+          <div className={x.benefits}>
+            {demoBenefits.map((it, i) => (
+              <div key={it.title} className={`${x.benefit} ${i === 0 ? x.benefitOn : ''}`}>
+                <span className={x.benefitIcon}><Icon name={it.icon} size={22} stroke={1.8} /></span>
+                <span className={x.featureText}><b>{it.title}</b><span>{it.text}</span></span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Steps title="Как заказать" steps={demoSteps} />
+      <Photos title="Демонстрации GEOKURS" items={demoPhotos} />
+
+      <RequestForm id="demo-form" title="Заказать демонстрацию" lede="Оставьте заявку — свяжемся с вами и согласуем сроки."
+        contact="Позвоните — вместе подберём прибор и время демонстрации.">
+        <div className={s.two}>
+          <Field label="Ваше имя" placeholder="Как к вам обращаться" autoComplete="name" required />
+          <Field label="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autoComplete="tel" required />
+        </div>
+        <div className={s.two}>
+          <Field label="Организация" placeholder="Название компании" autoComplete="organization" required />
+          <Field label="Город" placeholder="Например, Алматы" autoComplete="address-level2" required />
+        </div>
+        <Field label="Какой прибор хотите увидеть" placeholder="Необязательно — например, Trimble X9" />
+      </RequestForm>
+
+      <Closing exclude="Демонстрация оборудования" />
+    </main>
+  );
+}
+
+/* ---------- Пилот-проект ---------- */
+export function PilotPage() {
+  return (
+    <main className={`container ${s.page}`}>
+      <Crumb label="Пилот-проект" />
+      <Hero icon="flag" title="Пилот-проект" href="#pilot-form" cta="Заказать пилот-проект"
+        lede="Выполним небольшую часть вашего объёма с интересующим вас оборудованием — посмотрите реальное выполнение работы и обсудите все детали технологии и прибора." />
+
+      <section className={b.block}>
+        <Head title="Что такое пилот-проект" />
+        <div className={x.split}>
+          <Quote lead="Часто демонстрации недостаточно, чтобы оценить эффективность оборудования на конкретном объекте."
+            text="Пилот-проект — это небольшой объём съёмки вашего реального объекта выбранным оборудованием под ключ. Вы получаете готовый материал по предварительному ТЗ и на его основе оцениваете эффективность прибора или технологии." />
+          <div className={x.vsCard}>
+            <svg aria-hidden="true" className={x.docRings} viewBox="0 0 340 340" fill="none"><circle cx="170" cy="170" r="168" stroke="#7BDB84" strokeOpacity="0.14" /><circle cx="170" cy="170" r="110" stroke="#7BDB84" strokeOpacity="0.14" /></svg>
+            <span className={x.vsKicker}>Например</span>
+            <span className={x.vs}>
+              <span className={x.vsNew}><span><Icon name="drone" size={22} stroke={1.8} /></span><b>Съёмка БПЛА</b><small>Новая технология</small></span>
+              <b className={x.vsMark}>vs</b>
+              <span className={x.vsOld}><span><Icon name="baseStation" size={22} stroke={1.8} /></span><b>GNSS</b><small>Традиционный метод</small></span>
+            </span>
+            <span className={x.vsText}>Обычно пилот-проект заказывают, когда хотят применить новую технологию вместо традиционных методов.</span>
+            <span className={x.vsPrice}><span><Icon name="percent" size={20} stroke={1.8} /></span><span><b>Стоимость оговаривается отдельно</b> и, как правило, берётся в зачёт при покупке оборудования.</span></span>
+          </div>
+        </div>
+      </section>
+
+      <section className={b.block}>
+        <Head title="Что даёт пилот-проект" />
+        <div className={x.gains}>
+          {pilotGains.map((it, i) => (
+            <div key={it.title} className={`${x.benefit} ${i === 0 ? x.benefitOn : ''}`}>
+              <span className={x.benefitIcon}><Icon name={it.icon} size={22} stroke={1.8} /></span>
+              <span className={x.featureText}><b>{it.title}</b><span>{it.text}</span></span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <Steps title="Как проходит пилот-проект" steps={pilotSteps} />
+      <Photos title="Наши проекты" items={pilotPhotos} />
+
+      <RequestForm id="pilot-form" title="Заказать пилот-проект" lede="Оставьте заявку — обсудим объект, задачу и подготовим ТЗ."
+        contact="Позвоните — расскажем, как проходит пилот-проект и от чего зависит стоимость.">
+        <div className={s.two}>
+          <Field label="Ваше имя" placeholder="Как к вам обращаться" autoComplete="name" required />
+          <Field label="Телефон" type="tel" placeholder="+7 (___) ___-__-__" autoComplete="tel" required />
+        </div>
+        <div className={s.two}>
+          <Field label="Организация" placeholder="Название компании" autoComplete="organization" required />
+          <Field label="Город" placeholder="Например, Алматы" autoComplete="address-level2" required />
+        </div>
+        <Field label="Объект и задача" placeholder="Необязательно — например, топосъёмка 50 га с БПЛА" />
+      </RequestForm>
+
+      <Closing exclude="Пилот-проект" />
     </main>
   );
 }

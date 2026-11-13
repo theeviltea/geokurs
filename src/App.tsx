@@ -12,7 +12,7 @@ import { Product } from './pages/Product';
 import { PromoPage } from './pages/PromoPage';
 import { PromosPage } from './pages/PromosPage';
 import { ServicesPage } from './pages/ServicesPage';
-import { EducationPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
+import { DemoServicePage, EducationPage, PilotPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
 import { AuthPage } from './pages/AuthPage';
 import { AccountPage } from './pages/AccountPage';
 import { CartPage } from './pages/CartPage';
@@ -67,6 +67,8 @@ export function App() {
         <Route path="/services/trade-in" element={<TradeInPage />} />
         <Route path="/services/rent" element={<RentPage />} />
         <Route path="/services/education" element={<EducationPage />} />
+        <Route path="/services/demo" element={<DemoServicePage />} />
+        <Route path="/services/pilot" element={<PilotPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/help/delivery" element={<DeliveryPage />} />
         <Route path="/help/payment" element={<PaymentPage />} />

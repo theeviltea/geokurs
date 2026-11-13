@@ -4,6 +4,9 @@
 .head h1 { margin: 0; font-family: var(--font-display); font-size: 52px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
 .head p { margin: 0; font-size: 17px; line-height: 1.55; color: var(--c-gray-600); }
 
+.extraHead { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; margin-bottom: -16px; }
+.extraHead h2 { margin: 0; font-family: var(--font-display); font-size: 32px; line-height: 1.1; font-weight: 700; letter-spacing: -0.01em; }
+.extraHead p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--c-gray-600); }
 .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .tile {
   position: relative; overflow: hidden; min-width: 0; height: 290px; box-sizing: border-box; padding: 24px; border-radius: 26px;
@@ -64,6 +67,9 @@
   .head { gap: 8px; }
   .head h1 { font-size: 32px; }
   .head p { font-size: 15px; }
+  .extraHead { margin-top: 8px; margin-bottom: -6px; }
+  .extraHead h2 { font-size: 24px; }
+  .extraHead p { font-size: 15px; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .tile { height: auto; min-height: 168px; padding: 14px; border-radius: 20px; gap: 10px; animation-delay: calc(var(--i, 0) * 50ms); }
   .tile:hover { transform: none; }

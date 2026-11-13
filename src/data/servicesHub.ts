@@ -78,7 +78,7 @@ export const hubServices: HubService[] = [
     "key": "demo",
     "title": "Заказать демонстрацию",
     "text": "Покажем прибор в работе — в офисе или на вашем объекте",
-    "href": null,
+    "href": "/services/demo",
     "motion": "pulse",
     "d": "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM10 8.5v7l5.5-3.5z"
   },
@@ -86,7 +86,7 @@ export const hubServices: HubService[] = [
     "key": "pilot",
     "title": "Пилот-проект",
     "text": "Опробуйте решение на своём объекте перед покупкой",
-    "href": null,
+    "href": "/services/pilot",
     "motion": "wave",
     "d": "M5 21V4M5 4h12l-2 4 2 4H5"
   },

@@ -20,7 +20,7 @@ const SERVICES: [IconName, string, string | null][] = [
   ['wrench', 'Авторизованный сервисный центр', '/services/repair'], ['gauge', 'Метрологическая лаборатория', '/services/metrology'], ['headset', 'Техническая поддержка', '/services/support'],
   ['box', 'Аренда оборудования', '/services/rent'], ['baseStation', 'Сеть базовых станций', '/services/base-stations'], ['tradeIn', 'Trade-In', '/services/trade-in'],
   ['cap', 'Обучение', '/services/education'], ['percent', 'Покупка в кредит', '/help/credit'], ['wallet', 'Покупка б/у оборудования', null],
-  ['eye', 'Демонстрация оборудования', null], ['zap', 'Пилот-проект', null], ['truck', 'Доставка', '/help/delivery'],
+  ['eye', 'Демонстрация оборудования', '/services/demo'], ['zap', 'Пилот-проект', '/services/pilot'], ['truck', 'Доставка', '/help/delivery'],
 ];
 
 /** Blocks marked data-reveal rise in once when they first scroll into view. */

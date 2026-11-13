@@ -174,3 +174,62 @@
   .note b { font-size: 17px; }
   .note > span:last-child > span { font-size: 13.5px; }
 }
+
+/* Demo / Pilot: quote + side */
+.split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 16px; align-items: stretch; }
+.quote { min-width: 0; border-radius: 24px; background: var(--c-white); padding: 36px 40px; display: flex; flex-direction: column; gap: 18px; }
+.quoteMark { font-family: var(--font-display); font-size: 80px; line-height: 0.6; font-weight: 800; color: var(--c-green-100); height: 36px; }
+.quoteLead { margin: 0; font-family: var(--font-display); font-size: 26px; line-height: 1.3; font-weight: 700; letter-spacing: -0.01em; }
+.quoteText { margin: 0; font-size: 16px; line-height: 1.6; color: var(--c-gray-600); }
+.benefits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.gains { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.benefit { min-width: 0; border-radius: 20px; background: var(--c-white); padding: 22px; display: flex; flex-direction: column; gap: 16px; }
+.benefit .featureText b { font-size: 17px; }
+.benefit .featureText > span { font-size: 14px; line-height: 1.4; }
+.benefitIcon { flex: none; width: 48px; height: 48px; border-radius: 15px; background: var(--c-green-100); color: var(--c-green-600); display: flex; align-items: center; justify-content: center; }
+.benefitOn { background: var(--c-green-600); color: var(--c-white); }
+.benefitOn .benefitIcon { background: rgba(255, 255, 255, 0.16); color: var(--c-white); }
+.benefitOn .featureText > span { color: var(--c-green-100); }
+.vsCard { position: relative; overflow: hidden; min-width: 0; border-radius: 24px; background: var(--c-green-800); color: var(--c-white); padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+.vsCard > :not(svg) { position: relative; }
+.vsKicker { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-green-300); }
+.vs { display: flex; align-items: center; gap: 14px; }
+.vsNew, .vsOld { flex: 1; min-width: 0; border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.vsNew { background: rgba(123, 219, 132, 0.14); border: 1px solid rgba(123, 219, 132, 0.3); }
+.vsOld { background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14); }
+.vsNew > span, .vsOld > span { width: 44px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+.vsNew > span { background: var(--c-green-300); color: #08260D; }
+.vsOld > span { background: rgba(255, 255, 255, 0.12); }
+.vsNew b, .vsOld b { font-family: var(--font-display); font-size: 20px; font-weight: 700; }
+.vsNew small, .vsOld small { font-size: 13px; color: #C9D3CB; }
+.vsMark { flex: none; font-family: var(--font-display); font-size: 18px; color: var(--c-green-300); }
+.vsText { font-size: 15px; line-height: 1.5; color: #C9D3CB; }
+.vsPrice { margin-top: auto; border-radius: 16px; background: rgba(255, 255, 255, 0.08); padding: 16px 18px; display: flex; align-items: center; gap: 12px; font-size: 14px; line-height: 1.45; }
+.vsPrice > span:first-child { flex: none; width: 40px; height: 40px; border-radius: 12px; background: rgba(123, 219, 132, 0.16); color: var(--c-green-300); display: flex; align-items: center; justify-content: center; }
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .split { grid-template-columns: minmax(0, 1fr); }
+  .gains { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .split { display: flex; flex-direction: column; gap: 8px; }
+  .quote { border-radius: 20px; padding: 20px 16px; gap: 14px; }
+  .quoteMark { font-size: 56px; height: 26px; }
+  .quoteLead { font-size: 19px; }
+  .quoteText { font-size: 14.5px; }
+  .benefits { gap: 8px; }
+  .benefit { padding: 16px; gap: 12px; }
+  .benefit .featureText b { font-size: 15px; }
+  .benefit .featureText > span { font-size: 12.5px; }
+  .gains { display: flex; flex-direction: column; gap: 8px; }
+  .gains .benefit { flex-direction: row; align-items: center; gap: 14px; }
+  .gains .benefit .featureText b { font-size: 16px; }
+  .gains .benefit .featureText > span { font-size: 13.5px; }
+  .vsCard { border-radius: 20px; padding: 20px 16px; gap: 16px; }
+  .vs { gap: 10px; }
+  .vsNew, .vsOld { padding: 14px 12px; }
+  .vsNew b, .vsOld b { font-size: 17px; }
+  .vsMark { font-size: 15px; }
+  .vsText { font-size: 14px; }
+  .vsPrice { padding: 14px; font-size: 13.5px; }
+}

@@ -3,12 +3,35 @@ import { Crumbs } from '../components/Crumbs';
 import { Icon } from '../components/Icon';
 import { SmartLink } from '../components/SmartLink';
 import { PHONE } from '../data/nav';
-import { hubServices } from '../data/servicesHub';
+import { hubServices, type HubService } from '../data/servicesHub';
 import s from './ServicesPage.module.css';
 
 const Glyph = ({ d, size, sw }: { d: string; size: number; sw: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={d} /></svg>
 );
+
+
+const EXTRA = ['credit', 'delivery'];
+const main = hubServices.filter((x) => !EXTRA.includes(x.key));
+const extra = hubServices.filter((x) => EXTRA.includes(x.key));
+
+function Tile({ sv, i }: { sv: HubService; i: number }) {
+  return (
+    <SmartLink href={sv.href ?? '#'} className={s.tile} style={{ '--i': i } as CSSProperties}>
+      <span aria-hidden="true" className={s.big}>
+        <span className={`${s.motion} ${s[`m_${sv.motion}`]}`} style={{ animationDelay: `${i * 0.3}s` }}><Glyph d={sv.d} size={150} sw={1.1} /></span>
+      </span>
+      <span className={s.top}>
+        <span className={s.ic}><Glyph d={sv.d} size={28} sw={1.6} /></span>
+        <span aria-hidden="true" className={s.go}><Icon name="arrowRight" size={18} stroke={2} /></span>
+      </span>
+      <span className={s.copy}>
+        <b className={s.title}>{sv.title}</b>
+        <span className={s.text}>{sv.text}</span>
+      </span>
+    </SmartLink>
+  );
+}
 
 /** «Сервисы»: every GEOKURS service as a tile. Services without a page yet link nowhere. */
 export function ServicesPage() {
@@ -21,21 +44,15 @@ export function ServicesPage() {
       </div>
 
       <div className={s.grid}>
-        {hubServices.map((sv, i) => (
-          <SmartLink key={sv.key} href={sv.href ?? '#'} className={s.tile} style={{ '--i': i } as CSSProperties}>
-            <span aria-hidden="true" className={s.big}>
-              <span className={`${s.motion} ${s[`m_${sv.motion}`]}`} style={{ animationDelay: `${i * 0.3}s` }}><Glyph d={sv.d} size={150} sw={1.1} /></span>
-            </span>
-            <span className={s.top}>
-              <span className={s.ic}><Glyph d={sv.d} size={28} sw={1.6} /></span>
-              <span aria-hidden="true" className={s.go}><Icon name="arrowRight" size={18} stroke={2} /></span>
-            </span>
-            <span className={s.copy}>
-              <b className={s.title}>{sv.title}</b>
-              <span className={s.text}>{sv.text}</span>
-            </span>
-          </SmartLink>
-        ))}
+        {main.map((sv, i) => <Tile key={sv.key} sv={sv} i={i} />)}
+      </div>
+
+      <div className={s.extraHead}>
+        <h2>Дополнительно</h2>
+        <p>Условия покупки — подробнее в разделе «Как купить».</p>
+      </div>
+      <div className={s.grid}>
+        {extra.map((sv, i) => <Tile key={sv.key} sv={sv} i={main.length + i} />)}
       </div>
 
       <section className={s.cta}>

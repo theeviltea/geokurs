@@ -37,7 +37,7 @@
 .pillLink > svg:last-child { margin-left: auto; color: #8A968C; }
 
 /* Steps */
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 12px; }
 .step { position: relative; min-width: 0; background: var(--c-white); border-radius: 24px; padding: 24px; display: flex; flex-direction: column; gap: 18px; }
 .stepMark { display: flex; align-items: center; justify-content: space-between; }
 .stepIcon { width: 52px; height: 52px; border-radius: 16px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; gap: 3px; }
@@ -76,7 +76,7 @@
 .others { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
 @media (max-width: 1100px) and (min-width: 768px) {
-  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .stepArrow { display: none; }
   .others { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

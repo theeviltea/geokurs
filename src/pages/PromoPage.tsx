@@ -125,11 +125,11 @@ export function PromoPage() {
               <span className={s.otherCopy}><span className={s.big}>0‑0‑24</span><span className={s.otherNote}>0 ₸ первый взнос, 0% переплаты, 24 месяца</span></span>
               <img src={img('p-s5.webp')} alt="" className={s.otherS5} />
             </SmartLink>
-            <a href="https://geokurs.kz/services/trade-in" className={`${s.other} ${s.otherWhite}`}>
+            <SmartLink href="/services/trade-in" className={`${s.other} ${s.otherWhite}`}>
               <span className={s.otherEyebrow}>Trade-in</span>
               <span className={s.otherCopy}><span className={s.otherTitle}>Обменяйте старый прибор на i73+</span><span className={`${s.otherNote} desktop-only`}>Сдайте приёмник в зачёт стоимости нового.</span></span>
               <img src={img('p-i73.webp')} alt="" className={s.otherI73} />
-            </a>
+            </SmartLink>
           </div>
         </div>
       </section>

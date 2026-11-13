@@ -19,7 +19,7 @@ const SERVICE = [
   { name: 'Метрология', text: 'Поверка и калибровка оборудования', href: '/services/metrology' },
   { name: 'Сервисный центр', text: 'Ремонт и диагностика приборов', href: '/services/repair' },
   { name: 'Техподдержка 24/7', text: 'Помощь с приборами и ПО', href: '/services/support' },
-  { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: 'https://geokurs.kz/services/trade-in' },
+  { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: '/services/trade-in' },
 ];
 
 const fmt = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');

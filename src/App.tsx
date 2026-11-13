@@ -12,6 +12,7 @@ import { Product } from './pages/Product';
 import { PromoPage } from './pages/PromoPage';
 import { PromosPage } from './pages/PromosPage';
 import { ServicesPage } from './pages/ServicesPage';
+import { EducationPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
 import { AuthPage } from './pages/AuthPage';
 import { AccountPage } from './pages/AccountPage';
 import { CartPage } from './pages/CartPage';
@@ -63,6 +64,9 @@ export function App() {
         <Route path="/services/repair" element={<ServiceCenterPage />} />
         <Route path="/services/support" element={<SupportPage />} />
         <Route path="/services/metrology" element={<MetrologyPage />} />
+        <Route path="/services/trade-in" element={<TradeInPage />} />
+        <Route path="/services/rent" element={<RentPage />} />
+        <Route path="/services/education" element={<EducationPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/help/delivery" element={<DeliveryPage />} />
         <Route path="/help/payment" element={<PaymentPage />} />

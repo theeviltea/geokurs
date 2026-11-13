@@ -78,7 +78,7 @@ export const services: { name: string; text: string; href: string; icon: IconNam
   { name: 'Сервисный центр', text: 'Ремонт и диагностика приборов', href: '/services/repair', icon: 'wrench' },
   { name: 'Метрология', text: 'Поверка и калибровка оборудования', href: '/services/metrology', icon: 'gauge' },
   { name: 'Техподдержка 24/7', text: 'Помощь с приборами и ПО', href: '/services/support', icon: 'support' },
-  { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: 'https://geokurs.kz/services/trade-in', icon: 'tradeIn' },
+  { name: 'Trade-in', text: 'Обмен старого прибора на новый', href: '/services/trade-in', icon: 'tradeIn' },
 ];
 
 export type CategoryTile = { name: string; short?: string; image: string; href: string; wide?: boolean };

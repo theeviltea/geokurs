@@ -38,7 +38,7 @@ export const hubServices: HubService[] = [
     "key": "rent",
     "title": "Аренда оборудования",
     "text": "Приборы в аренду на время проекта — без покупки",
-    "href": null,
+    "href": "/services/rent",
     "motion": "float",
     "d": "M8 2v4M16 2v4M3 9h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM8 14h3v3H8z"
   },
@@ -46,7 +46,7 @@ export const hubServices: HubService[] = [
     "key": "trade",
     "title": "Trade-in",
     "text": "Сдайте старый прибор в зачёт стоимости нового",
-    "href": null,
+    "href": "/services/trade-in",
     "motion": "swap",
     "d": "M7 4 3 8l4 4M3 8h14M17 20l4-4-4-4M21 16H7"
   },
@@ -54,7 +54,7 @@ export const hubServices: HubService[] = [
     "key": "edu",
     "title": "Обучение",
     "text": "Курсы по работе с оборудованием и программным обеспечением",
-    "href": null,
+    "href": "/services/education",
     "motion": "float",
     "d": "M2 9l10-5 10 5-10 5zM6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 9v6"
   },

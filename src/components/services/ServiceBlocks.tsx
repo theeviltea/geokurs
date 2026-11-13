@@ -122,7 +122,7 @@ export function DarkCta({ title, text, actions, foot }: { title: string; text: s
 
 /** «Другие сервисы»: the home-page service cards without the current page. */
 export function OtherServices({ exclude }: { exclude: string }) {
-  const list = services.filter((x) => x.name !== exclude);
+  const list = services.filter((x) => x.name !== exclude).slice(0, 4);
   return (
     <section className={s.block}>
       <Head title="Другие сервисы" />

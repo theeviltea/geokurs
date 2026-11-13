@@ -61,7 +61,7 @@ export function PromosPage() {
           </span>
         </SmartLink>
 
-        <SmartLink href="https://geokurs.kz/services/trade-in" className={`${s.tile} ${s.trade}`}>
+        <SmartLink href="/services/trade-in" className={`${s.tile} ${s.trade}`}>
           <img className={`${s.img} ${s.tradeImg}`} src={img('p-i73.webp')} alt="" />
           <span className={`${s.body} ${s.tradeBody}`}>
             <Chip tone="paper">Trade-in</Chip>

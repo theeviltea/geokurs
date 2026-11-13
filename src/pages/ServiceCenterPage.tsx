@@ -14,7 +14,7 @@ export function ServiceCenterPage() {
   const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
   return (
     <main className={`container ${s.page}`}>
-      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы' }, { label: 'Сервисный центр' }]} back={{ label: 'Главная', href: '/' }} />
+      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы', href: '/services' }, { label: 'Сервисный центр' }]} back={{ label: 'Главная', href: '/' }} />
 
       <ServiceHero art={DIAL_SVG} artClass="dial">
         <HeroTitle icon="wrench" title="Сервисный центр" lede="Ремонт, диагностика и настройка геодезического оборудования. Бесплатная диагностика, гарантия 6 месяцев." cta={<a href="#repair-form" className={s.heroBtn}><Icon name="send" size={18} />Оставить заявку на ремонт</a>} />

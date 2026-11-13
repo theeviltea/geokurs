@@ -14,7 +14,7 @@ export function BaseStationsPage() {
   const [shut, setShut] = useState<Record<string, boolean>>({});
   return (
     <main className={`container ${s.page}`}>
-      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы' }, { label: 'Базовые станции' }]} back={{ label: 'Главная', href: '/' }} />
+      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы', href: '/services' }, { label: 'Базовые станции' }]} back={{ label: 'Главная', href: '/' }} />
 
       <ServiceHero art={NET_SVG} artClass="net">
         <span className={s.status}><span aria-hidden="true" />Сеть онлайн · 21 из 24 станций</span>

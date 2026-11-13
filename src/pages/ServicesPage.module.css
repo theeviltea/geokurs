@@ -1,0 +1,81 @@
+/* «Сервисы»: hub of all services */
+.page { padding-top: 20px; padding-bottom: 96px; display: flex; flex-direction: column; gap: 32px; }
+.head { max-width: 760px; display: flex; flex-direction: column; gap: 12px; }
+.head h1 { margin: 0; font-family: var(--font-display); font-size: 52px; line-height: 1; font-weight: 700; letter-spacing: -0.02em; }
+.head p { margin: 0; font-size: 17px; line-height: 1.55; color: var(--c-gray-600); }
+
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.tile {
+  position: relative; overflow: hidden; min-width: 0; height: 290px; box-sizing: border-box; padding: 24px; border-radius: 26px;
+  background: var(--c-white); color: var(--c-ink); display: flex; flex-direction: column; gap: 16px;
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.45s ease, background 0.35s ease, color 0.35s ease;
+  animation: svIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 60ms);
+}
+.tile:hover { transform: translateY(-6px); box-shadow: 0 22px 44px rgba(11, 15, 12, 0.14); background: #227831; color: #FFFFFF; }
+.text, .ic, .go, .big { transition: color 0.35s ease, background 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease; }
+
+.big { position: absolute; right: -18px; bottom: -22px; color: #227831; opacity: 0.06; display: flex; pointer-events: none; }
+.tile:hover .big { color: #FFFFFF; opacity: 0.14; transform: scale(1.12); }
+.motion { display: flex; transform-origin: 50% 50%; }
+
+.top { position: relative; display: flex; align-items: center; justify-content: space-between; }
+.ic { width: 56px; height: 56px; border-radius: 18px; background: #DDF2DF; color: #227831; display: flex; align-items: center; justify-content: center; }
+.tile:hover .ic { background: #FFFFFF; color: #227831; transform: rotate(-8deg) scale(1.06); }
+.go { width: 40px; height: 40px; border-radius: 20px; background: var(--c-bg); color: var(--c-ink); display: flex; align-items: center; justify-content: center; }
+.tile:hover .go { background: #7BDB84; color: #08260D; transform: rotate(-45deg); }
+
+.copy { position: relative; display: flex; flex-direction: column; gap: 8px; }
+.title { font-family: var(--font-display); font-size: 22px; line-height: 1.15; font-weight: 700; }
+.text { font-size: 14px; line-height: 1.45; color: var(--c-gray-600); max-width: 260px; }
+.tile:hover .text { color: #DDF2DF; }
+
+.m_pulse { animation: svPulse 3.2s ease-in-out infinite; }
+.m_spin { animation: svSpin 18s linear infinite; }
+.m_swing { animation: svSwing 4s ease-in-out infinite; }
+.m_float { animation: svFloat 5s ease-in-out infinite; }
+.m_swap { animation: svSwap 4s ease-in-out infinite; }
+.m_wave { animation: svWave 3.6s ease-in-out infinite; }
+.m_drive { animation: svDrive 4.8s ease-in-out infinite; }
+@keyframes svIn { from { opacity: 0; transform: translateY(18px); } }
+@keyframes svPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@keyframes svSpin { to { transform: rotate(360deg); } }
+@keyframes svSwing { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+@keyframes svFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes svSwap { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-10px); } }
+@keyframes svWave { 0%, 100% { transform: skewY(0); } 50% { transform: skewY(-4deg); } }
+@keyframes svDrive { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-14px); } }
+
+.cta { position: relative; overflow: hidden; border-radius: 28px; background: #0B3A13; color: #FFFFFF; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.ctaRings { position: absolute; right: -60px; top: -90px; width: 320px; height: 320px; }
+.ctaCopy { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.ctaCopy b { font-family: var(--font-display); font-size: 26px; font-weight: 700; }
+.ctaCopy span { font-size: 15px; color: #C9D3CB; }
+.ctaBtn { position: relative; flex: none; height: 52px; padding: 0 24px; border-radius: 26px; background: #7BDB84; color: #08260D; font-size: 15px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.ctaBtn:hover { color: #08260D; background: #B6F5BC; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tile, .text, .ic, .go, .big, .motion { transition: none; animation: none !important; }
+}
+@media (max-width: 1100px) and (min-width: 768px) {
+  .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 767px) {
+  .page { padding-top: 12px; padding-bottom: 36px; gap: 20px; }
+  .head { gap: 8px; }
+  .head h1 { font-size: 32px; }
+  .head p { font-size: 15px; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .tile { height: auto; min-height: 168px; padding: 14px; border-radius: 20px; gap: 10px; animation-delay: calc(var(--i, 0) * 50ms); }
+  .tile:hover { transform: none; }
+  .big { right: -14px; bottom: -14px; }
+  .big svg { width: 110px; height: 110px; }
+  .ic { width: 44px; height: 44px; border-radius: 14px; }
+  .ic svg { width: 22px; height: 22px; }
+  .go { display: none; }
+  .copy { gap: 4px; }
+  .title { font-size: 15px; line-height: 1.2; }
+  .text { font-size: 12.5px; line-height: 1.35; }
+  .cta { border-radius: 22px; padding: 22px 18px; flex-direction: column; align-items: stretch; gap: 16px; }
+  .ctaCopy b { font-size: 20px; }
+  .ctaCopy span { font-size: 14px; }
+}

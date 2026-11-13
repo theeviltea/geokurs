@@ -15,7 +15,7 @@ export function MetrologyPage() {
   const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
   return (
     <main className={`container ${s.page}`}>
-      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы' }, { label: 'Метрология' }]} back={{ label: 'Главная', href: '/' }} />
+      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы', href: '/services' }, { label: 'Метрология' }]} back={{ label: 'Главная', href: '/' }} />
 
       <ServiceHero art={LEVEL_SVG} artClass="level" auto>
         <HeroTitle icon="gauge" title="Поверочная лаборатория" nowrap

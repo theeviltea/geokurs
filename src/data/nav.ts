@@ -6,13 +6,13 @@ export const mainNav = [
   { label: 'Каталог', href: '/catalog/gnss-oborudovanie', dropdown: true },
   { label: 'Акции', href: '/promo' },
   { label: 'Как купить', href: '#', dropdown: true },
-  { label: 'Сервис', href: 'https://geokurs.kz/services/' },
+  { label: 'Сервисы', href: '/services' },
   { label: 'О компании', href: '/about' },
 ];
 
 export const mobileNav = [
   { label: 'Каталог', href: '/catalog/gnss-oborudovanie' },
-  { label: 'Услуги', href: 'https://geokurs.kz/services/' },
+  { label: 'Сервисы', href: '/services' },
   { label: 'О компании', href: '/about' },
   { label: 'Акции', href: '/promo' },
   { label: 'Как купить', href: '#' },

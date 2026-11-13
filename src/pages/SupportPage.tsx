@@ -16,7 +16,7 @@ export function SupportPage() {
   const submit = (e: FormEvent) => { e.preventDefault(); setSent(true); };
   return (
     <main className={`container ${s.page}`}>
-      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы' }, { label: 'Техническая поддержка' }]} back={{ label: 'Главная', href: '/' }} />
+      <Crumbs items={[{ label: 'Главная', href: '/' }, { label: 'Сервисы', href: '/services' }, { label: 'Техническая поддержка' }]} back={{ label: 'Главная', href: '/' }} />
 
       <ServiceHero art={WAVE_SVG} artClass="wave">
         <HeroTitle icon="headset" title="Техническая поддержка" lede="Поможем с приборами и ПО: по телефону, в WhatsApp, удалённо или с выездом инженера." cta={<a href="#support-form" className={s.heroBtn}><Icon name="send" size={18} />Написать в поддержку</a>} />

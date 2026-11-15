@@ -16,7 +16,6 @@ import { UsedItemPage, UsedPage } from './pages/UsedPages';
 import { CabinetPage } from './pages/cabinet/CabinetPage';
 import { DemoServicePage, EducationPage, PilotPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
 import { AuthPage } from './pages/AuthPage';
-import { AccountPage } from './pages/AccountPage';
 import { CartPage } from './pages/CartPage';
 import { ComparePage } from './pages/ComparePage';
 import { CatalogPage, CatalogSectionPage } from './pages/CatalogPage';
@@ -57,7 +56,7 @@ export function App() {
         <Route path="/promo/baza-rover" element={<PromoPage />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/register" element={<AuthPage mode="register" />} />
-        <Route path="/account" element={<AccountPage />} />
+        <Route path="/account" element={<Navigate to="/cabinet" replace />} />
         <Route path="/cabinet" element={<CabinetPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/compare" element={<ComparePage />} />

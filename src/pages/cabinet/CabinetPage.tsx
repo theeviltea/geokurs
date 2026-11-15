@@ -15,13 +15,13 @@ const USER = { name: 'Alibek Berdenov', initials: 'AB' };
 type Item = { icon: IconName; label: string; href?: string; soon?: boolean };
 /** Left menu: the structure and names of the client's LK. */
 const MENU: { title?: string; gap?: boolean; items: Item[] }[] = [
-  { items: [{ icon: 'home', label: 'Главная', href: '/cabinet' }, { icon: 'chip', label: 'Мои приборы', href: '/account' }] },
+  { items: [{ icon: 'home', label: 'Главная', href: '/cabinet' }, { icon: 'chip', label: 'Мои приборы' }] },
   { title: 'Услуги', items: [
     { icon: 'radioWaves', label: 'Базовые станции', href: '/services/base-stations' }, { icon: 'buoy', label: 'Техподдержка', href: '/services/support' },
     { icon: 'wrench', label: 'Сервисный центр', href: '/services/repair' }, { icon: 'ruler', label: 'Поверка', href: '/services/metrology' },
     { icon: 'key', label: 'Аренда', href: '/services/rent', soon: true }, { icon: 'cap', label: 'Обучение', href: '/services/education', soon: true },
   ] },
-  { title: 'Покупки', items: [{ icon: 'bag', label: 'Каталог', href: '/catalog' }, { icon: 'box', label: 'Заказы', href: '/account?tab=orders' }, { icon: 'bill', label: 'Счета и оплаты' }] },
+  { title: 'Покупки', items: [{ icon: 'bag', label: 'Каталог', href: '/catalog' }, { icon: 'box', label: 'Заказы' }, { icon: 'bill', label: 'Счета и оплаты' }] },
   { gap: true, items: [{ icon: 'doc', label: 'Документы' }, { icon: 'chatBubble', label: 'Сообщения' }] },
   { title: 'Полезное', items: [{ icon: 'book', label: 'База знаний' }, { icon: 'firmware', label: 'Прошивки' }, { icon: 'refresh', label: 'Trade-in', href: '/services/trade-in' }] },
 ];
@@ -98,7 +98,7 @@ export function CabinetPage() {
     <div className={s.shell}>
       <header className={s.header}>
         <button type="button" className={`${s.iconBtn} ${s.burger}`} aria-label="Меню кабинета" aria-expanded={drawer} onClick={() => setDrawer(true)}><Icon name="menu" size={22} stroke={1.8} /></button>
-        <SmartLink href="/cabinet" className={s.brand} aria-label="Личный кабинет GEOKURS">
+        <SmartLink href="/" className={s.brand} aria-label="GEOKURS — вернуться в интернет-магазин">
           <img src={LOGO} alt="GEOKURS" /><span>Личный кабинет</span>
         </SmartLink>
         <div className={s.headMain}>
@@ -110,7 +110,7 @@ export function CabinetPage() {
             <button type="button" className={s.iconBtn} aria-label="Уведомления, 2 новых"><Icon name="bell" size={22} stroke={1.8} /><Badge n={2} /></button>
             <SmartLink href="/cart" className={s.iconBtn} aria-label={`Корзина, ${cart} товаров`}><Icon name="cart" size={22} stroke={1.8} /><Badge n={cart} /></SmartLink>
             <span className={s.langWrap}><Lang /></span>
-            <SmartLink href="/account" className={s.user} aria-label={`Профиль: ${USER.name}`}>
+            <SmartLink href="/cabinet" className={s.user} aria-label={`Профиль: ${USER.name}`}>
               <span className={s.avatar}>{USER.initials}</span><span className={s.userName}>{USER.name}</span><Icon name="chevronDown" size={16} stroke={2} className={s.userChev} />
             </SmartLink>
           </div>
@@ -128,7 +128,7 @@ export function CabinetPage() {
             <div className={s.scrim} onClick={() => setDrawer(false)} />
             <aside className={s.drawer} role="dialog" aria-modal="true" aria-label="Меню кабинета">
               <div className={s.drawerHead}>
-                <span className={s.brand}><img src={LOGO} alt="GEOKURS" /><span>Личный кабинет</span></span>
+                <SmartLink href="/" className={s.brand} aria-label="GEOKURS — вернуться в интернет-магазин" onClick={() => setDrawer(false)}><img src={LOGO} alt="GEOKURS" /><span>Личный кабинет</span></SmartLink>
                 <button type="button" className={s.iconBtn} aria-label="Закрыть меню" onClick={() => setDrawer(false)}><Icon name="close" size={22} stroke={2} /></button>
               </div>
               <Menu onNavigate={() => setDrawer(false)} />

@@ -130,7 +130,7 @@ export function MobileMenu({ open, onClose, startView = 'root' }: Props) {
         </nav>
 
         <div className={s.shop}>
-          {([['Личный кабинет', 'user', '/account'], ['Корзина', 'cartAlt', '/cart'], ['Избранное', 'fav', '/favorites']] as const).map(([label, icon, href]) => (
+          {([['Личный кабинет', 'user', '/cabinet'], ['Корзина', 'cartAlt', '/cart'], ['Избранное', 'fav', '/favorites']] as const).map(([label, icon, href]) => (
             <SmartLink key={label} href={href} className={s.shopTile} onClick={onClose}>
               <Icon name={icon} color="var(--c-green-600)" />
               {label}

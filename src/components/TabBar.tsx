@@ -26,7 +26,7 @@ export function TabBar() {
         <span className={s.icon}><Icon name="cartAlt" size={24} />{n > 0 && <span key={n} className={s.badge}>{n}</span>}</span>Корзина
       </Link>
       <Link to="/favorites" className={cls('fav')}><Icon name="fav" size={24} />Избранное</Link>
-      <Link to="/account" className={cls('account')}><Icon name="user" size={24} />Кабинет</Link>
+      <Link to="/cabinet" className={cls('account')}><Icon name="user" size={24} />Кабинет</Link>
     </nav>
   );
 }

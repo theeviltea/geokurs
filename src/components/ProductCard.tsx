@@ -6,16 +6,16 @@ import { store, useStore, type Item } from '../lib/store';
 import { Icon } from './Icon';
 import s from './ProductCard.module.css';
 
-type Props = { product: Product; meta?: string; badges?: boolean; variant?: 'grid' | 'carousel'; className?: string };
+type Props = { product: Product; meta?: string; badges?: boolean; variant?: 'grid' | 'carousel'; className?: string; stack?: boolean };
 
-export function ProductCard({ product: p, meta, badges = false, variant = 'grid', className }: Props) {
+export function ProductCard({ product: p, meta, badges = false, variant = 'grid', className, stack = false }: Props) {
   const badge = badges ? (p.hit ? 'hit' : p.isNew ? 'new' : null) : null;
   const st = useStore();
   const faved = st.fav.includes(p.id);
   const compared = st.compare.includes(p.id);
   const item: Item = { key: p.id, name: p.name, brand: p.brand, price: p.price ? formatPrice(p) : null, image: p.image, cat: navByKey[p.id]?.cat, href: productHref[p.id] };
   return (
-    <article className={`${s.card} ${variant === 'carousel' ? s.carousel : ''} ${className ?? ''}`}>
+    <article className={`${s.card} ${variant === 'carousel' ? s.carousel : ''} ${stack ? s.stack : ''} ${className ?? ''}`}>
       <div className={s.media}>
         <img src={p.image} alt={p.name} loading="lazy" />
         {badge === 'hit' && <span className={`${s.badge} ${s.hit}`}><span className="desktop-only">Хит продаж</span><span className="mobile-only">Хит</span></span>}

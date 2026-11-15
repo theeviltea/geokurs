@@ -13,6 +13,7 @@ import { PromoPage } from './pages/PromoPage';
 import { PromosPage } from './pages/PromosPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { UsedItemPage, UsedPage } from './pages/UsedPages';
+import { CabinetPage } from './pages/cabinet/CabinetPage';
 import { DemoServicePage, EducationPage, PilotPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
 import { AuthPage } from './pages/AuthPage';
 import { AccountPage } from './pages/AccountPage';
@@ -37,10 +38,12 @@ function ScrollToTop() {
 export function App() {
   const { pathname } = useLocation();
   const [offline, recheck] = useOffline();
+  // The personal cabinet has its own header and left menu.
+  const lk = pathname.startsWith('/cabinet');
   return (
     <>
       <ScrollToTop />
-      <Header />
+      {!lk && <Header />}
       <Toaster />
       {offline ? <OfflinePage onRetry={recheck} /> : (
       <PageErrorBoundary resetKey={pathname}>
@@ -55,6 +58,7 @@ export function App() {
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/register" element={<AuthPage mode="register" />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/cabinet" element={<CabinetPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
@@ -87,7 +91,7 @@ export function App() {
       </Routes>
       </PageErrorBoundary>
       )}
-      <Footer />
+      {!lk && <Footer />}
       <TabBar />
     </>
   );

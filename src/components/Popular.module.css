@@ -4,6 +4,11 @@
 .tab { height: 44px; padding: 0 20px; border-radius: 22px; border: 1px solid var(--c-line-strong); background: transparent; color: var(--c-ink); font-weight: 500; font-size: 14px; }
 .tabOn { border-color: var(--c-ink); background: var(--c-ink); color: var(--c-white); font-weight: 600; }
 .allLink { font-size: 14px; font-weight: 600; }
+/* Inside the personal cabinet: a rounded panel at content width */
+.embedded { border-radius: 32px; background: #E8EDE6; padding: 32px; }
+.embedded .head { margin-bottom: 24px; }
+.embedded .grid { grid-template-columns: repeat(auto-fill, minmax(min(236px, 100%), 1fr)); }
+.embedded .allCard { min-height: 360px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap: 16px; }
 .allCard { position: relative; overflow: hidden; border-radius: 24px; background: var(--c-green-600); color: var(--c-white); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; }
 .allCard:hover { color: var(--c-white); background: var(--c-green-700); }
@@ -21,4 +26,7 @@
   .tabs { width: 100%; order: 3; }
   .tab { height: 40px; padding: 0 18px; border-radius: 20px; }
   .grid { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px; }
+  .embedded { margin: 0 -16px; padding: 28px 0 32px; border-radius: 28px 28px 0 0; }
+  .embedded .head { margin-bottom: 14px; }
+  .embedded .grid { display: flex; }
 }

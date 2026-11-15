@@ -14,7 +14,7 @@ export function TabBar() {
     : pathname.startsWith('/catalog') || pathname.startsWith('/product') ? 'catalog'
     : pathname === '/cart' ? 'cart'
     : pathname === '/favorites' ? 'fav'
-    : ['/account', '/login', '/register'].includes(pathname) ? 'account' : '';
+    : ['/account', '/cabinet', '/login', '/register'].includes(pathname) ? 'account' : '';
   const cls = (k: string) => `${s.item} ${active === k ? s.on : ''}`;
   return (
     <nav aria-label="Основная навигация" className={s.bar}>

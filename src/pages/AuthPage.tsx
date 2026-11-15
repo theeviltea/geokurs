@@ -13,7 +13,7 @@ export function AuthPage({ mode }: { mode: 'login' | 'register' }) {
   const navigate = useNavigate();
   const [by, setBy] = useState<'phone' | 'email'>('phone');
   const login = mode === 'login';
-  const submit = (e: FormEvent) => { e.preventDefault(); navigate('/account'); };
+  const submit = (e: FormEvent) => { e.preventDefault(); navigate('/cabinet'); };
   const idField = by === 'phone'
     ? <IconField key="phone" icon="call" type="tel" label="Номер телефона" placeholder="+7 (___) ___-__-__" autoComplete="tel" inputMode="tel" required />
     : <IconField key="email" icon="mail" type="email" label="Email" placeholder="name@company.kz" autoComplete="email" required />;

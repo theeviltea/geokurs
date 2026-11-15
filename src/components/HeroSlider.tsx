@@ -95,7 +95,7 @@ function Device({ d }: { d: HeroDevice }) {
   );
 }
 
-export function HeroSlider() {
+export function HeroSlider({ compact = false }: { compact?: boolean } = {}) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const touch = useRef<{ x: number; y: number; dx: number; lock: 'x' | 'y' | null } | null>(null);
@@ -109,7 +109,7 @@ export function HeroSlider() {
 
   return (
     <section
-      className={`${s.hero} ${paused ? s.paused : ''}`}
+      className={`${s.hero} ${compact ? s.compact : ''} ${paused ? s.paused : ''}`}
       aria-roledescription="карусель"
       aria-label="Главные предложения"
       // Pause the timer only for a real mouse hover or keyboard focus: on phones a tap

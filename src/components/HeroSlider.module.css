@@ -112,3 +112,36 @@
   .tabLine { height: 3px; border-radius: 2px; background: rgba(255,255,255,0.35); }
   .tabLabel, .arrows { display: none; }
 }
+
+/* Compact banner inside the personal cabinet: content width, 320px tall. The whole visual is the
+   home-page stage drawn at 56% from the bottom-right corner, so devices and effects keep their layout. */
+.compact { height: 320px; border-radius: 28px; isolation: isolate; background: var(--c-green-800); }
+.compact .stage { left: auto; top: auto; right: 0; bottom: 0; width: 178.6%; height: 540px; background: none; transform: scale(0.56); transform-origin: 100% 100%; }
+.compact .frame { max-width: none; }
+.compact .mark { left: 24px; top: 14px; font-size: 210px; }
+.compact .content, .compact .controlsRow { max-width: none; margin: 0; padding-left: 36px; padding-right: 36px; }
+.compact .content { padding-top: 30px; gap: 12px; }
+.compact .logo { height: calc(var(--logo-h) * 0.8); margin-bottom: 2px; }
+.compact .title { max-width: 480px; font-size: 30px; }
+.compact .badges span { height: 30px; padding: 0 12px; border-radius: 15px; font-size: 13px; }
+.compact .ctas { gap: 10px; margin-top: 4px; }
+.compact .primary, .compact .secondary { height: 44px; padding: 0 20px; border-radius: 22px; font-size: 15px; }
+.compact .controlsRow { padding-bottom: 20px; }
+.compact .tabs { flex: 0 1 600px; }
+.compact .arrows button { width: 40px; height: 40px; border-radius: 20px; }
+
+@media (max-width: 1100px) and (min-width: 768px) {
+  .compact .stage { transform: scale(0.5); }
+  .compact .title { font-size: 28px; max-width: 420px; }
+}
+@media (max-width: 767px) {
+  .compact { height: 360px; border-radius: 24px; }
+  .compact .stage { left: 0; right: 0; width: auto; height: 470px; transform: scale(0.74); transform-origin: 50% 100%; }
+  .compact .mark { left: 6px; top: 12px; font-size: 120px; }
+  .compact .content, .compact .controlsRow { padding-left: 16px; padding-right: 16px; }
+  .compact .content { padding-top: 20px; gap: 8px; }
+  .compact .logo { height: var(--logo-h-m); }
+  .compact .title { font-size: 22px; max-width: 320px; }
+  .compact .controlsRow { padding-bottom: 16px; }
+  .compact .tabs { flex: 1; }
+}

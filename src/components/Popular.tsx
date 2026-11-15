@@ -7,12 +7,12 @@ import s from './Popular.module.css';
 
 const TABS = ['Хит', 'Советуем', 'Новинка'];
 
-export function Popular() {
+export function Popular({ embedded = false }: { embedded?: boolean } = {}) {
   const [tab, setTab] = useState(0);
   // Prototype: the three picks share one list; order changes so switching is visible.
   const list = tab === 0 ? popularProducts : tab === 1 ? [...popularProducts].reverse() : [...popularProducts.slice(4), ...popularProducts.slice(0, 4)];
   return (
-    <div className={`container ${s.wrap}`}>
+    <div className={embedded ? s.embedded : `container ${s.wrap}`}>
       <div className={s.head}>
         <h2 className="h2">Рекомендации</h2>
         <SmartLink href="/catalog/gnss-oborudovanie" className={`${s.allLink} mobile-only`}>Все</SmartLink>
@@ -24,7 +24,7 @@ export function Popular() {
       </div>
       <div className={`${s.grid} no-scrollbar`}>
         {list.map((p) => (
-          <ProductCard key={p.id} product={p} variant="carousel" meta={p.sku ? `Под заказ · ${p.sku}` : `Под заказ · ${p.brand}`} />
+          <ProductCard key={p.id} product={p} variant="carousel" stack={embedded} meta={p.sku ? `Под заказ · ${p.sku}` : `Под заказ · ${p.brand}`} />
         ))}
         <SmartLink href="/catalog/gnss-oborudovanie" className={`${s.allCard} desktop-only`}>
           {/* same look as the «Весь каталог» tile in the catalog grid: rings, title, sub, arrow bottom-left */}

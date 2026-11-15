@@ -4,6 +4,7 @@ import { Crumbs } from '../components/Crumbs';
 import { DemoModal } from '../components/demo/DemoModal';
 import { Icon } from '../components/Icon';
 import { SimilarStrip } from '../components/SimilarStrip';
+import { CompatDevices, FitAccessories, FitLine } from './AccessoriesPage';
 import { SmartLink } from '../components/SmartLink';
 import { productBySlug, type ProductDetail } from '../data/catalog';
 import { img } from '../data/images';
@@ -200,6 +201,7 @@ export function Product() {
             <h1 className={s.h1}>{p.name}</h1>
             <p className={`${s.lede} desktop-only`}>{p.lede}</p>
           </div>
+          <FitLine slug={p.slug} />
           {p.facts.length > 0 && (
             <div className={`${s.facts} no-scrollbar`} style={{ ['--cols' as string]: p.facts.length }}>
               {p.facts.map(([big, small]) => <div key={big} className={s.fact}><b>{big}</b><span>{small}</span></div>)}
@@ -221,6 +223,8 @@ export function Product() {
         </section>
       )}
       <Details p={p} />
+      <CompatDevices slug={p.slug} />
+      <FitAccessories key={p.slug} slug={p.slug} />
       <SimilarStrip title={p.simTitle} allLabel={p.simAll} allHref={p.catHref} items={p.similar}
         recommend={RECOMMEND.map((k) => navProducts.find((x) => x.key === k)!).filter((x) => x.href !== `/product/${p.slug}`).slice(0, 6)
           .map((x) => ({ name: x.name, brand: x.brand, price: x.price, img: x.image, href: x.href }))} />

@@ -13,6 +13,7 @@ import { PromoPage } from './pages/PromoPage';
 import { PromosPage } from './pages/PromosPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { UsedItemPage, UsedPage } from './pages/UsedPages';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 import { CabinetPage } from './pages/cabinet/CabinetPage';
 import { DemoServicePage, EducationPage, PilotPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
 import { AuthPage } from './pages/AuthPage';
@@ -62,6 +63,8 @@ export function App() {
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/catalog/s/:key" element={<CatalogSectionPage />} />
+        <Route path="/catalog/accessories" element={<Navigate to="/catalog/accessories/ts" replace />} />
+        <Route path="/catalog/accessories/:dev" element={<AccessoriesPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/base-stations" element={<BaseStationsPage />} />

@@ -1300,8 +1300,8 @@ const raw: ProductDetail[] = [
  },
  {
   "slug": "trimble-case-s-series",
-  "cat": "Аксессуары",
-  "catHref": "#",
+  "cat": "Аксессуары для тахеометров",
+  "catHref": "/catalog/accessories/ts",
   "short": "Кейс Trimble S-Series",
   "brand": "Trimble",
   "sku": "58080010",
@@ -1362,25 +1362,115 @@ const raw: ProductDetail[] = [
     "name": "Штатив GEOKURS SJW70F (фибергласс, тяжёлый)",
     "brand": "GEOKURS",
     "price": "122 500 ₸",
-    "img": null
+    "img": "acc-shtativy.webp"
    },
    {
     "name": "Штатив Trimble (фибергласс, 1,8 м, 7,3 кг)",
     "brand": "Trimble",
     "price": "305 000 ₸",
-    "img": null
+    "img": "acc-bipody.webp"
    },
    {
     "name": "Адаптер GEOKURS QRA-1 (алюминиевый)",
     "brand": "GEOKURS",
     "price": "47 000 ₸",
-    "img": null
+    "img": "acc-adaptery.webp"
    },
    {
     "name": "Адаптер для треггера GEOKURS AL-3",
     "brand": "GEOKURS",
     "price": "55 500 ₸",
-    "img": null
+    "img": "acc-adaptery.webp"
+   }
+  ]
+ },
+ {
+  "slug": "chcnav-hce600",
+  "cat": "Аксессуары для GNSS-оборудования",
+  "catHref": "/catalog/accessories/gnss",
+  "short": "Контроллер HCE600",
+  "brand": "CHCNAV",
+  "sku": "HCE600",
+  "hit": false,
+  "name": "Контроллер CHCNAV HCE600",
+  "price": 1180000,
+  "priceFrom": false,
+  "lede": "Полевой контроллер для GNSS-приёмников CHCNAV: съёмка, разбивка и управление приёмником в LandStar.",
+  "shots": [
+   {
+    "src": "acc-controller.svg",
+    "alt": "Контроллер CHCNAV HCE600",
+    "dark": false
+   }
+  ],
+  "maxH": 320,
+  "maxW": 60,
+  "facts": [
+   [
+    "LandStar",
+    "полевое ПО"
+   ],
+   [
+    "i73+ · i93 · i89",
+    "совместимые приёмники"
+   ]
+  ],
+  "quick": [
+   "Оригинальный контроллер CHCNAV",
+   "Полевое ПО LandStar",
+   "Подходит к i73+, i93, i89"
+  ],
+  "desc": [
+   "Полевой контроллер CHCNAV для работы с GNSS-приёмниками i73+, i93 и i89: съёмка точек, вынос в натуру и настройка приёмника в LandStar. Крепится на веху кронштейном."
+  ],
+  "specs": [
+   [
+    "Тип аксессуара",
+    "Полевой контроллер"
+   ],
+   [
+    "Совместимость",
+    "GNSS-приёмники CHCNAV i73+, i93, i89"
+   ],
+   [
+    "Полевое ПО",
+    "CHCNAV LandStar"
+   ],
+   [
+    "Производитель",
+    "CHCNAV"
+   ]
+  ],
+  "kit": [],
+  "simTitle": "Другие аксессуары для GNSS",
+  "simAll": "Все аксессуары",
+  "promo": false,
+  "physical": true,
+  "verify": false,
+  "similar": [
+   {
+    "name": "Контроллер Trimble TSC5",
+    "brand": "Trimble",
+    "price": "2 450 000 ₸",
+    "img": "acc-controller.svg"
+   },
+   {
+    "name": "Веха карбоновая телескопическая 2,5 м",
+    "brand": "GEOKURS",
+    "price": "64 500 ₸",
+    "img": "acc-vehi.webp"
+   },
+   {
+    "name": "Кронштейн для контроллера на веху",
+    "brand": "GEOKURS",
+    "price": "18 900 ₸",
+    "img": "acc-krepleniya.webp"
+   },
+   {
+    "name": "Адаптер GEOKURS QRA-1 (алюминиевый)",
+    "brand": "GEOKURS",
+    "price": "47 000 ₸",
+    "img": "acc-adaptery.webp"
    }
   ]
  },

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { popularProducts } from '../data/products';
 import { Icon } from './Icon';
 import { ProductCard } from './ProductCard';
@@ -11,6 +11,28 @@ export function Popular({ embedded = false }: { embedded?: boolean } = {}) {
   const [tab, setTab] = useState(0);
   // Prototype: the three picks share one list; order changes so switching is visible.
   const list = tab === 0 ? popularProducts : tab === 1 ? [...popularProducts].reverse() : [...popularProducts.slice(4), ...popularProducts.slice(0, 4)];
+  // In the cabinet the picks are one row, paged with arrows.
+  const row = useRef<HTMLDivElement>(null);
+  const [edge, setEdge] = useState({ left: false, right: true });
+  const sync = () => {
+    const el = row.current;
+    if (el) setEdge({ left: el.scrollLeft > 4, right: el.scrollLeft + el.clientWidth < el.scrollWidth - 4 });
+  };
+  useEffect(() => {
+    if (!embedded) return;
+    row.current?.scrollTo({ left: 0 });
+    sync();
+    window.addEventListener('resize', sync);
+    return () => window.removeEventListener('resize', sync);
+  }, [embedded, tab]);
+  const page = (dir: number) => {
+    const el = row.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    const step = card.offsetWidth + 16; // card + gap
+    const perPage = Math.max(1, Math.floor((el.clientWidth + 16) / step));
+    el.scrollBy({ left: dir * perPage * step, behavior: 'smooth' });
+  };
   return (
     <div className={embedded ? s.embedded : `container ${s.wrap}`}>
       <div className={s.head}>
@@ -21,8 +43,14 @@ export function Popular({ embedded = false }: { embedded?: boolean } = {}) {
             <button key={t} type="button" role="tab" aria-selected={tab === i} className={`${s.tab} ${tab === i ? s.tabOn : ''}`} onClick={() => setTab(i)}>{t}</button>
           ))}
         </div>
+        {embedded && (
+          <div className={`${s.arrows} desktop-only`}>
+            <button type="button" aria-label="Предыдущие товары" disabled={!edge.left} onClick={() => page(-1)}><Icon name="chevronLeft" size={20} stroke={2} /></button>
+            <button type="button" aria-label="Следующие товары" disabled={!edge.right} onClick={() => page(1)}><Icon name="chevronRight" size={20} stroke={2} /></button>
+          </div>
+        )}
       </div>
-      <div className={`${s.grid} no-scrollbar`}>
+      <div ref={row} onScroll={embedded ? sync : undefined} className={`${s.grid} ${embedded ? s.row : ''} no-scrollbar`}>
         {list.map((p) => (
           <ProductCard key={p.id} product={p} variant="carousel" stack={embedded} meta={p.sku ? `Под заказ · ${p.sku}` : `Под заказ · ${p.brand}`} />
         ))}

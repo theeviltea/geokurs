@@ -7,7 +7,22 @@
 /* Inside the personal cabinet: a rounded panel at content width */
 .embedded { border-radius: 32px; background: #E8EDE6; padding: 32px; }
 .embedded .head { margin-bottom: 24px; }
-.embedded .grid { grid-template-columns: repeat(auto-fill, minmax(min(236px, 100%), 1fr)); }
+.embedded .head { flex-wrap: nowrap; }
+.embedded .head h2 { margin-right: auto; }
+@media (min-width: 768px) {
+  .embedded .row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; }
+  .embedded .row > * { flex: none; width: calc((100% - 16px * 3) / 4); scroll-snap-align: start; }
+}
+@media (min-width: 1600px) {
+  .embedded .row > * { width: calc((100% - 16px * 4) / 5); }
+}
+@media (min-width: 768px) and (max-width: 1100px) {
+  .embedded .row > * { width: calc((100% - 16px * 2) / 3); }
+}
+.arrows { display: flex; gap: 8px; }
+.arrows button { width: 44px; height: 44px; border-radius: 22px; border: 1px solid var(--c-line-strong); background: var(--c-white); color: var(--c-ink); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease; }
+.arrows button:hover:not(:disabled) { background: var(--c-ink); border-color: var(--c-ink); color: var(--c-white); }
+.arrows button:disabled { opacity: 0.4; cursor: default; }
 .embedded .allCard { min-height: 360px; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr)); gap: 16px; }
 .allCard { position: relative; overflow: hidden; border-radius: 24px; background: var(--c-green-600); color: var(--c-white); padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px; }
@@ -28,5 +43,7 @@
   .grid { display: flex; gap: 8px; overflow-x: auto; padding: 0 16px; }
   .embedded { margin: 0 -16px; padding: 28px 0 32px; border-radius: 28px 28px 0 0; }
   .embedded .head { margin-bottom: 14px; }
+  .embedded .head { flex-wrap: wrap; }
   .embedded .grid { display: flex; }
+
 }

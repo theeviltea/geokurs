@@ -29,7 +29,9 @@ export function Footer() {
         <span>© 2026 Интернет-магазин GEOKURS</span>
         <div className={s.socials}>
           {socials.map((so) => (
-            <a key={so.name} href={so.href} target="_blank" rel="noreferrer">{so.name}</a>
+            so.demoHref
+              ? <SmartLink key={so.name} href={so.demoHref}>{so.name}</SmartLink>
+              : <a key={so.name} href={so.href} target="_blank" rel="noreferrer">{so.name}</a>
           ))}
         </div>
       </div>

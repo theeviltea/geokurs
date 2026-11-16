@@ -19,11 +19,12 @@ export const mobileNav = [
   { label: 'Контакты', href: 'https://geokurs.kz/contacts' },
 ];
 
+/** demoHref: in the footer, Instagram / YouTube / Facebook open the 404 / 500 / offline pages so the client can review them. */
 export const socials = [
-  { name: 'Instagram', href: 'https://www.instagram.com/geokurs/', icon: 'instagram' },
-  { name: 'YouTube', href: 'https://www.youtube.com/channel/UCrFd23NOOYpBrbXvqL3m53Q', icon: 'youtube' },
-  { name: 'Facebook', href: 'https://www.facebook.com/geokurs.kz', icon: 'facebook' },
-  { name: 'ВКонтакте', href: 'https://vk.com/club72002765', icon: 'vk' },
+  { name: 'Instagram', href: 'https://www.instagram.com/geokurs/', demoHref: '/404', icon: 'instagram' },
+  { name: 'YouTube', href: 'https://www.youtube.com/channel/UCrFd23NOOYpBrbXvqL3m53Q', demoHref: '/500', icon: 'youtube' },
+  { name: 'Facebook', href: 'https://www.facebook.com/geokurs.kz', demoHref: '/offline', icon: 'facebook' },
+  { name: 'ВКонтакте', href: 'https://vk.com/club72002765', demoHref: undefined, icon: 'vk' },
 ] as const;
 
 export const footerNav = [

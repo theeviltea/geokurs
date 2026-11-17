@@ -145,6 +145,28 @@
 .sumRows > div > :last-child { text-align: right; }
 .sumTotal { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 16px; font-weight: 600; }
 .sumTotal b { font-family: var(--font-display); font-size: 28px; font-weight: 800; white-space: nowrap; }
+.sumTotal > span:first-child { padding-top: 6px; }
+.sumTotal { align-items: flex-start; }
+.totalCol { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; line-height: 1.15; }
+.oldSum { font-size: 14px; font-weight: 500; color: #8A968C; white-space: nowrap; }
+.vat { font-size: 13px; font-weight: 400; color: var(--c-gray-600); white-space: nowrap; }
+.discount { color: var(--c-green-700); }
+.coupon { display: flex; flex-direction: column; gap: 8px; }
+.coupon label { font-size: 14px; font-weight: 600; }
+.coupon > div { display: flex; gap: 8px; }
+.coupon input { flex: 1; min-width: 0; height: 48px; padding: 0 16px; border-radius: 14px; border: 1px solid var(--c-line); background: var(--c-bg); color: var(--c-ink); font: inherit; font-size: 15px; }
+.coupon input::placeholder { color: #8A968C; }
+.coupon input:focus { outline: none; border-color: var(--c-green-600); background: var(--c-white); }
+.coupon input[aria-invalid='true'] { border-color: #C62828; background: #FFF7F7; }
+.coupon button { flex: none; height: 48px; padding: 0 18px; border-radius: 24px; border: 1px solid var(--c-ink); background: var(--c-white); color: var(--c-ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s ease, color 0.2s ease; }
+.coupon button:hover { background: var(--c-ink); color: var(--c-white); }
+.couponErr { font-size: 13px; color: #C62828; }
+.couponOn { display: flex; align-items: center; gap: 12px; padding: 12px 12px 12px 14px; border-radius: 16px; border: 1px dashed #7BC285; background: #F1FAF2; }
+.couponTick { flex: none; width: 30px; height: 30px; border-radius: 15px; background: var(--c-green-600); color: var(--c-white); display: flex; align-items: center; justify-content: center; }
+.couponText { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; }
+.couponText b { font-size: 14px; letter-spacing: 0.04em; }
+.couponText span { font-size: 13px; color: var(--c-green-700); }
+.couponOn button { flex: none; border: 0; background: none; padding: 6px; color: var(--c-gray-600); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .installment { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 16px; background: var(--c-green-100); color: var(--c-green-700); font-size: 14px; font-weight: 600; }
 .installment:hover { color: var(--c-green-700); }
 .installment svg { flex: none; }

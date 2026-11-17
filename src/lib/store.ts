@@ -3,9 +3,12 @@ import { navProducts, type NavProduct } from '../data/navigation';
 import { navByKey } from './products';
 import { toast } from './toast';
 
+/** Promo code → discount, %. */
+export const COUPONS: Record<string, number> = { GEOKURS5: 5 };
+
 /** Tiny client-side store for the prototype: cart lines and the compare list (kept in memory). */
-type State = { cart: { key: string; qty: number }[]; compare: string[]; fav: string[] };
-const INITIAL: State = { cart: [{ key: 'i73', qty: 1 }, { key: 'case', qty: 1 }, { key: 'gtx24', qty: 2 }], compare: ['i73', 'i89', 'i93'], fav: ['i73', 'i93', 's5', 'x9core', 'gtx24', 'x500'] };
+type State = { cart: { key: string; qty: number }[]; compare: string[]; fav: string[]; coupon: string | null };
+const INITIAL: State = { cart: [{ key: 'i73', qty: 1 }, { key: 'case', qty: 1 }, { key: 'gtx24', qty: 2 }], compare: ['i73', 'i89', 'i93'], fav: ['i73', 'i93', 's5', 'x9core', 'gtx24', 'x500'], coupon: null };
 let state: State = INITIAL;
 const subs = new Set<() => void>();
 const set = (next: State) => { state = next; subs.forEach((f) => f()); };
@@ -53,6 +56,16 @@ export const store = {
   setQty: (key: string, qty: number) => set({ ...state, cart: state.cart.map((l) => (l.key === key ? { ...l, qty: Math.max(1, qty) } : l)) }),
   remove: (key: string) => set({ ...state, cart: state.cart.filter((l) => l.key !== key) }),
   restoreCart: () => set({ ...state, cart: INITIAL.cart }),
+  /** Prototype promo codes: returns false for an unknown code. */
+  applyCoupon: (code: string) => {
+    const c = code.trim().toUpperCase();
+    if (!COUPONS[c]) return false;
+    set({ ...state, coupon: c });
+    return true;
+  },
+  removeCoupon: () => set({ ...state, coupon: null }),
+  /** After a placed order: the cart and the promo code are used up. */
+  clearCart: () => set({ ...state, cart: [], coupon: null }),
   uncompare: (key: string) => set({ ...state, compare: state.compare.filter((k) => k !== key) }),
   clearCompare: () => set({ ...state, compare: [] }),
   restoreCompare: () => set({ ...state, compare: INITIAL.compare }),

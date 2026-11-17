@@ -1,20 +1,19 @@
+import { useState, type FormEvent } from 'react';
 import { Crumbs } from '../components/Crumbs';
 import { Icon } from '../components/Icon';
 import { ProductCard } from '../components/ProductCard';
 import { SmartLink } from '../components/SmartLink';
 import { plural } from '../lib/search';
-import { asCard, fmt, navByKey, priceNumber } from '../lib/products';
-import { cartCount, store, useStore } from '../lib/store';
+import { useOrder } from '../lib/order';
+import { asCard, fmt, priceNumber } from '../lib/products';
+import { store } from '../lib/store';
 import s from './Shop.module.css';
 
 const SKU: Record<string, string> = { i73: '8001010262', case: '58080010', gtx24: 'GTX 24 SET' };
 const RECOMMEND = ['s5', 'x9core', 'x500', 'tbc', 'glm100', 'i93'];
 
 export function CartPage() {
-  const st = useStore();
-  const lines = st.cart.map((l) => ({ ...l, p: navByKey[l.key] }));
-  const count = cartCount(st);
-  const total = lines.reduce((a, l) => a + priceNumber(l.p) * l.qty, 0);
+  const { lines, count, subtotal, coupon, pct, discount, total, vat } = useOrder();
   const countLabel = `${count} ${plural(count)}`;
 
   return (
@@ -51,11 +50,13 @@ export function CartPage() {
             <aside className={`${s.card} ${s.summary}`}>
               <span className={s.sumTitle}>Ваш заказ</span>
               <div className={s.sumRows}>
-                <div><span>Товары, {countLabel}</span><b>{fmt(total)}</b></div>
+                <div><span>Товары, {countLabel}</span><b>{fmt(subtotal)}</b></div>
+                {coupon && <div><span>Скидка по промокоду</span><b className={s.discount}>−{fmt(discount)}</b></div>}
                 <div><span>Доставка</span><span>рассчитает менеджер</span></div>
               </div>
-              <div className={s.sumTotal}><span>Итого</span><b>{fmt(total)}</b></div>
-              <a href="#" className={`${s.primary} desktop-only`}>Оформить заказ <Icon name="arrowRight" size={18} stroke={2} /></a>
+              <CouponBox coupon={coupon} pct={pct} />
+              <TotalBlock subtotal={subtotal} total={total} vat={vat} struck={!!coupon} />
+              <SmartLink href="/checkout" className={`${s.primary} desktop-only`}>Оформить заказ <Icon name="arrowRight" size={18} stroke={2} /></SmartLink>
               <SmartLink href="/promo/baza-rover" className={s.installment}><Icon name="percent" size={18} stroke={1.8} />Рассрочка 0‑0‑24: без взноса и переплаты</SmartLink>
               <ul className={s.sumInfo}>
                 <li><Icon name="truck" size={18} color="var(--c-green-600)" />Доставка в любую точку Казахстана</li>
@@ -65,7 +66,7 @@ export function CartPage() {
             </aside>
             <div className={`${s.checkoutBar} mobile-only`}>
               <span><small>Итого, {countLabel}</small><b>{fmt(total)}</b></span>
-              <a href="#" className={s.checkoutBtn}>Оформить</a>
+              <SmartLink href="/checkout" className={s.checkoutBtn}>Оформить</SmartLink>
             </div>
           </div>
         ) : (
@@ -92,5 +93,49 @@ export function CartPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+/** «Итого» with the old sum struck through when a promo code is on, and the VAT inside the total. */
+export function TotalBlock({ subtotal, total, vat, struck }: { subtotal: number; total: number; vat: number; struck: boolean }) {
+  return (
+    <div className={s.sumTotal}>
+      <span>Итого</span>
+      <span className={s.totalCol}>
+        {struck && <s className={s.oldSum}>{fmt(subtotal)}</s>}
+        <b>{fmt(total)}</b>
+        <small className={s.vat}>в т.ч. НДС 16%: {fmt(vat)}</small>
+      </span>
+    </div>
+  );
+}
+
+/** Promo code field; once a code is on, a chip with «Убрать». */
+function CouponBox({ coupon, pct }: { coupon: string | null; pct: number }) {
+  const [code, setCode] = useState('');
+  const [error, setError] = useState('');
+  if (coupon) {
+    return (
+      <div role="status" className={s.couponOn}>
+        <span className={s.couponTick}><Icon name="check" size={14} stroke={2.6} /></span>
+        <span className={s.couponText}><b>{coupon}</b><span>Промокод применён · скидка {pct}%</span></span>
+        <button type="button" onClick={() => { store.removeCoupon(); setCode(''); }}>Убрать</button>
+      </div>
+    );
+  }
+  const submit = (e: FormEvent) => {
+    e.preventDefault();
+    if (!code.trim()) { setError('Введите промокод'); return; }
+    if (!store.applyCoupon(code)) setError('Такого промокода нет или срок его действия истёк');
+  };
+  return (
+    <form className={s.coupon} onSubmit={submit} noValidate>
+      <label htmlFor="cart-coupon">Промокод</label>
+      <div>
+        <input id="cart-coupon" value={code} onChange={(e) => { setCode(e.target.value); setError(''); }} placeholder="Код купона" autoComplete="off" aria-invalid={!!error} aria-describedby={error ? 'cart-coupon-err' : undefined} />
+        <button type="submit">Применить</button>
+      </div>
+      {error && <span id="cart-coupon-err" className={s.couponErr}>{error}</span>}
+    </form>
   );
 }

@@ -18,6 +18,7 @@ import { CabinetPage } from './pages/cabinet/CabinetPage';
 import { DemoServicePage, EducationPage, PilotPage, RentPage, TradeInPage } from './pages/ServiceExtraPages';
 import { AuthPage } from './pages/AuthPage';
 import { CartPage } from './pages/CartPage';
+import { CheckoutErrorPage, CheckoutPage, CheckoutSuccessPage } from './pages/CheckoutPages';
 import { ComparePage } from './pages/ComparePage';
 import { CatalogPage, CatalogSectionPage } from './pages/CatalogPage';
 import { FavoritesPage } from './pages/FavoritesPage';
@@ -60,6 +61,9 @@ export function App() {
         <Route path="/account" element={<Navigate to="/cabinet" replace />} />
         <Route path="/cabinet" element={<CabinetPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/checkout/success" element={<CheckoutSuccessPage />} />
+        <Route path="/checkout/error" element={<CheckoutErrorPage />} />
         <Route path="/compare" element={<ComparePage />} />
         <Route path="/catalog" element={<CatalogPage />} />
         <Route path="/catalog/s/:key" element={<CatalogSectionPage />} />
